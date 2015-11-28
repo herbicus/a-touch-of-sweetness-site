@@ -3,10 +3,10 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
-var template = require('./home.html');
+var template = require('./hero.html');
 var AnimationController = require('../../modules/AnimationController');
 
-var Home = Backbone.View.extend({
+var Hero = Backbone.View.extend({
 
   template: _.template(template()),
 
@@ -48,4 +48,4 @@ var Home = Backbone.View.extend({
   }
 });
 
-module.exports = Home;
+module.exports = Hero;
