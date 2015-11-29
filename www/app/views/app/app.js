@@ -26,14 +26,10 @@ var App = Backbone.View.extend({
     //   this.loadImage( 'images/desktop-background.jpg' );
     // }
 
-    // Put Images to Load Here Like So
-    // this.loadImage( 'images/your-image.jpg' );
-    // this.loadImage( 'images/your-image.png' );
-    // this.loadImage( 'images/your-image.gif' );
-
-    this.loadImage('https://placekitten.com/g/500/500');
-    this.loadImage('https://placekitten.com/g/600/500');
-    this.loadImage('https://placekitten.com/g/700/700');
+    this.loadImage( 'images/bg-flour.jpg' );
+    this.loadImage( 'images/bg-book.jpg' );
+    this.loadImage( 'images/bg-cutter.jpg' );
+    this.loadImage( 'images/bg-bowl-chips_1700x1700.png' );
 
   },
 

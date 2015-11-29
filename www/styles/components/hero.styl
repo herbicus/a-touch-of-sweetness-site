@@ -1,55 +1,81 @@
 #hero
-  background rgba( 0, 0, 0, 0)
-  min-height 100vh 
   display block
-  background url("../images/bg-flour.jpg")no-repeat top center
+  padding-top 100px
+  background url("../images/bg-flour_raw-tint.jpg")no-repeat top center
   -webkit-background-size cover 
   -o-background-size cover 
   background-size cover
   
+  .hero-logo
+    position relative
+    background url("../images/bg-bowl-chips_1700x1700_75.png")no-repeat center center
+    -webkit-background-size contain 
+    -o-background-size contain 
+    background-size contain
+    width 100%
+    max-width 100%
+
   #logo
     position relative
+    width 100%
+    max-width 100%
+    top 10px
     
     svg
       position relative
       z-index 5
       display block
       width 100%
-      max-width 250px
+      max-width 90%
       height auto
-      margin 25px auto
-      padding 25px 
+      margin 0px auto
+      padding 25px
+      -webkit-transform scale(0.95)
+      -moz-transform scale(0.95)
+      -ms-transform scale(0.95)
+      -o-transform scale(0.95)
+      transform scale(0.95)
       
-    &:before
-      content ''
-      position absolute
-      z-index 1 
-      width 100%
-      height 100%  
-      top 5px
-      left -10px
-      opacity 0.85
-      background url("../images/bg-bowl-chips_1700x1700.png")no-repeat center center
-      -webkit-background-size contain 
-      -o-background-size contain 
-      background-size contain 
+    // &:before
+    //   content ''
+    //   position absolute
+    //   z-index 1 
+    //   width 100%
+    //   height 100%  
+    //   top 5px
+    //   left -10px
+    //   opacity 0.85
+    //   background url("../images/bg-bowl-chips_1700x1700.png")no-repeat center center
+    //   -webkit-background-size contain 
+    //   -o-background-size contain 
+    //   background-size contain 
   
   .icon-logo-fill 
     fill $white
   
-  #logo,
+  .hero-logo,
   .hero-copy
   	width 50%
   	float right
    
   .hero-copy
+    h1,
+    p
+      color $white
+      color darken($primary, 15)
+      padding 0 25px
+      text-shadow 0 1px 1px $white 
+    
     h1
       font-size 52px 
       line-height 62px
       letter-spacing 2px
-      padding 0 25px
       
-  p
-    padding 0 25px
+    p
+      font-weight 400
+      font-size 18px
+      line-height 27px
+      letter-spacing 1px 
+    
     
     
