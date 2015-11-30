@@ -1,7 +1,9 @@
 #hero
   display block
   padding-top 100px
-  background url("../images/bg-flour_raw-tint.jpg")no-repeat top center
+  //background url("../images/bg-flour_raw-tint.jpg")no-repeat top center
+  background url("../images/bg-mix-logo.jpg")no-repeat center center
+  //background #D9B5B6 
   -webkit-background-size cover 
   -o-background-size cover 
   background-size cover
@@ -14,6 +16,8 @@
     background-size contain
     width 100%
     max-width 100%
+    
+    visibility hidden
 
   #logo
     position relative
@@ -51,7 +55,7 @@
     //   background-size contain 
   
   .icon-logo-fill 
-    fill $white
+    fill $offWhite
   
   .hero-logo,
   .hero-copy
@@ -62,9 +66,7 @@
     h1,
     p
       color $white
-      color darken($primary, 15)
       padding 0 25px
-      text-shadow 0 1px 1px $white 
     
     h1
       font-size 52px 
@@ -72,7 +74,7 @@
       letter-spacing 2px
       
     p
-      font-weight 400
+      font-weight 300
       font-size 18px
       line-height 27px
       letter-spacing 1px 
