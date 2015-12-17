@@ -1,5 +1,16 @@
 <div class="l-section-container">
-	
-	<h1 class='text-center'><%= data.title %></h1>
-	<img src="<%= data.images[0] %>" alt="placekitten">
+
+	<div class="slider-container">
+		<h1 class='text-center'><%= data.title %></h1>
+		
+	    <div id="slick">
+	      <%_.each(data.images, function(value, key, obj) {%>
+	      <div class="detail-slide">
+	        <img src="<%= value %>">
+	      </div>
+	      <%});%>
+	    </div>
+	    <a class="left-arrow"><img src="images/left-arrow.png" alt="Left arrow"></a>
+	    <a class="right-arrow"><img src="images/right-arrow.png" alt="Right arrow"></a>
+	  </div> <!-- div.slider-container-->
 </div>

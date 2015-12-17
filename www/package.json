@@ -43,6 +43,7 @@
     "handlebars": "^3.0.0",
     "hbsfy": "^2.2.1",
     "jquery": "~2.1.4",
+    "slick-carousel": "~1.5.8",
     "jshint-stylish": "^0.4.0",
     "karma": "^0.12.23",
     "merge-stream": "^0.1.8",

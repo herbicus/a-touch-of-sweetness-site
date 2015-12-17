@@ -5,6 +5,7 @@ var _ = require('underscore');
 var Backbone = require('backbone');
 var template = require('./gallery.html');
 var AnimationController = require('../../modules/AnimationController');
+var Slick = require('slick-carousel');
 
 var Gallery = Backbone.View.extend({
 
@@ -26,6 +27,25 @@ var Gallery = Backbone.View.extend({
     this.listenTo(this.model, 'change:route', this.onRouteChange);
 
     this.animate = new AnimationController();
+
+    content.data.images = [];
+
+    // how slick
+    $('#slick').slick({
+      arrows: true,
+      respondTo: 'slider',
+      responsive: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      infinite: true,
+      dots: false,
+      autoplay: true,
+      autoPlaySpeed: 3000,
+      prevArrow: $('.left-arrow'),
+      nextArrow: $('.right-arrow')
+    });
+
+    $(window).trigger('resize');
   },
 
   hide: function() {
