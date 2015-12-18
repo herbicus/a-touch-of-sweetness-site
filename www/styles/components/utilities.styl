@@ -27,6 +27,19 @@
   
 .text-center
   text-align center
+      
+.mobile
+  color blue
+  display block
+    @media $tablet
+      display none
+      
+.desktop
+  display none
+  position relative
+  
+    @media screen and (max-width: 480)
+      display block
 
 // -------------------------------------
 //   Mixins

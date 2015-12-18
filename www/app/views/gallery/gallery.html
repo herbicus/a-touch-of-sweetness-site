@@ -1,16 +1,54 @@
 <div class="l-section-container">
 
 	<div class="slider-container">
-		<h1 class='text-center'><%= data.title %></h1>
-		
-	    <div id="slick">
-	      <%_.each(data.images, function(value, key, obj) {%>
+		<h1 class='text-center title-cakes'><%= data.titleTop %></h1>
+
+	    <div id="slickCakes">
+	      <%_.each(data.imagesCakes, function(value, key, obj) {%>
 	      <div class="detail-slide">
 	        <img src="<%= value %>">
 	      </div>
 	      <%});%>
 	    </div>
-	    <a class="left-arrow"><img src="images/left-arrow.png" alt="Left arrow"></a>
-	    <a class="right-arrow"><img src="images/right-arrow.png" alt="Right arrow"></a>
-	  </div> <!-- div.slider-container-->
+	    <a class="left-arrow-cakes"><img src="images/left-arrow-x.png" alt="Left arrow"></a>
+	    <a class="right-arrow-cakes"><img src="images/right-arrow-x.png" alt="Right arrow"></a>
+	</div> <!-- div.slider-container-->
+</div>
+
+<div class="gallery-divider"></div>
+
+<div class="l-section-container">
+
+	<div class="slider-container">
+		<h1 class='text-center title-cupcakes'><%= data.titleMid %></h1>
+
+	    <div id="slickCupCakes">
+	      <%_.each(data.imagesCupCakes, function(value, key, obj) {%>
+	      <div class="detail-slide">
+	        <img src="<%= value %>">
+	      </div>
+	      <%});%>
+	    </div>
+	    <a class="left-arrow-cupcakes"><img src="images/left-arrow-x.png" alt="Left arrow"></a>
+	    <a class="right-arrow-cupcakes"><img src="images/right-arrow-x.png" alt="Right arrow"></a>
+	</div> <!-- div.slider-container-->
+</div>
+
+<div class="gallery-divider"></div>
+
+<div class="l-section-container">
+
+	<div class="slider-container">
+		<h1 class='text-center title-carvings'><%= data.titleBottom %></h1>
+
+	    <div id="slickFruitCarvings">
+	      <%_.each(data.imagesFruitCarvings, function(value, key, obj) {%>
+	      <div class="detail-slide">
+	        <img src="<%= value %>">
+	      </div>
+	      <%});%>
+	    </div>
+	    <a class="left-arrow-fruit-carvings"><img src="images/left-arrow-x.png" alt="Left arrow"></a>
+	    <a class="right-arrow-fruit-carvings"><img src="images/right-arrow-x.png" alt="Right arrow"></a>
+	</div> <!-- div.slider-container-->
 </div>

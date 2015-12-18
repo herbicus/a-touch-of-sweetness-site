@@ -31,18 +31,61 @@ var Gallery = Backbone.View.extend({
     content.data.images = [];
 
     // how slick
-    $('#slick').slick({
+    $('#slickCakes').slick({
       arrows: true,
       respondTo: 'slider',
-      responsive: true,
       slidesToShow: 3,
       slidesToScroll: 1,
       infinite: true,
       dots: false,
-      autoplay: true,
-      autoPlaySpeed: 3000,
-      prevArrow: $('.left-arrow'),
-      nextArrow: $('.right-arrow')
+      responsive: [
+       {
+         breakpoint: 480,
+         settings: {
+           slidesToShow: 1
+         }
+       }
+      ],
+      prevArrow: $('.left-arrow-cakes'),
+      nextArrow: $('.right-arrow-cakes')
+    });
+
+    $('#slickCupCakes').slick({
+      arrows: true,
+      respondTo: 'slider',
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      infinite: true,
+      dots: false,
+      responsive: [
+       {
+         breakpoint: 480,
+         settings: {
+           slidesToShow: 1
+         }
+       }
+      ],
+      prevArrow: $('.left-arrow-cupcakes'),
+      nextArrow: $('.right-arrow-cupcakes')
+    });
+
+    $('#slickFruitCarvings').slick({
+      arrows: true,
+      respondTo: 'slider',
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      infinite: true,
+      dots: false,
+      responsive: [
+       {
+         breakpoint: 480,
+         settings: {
+           slidesToShow: 1
+         }
+       }
+      ],
+      prevArrow: $('.left-arrow-fruit-carvings'),
+      nextArrow: $('.right-arrow-fruit-carvings')
     });
 
     $(window).trigger('resize');

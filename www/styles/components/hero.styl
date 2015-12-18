@@ -1,12 +1,20 @@
 #hero
   display block
   padding-top 100px
-  //background url("../images/bg-flour_raw-tint.jpg")no-repeat top center
-  background url("../images/bg-mix-logo.jpg")no-repeat center center
-  //background #D9B5B6 
+  background #D9B5B6 
+  // background url("../images/bg-flour_raw-tint.jpg")no-repeat top center
+  // background url("../images/bg-mix-logo.jpg")no-repeat center center
   -webkit-background-size cover 
   -o-background-size cover 
   background-size cover
+  
+  @media $desktop
+    background #D9B5B6
+    background url("../images/bg-mix-logo.jpg")no-repeat center center 
+    -webkit-background-size cover 
+    -o-background-size cover 
+    background-size cover
+    
   
   .hero-logo
     position relative
@@ -15,9 +23,11 @@
     -o-background-size contain 
     background-size contain
     width 100%
-    max-width 100%
-    
-    visibility hidden
+    max-width 100% 
+    visibility visible
+      
+    @media $desktop
+      visibility hidden
 
   #logo
     position relative
@@ -59,25 +69,34 @@
   
   .hero-logo,
   .hero-copy
-  	width 50%
+  	width 100%
   	float right
    
+   @media $desktop 
+    width 50%
+    
   .hero-copy
     h1,
     p
       color $white
-      padding 0 25px
     
     h1
-      font-size 52px 
-      line-height 62px
-      letter-spacing 2px
+      font-size 41px
+      line-height 46px
+      @media $desktop
+        font-size 52px 
+        line-height 62px
+        letter-spacing 2px
+        padding 0 25px
       
     p
-      font-weight 300
-      font-size 18px
-      line-height 27px
-      letter-spacing 1px 
+      
+      @media $desktop
+        font-weight 300
+        font-size 18px
+        line-height 27px
+        letter-spacing 1px
+        padding 0 25px
     
     
     
