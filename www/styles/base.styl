@@ -60,7 +60,10 @@ h1, h2, h3, h4, h5, h6, p, span, li
   color $white
   
 h1
-  font 32px/32px 'Nixie One', cursive
+  font 24px/32px 'Nixie One', cursive
+  
+  @media $tablet
+    font 32px/32px 'Nixie One', cursive
   
 h2, 
 h3
@@ -70,12 +73,15 @@ h3
 h4, 
 h5, 
 h6
-  font 28px/28px 'Nixie One', cursive
+  font 22px/32px 'Nixie One', cursive
+  
+  @media $tablet
+    font 28px/32px 'Nixie One', cursive
   
 p,
 span,
 li
-  font 400 16px/24px 'Lato', sans-serif
+  font 400 14px/21px 'Lato', sans-serif
 
 a
   color $white
