@@ -18,23 +18,27 @@
 		padding 0
 		margin 0
 		
-		
-		&:first-child
-			border-right 2px dotted rgba($offWhite, 1)
-			// -webkit-border-image url('../images/icon-asterisk-white.png') 15px repeat /* Safari 3.1-5 */
-			// -o-border-image url('../images/icon-asterisk-white.png') 15px repeat /* Opera 11-12.1 */
-			// border-image url('../images/icon-asterisk-white.png') 15px repeat
-			
-		&:last-child
-			border-left 2px dotted rgba($offWhite, 1)
-			// -webkit-border-image url('../images/icon-asterisk-white.png') 15px repeat /* Safari 3.1-5 */
-			// -o-border-image url('../images/icon-asterisk-white.png') 15px repeat /* Opera 11-12.1 */
-			// border-image url('../images/icon-asterisk-white.png') 15px repeat
+		&:first-child,
+		&:last-child 
+			border 0
 				
 		@media $tablet
 			width 30.333333333%
 			margin 0 1.5%
 			padding-top 25px
+			
+			&:first-child
+				border-right 2px dotted rgba($offWhite, 1)
+				// -webkit-border-image url('../images/icon-asterisk-white.png') 15px repeat /* Safari 3.1-5 */
+				// -o-border-image url('../images/icon-asterisk-white.png') 15px repeat /* Opera 11-12.1 */
+				// border-image url('../images/icon-asterisk-white.png') 15px repeat
+				
+			&:last-child
+				border-left 2px dotted rgba($offWhite, 1)
+				// -webkit-border-image url('../images/icon-asterisk-white.png') 15px repeat /* Safari 3.1-5 */
+				// -o-border-image url('../images/icon-asterisk-white.png') 15px repeat /* Opera 11-12.1 */
+				// border-image url('../images/icon-asterisk-white.png') 15px repeat
+
 		
 		h4
 			margin 15px 0

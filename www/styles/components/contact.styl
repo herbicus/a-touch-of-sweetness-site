@@ -1,10 +1,25 @@
 #contact
   background $white
   text-align center
+  background-color $white
+  background-image url('../images/bg-contact.png')
+  background-repeat no-repeat
+  background-size cover
+  background-position center center
+  //padding 20px 0
   
   h3,
   h4
   	color $primary
   
   .title-fill
-  	fill $primary 
+  	fill $primary
+   
+  &:before,
+  &:after
+    position relative
+    display block
+    content ''
+    height 43.25px
+    width 100%
+    background $white 
