@@ -12,11 +12,10 @@ var Gallery = Backbone.View.extend({
   template: _.template(template()),
 
   events: {
-    'click a': 'onClick',
+    'click #gotoGallery': 'onClick',
   },
 
   initialize: function() {
-
     // underscore
     var content = {
       data: this.model.get('data')[1]
@@ -89,7 +88,16 @@ var Gallery = Backbone.View.extend({
     });
 
     $(window).trigger('resize');
+
+    // $('#gotoGallery').click(function(e) {
+    //   e.preventDefault();
+    //   $('html, body').animate({
+    //       scrollTop: $('#gallery').offset().top -1
+    //   }, 2000);
+    // });
   },
+
+
 
   hide: function() {
     this.animate.animateOut(this.el);
@@ -100,7 +108,9 @@ var Gallery = Backbone.View.extend({
   },
 
   onClick:function(event) {
-    // tracking call here
+    // $('html, body').animate({
+    //     scrollTop: $('#gallery').offset().top -1
+    // }, 2000);
   },
 
   onRouteChange: function() {

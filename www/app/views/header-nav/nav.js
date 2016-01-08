@@ -12,7 +12,11 @@ var Nav = Backbone.View.extend({
   // nav animation events
   events: {
     'click a': 'onClick',
-    'click .btn-mobile-nav': 'navAnimation'
+    'click .btn-mobile-nav': 'navAnimation',
+    'click #gotoContent': 'clickHome',
+    'click #gotoGallery': 'clickGallery',
+    'click #gotoServices': 'clickServices',
+    'click #gotoContact': 'clickContact'
   },
 
   autoHide: function() {
@@ -28,8 +32,40 @@ var Nav = Backbone.View.extend({
 
   },
 
-  onClick:function(event) {
+  onClick: function(event) {
     this.navAnimation(null);
+  },
+
+  clickHome: function(e) {
+    console.log('clicked');
+    e.preventDefault();
+    $('html, body').animate({
+        scrollTop: $('body').offset().top
+    }, 1000);
+  },
+
+  clickGallery: function(e) {
+    console.log('clicked');
+    e.preventDefault();
+    $('html, body').animate({
+        scrollTop: $('#gallery').offset().top
+    }, 1000);
+  },
+
+  clickServices: function(e) {
+    console.log('clicked');
+    e.preventDefault();
+    $('html, body').animate({
+        scrollTop: $('#services').offset().top
+    }, 1000);
+  },
+
+  clickContact: function(e) {
+    console.log('clicked');
+    e.preventDefault();
+    $('html, body').animate({
+        scrollTop: $('#contact').offset().top
+    }, 1000);
   },
 
   navAnimation: function() {
