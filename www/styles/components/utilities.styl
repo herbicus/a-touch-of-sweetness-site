@@ -29,16 +29,13 @@
   text-align center
       
 .mobile
-  color blue
   display block
-    @media $tablet
+    @media screen and (min-width: 768px)
       display none
       
 .desktop
   display none
-  position relative
-  
-    @media screen and (max-width: 480)
+    @media screen and (min-width: 768px)
       display block
 
 // -------------------------------------
