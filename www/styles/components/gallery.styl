@@ -17,12 +17,18 @@
 	padding 2px 0
  
 .title-cakes
-  background url('../images/title-bg-cakes.png')no-repeat center center
-  background-size contain
+  background rgba(0,0,0,0)
+  
+  @media screen and (min-width: 481px)
+    background url('../images/title-bg-cakes.png')no-repeat center center
+    background-size contain
 
 .title-cupcakes
-  background url('../images/title-bg-cupcakes.png')no-repeat center center
-  background-size contain
+  background rgba(0,0,0,0)
+  
+  @media screen and (min-width: 550px)
+    background url('../images/title-bg-cupcakes.png')no-repeat center center
+    background-size contain
 
 .title-carvings
   background rgba(0,0,0,0)
@@ -140,3 +146,7 @@
 .left-arrow-fruit-carvings img,
 .right-arrow-fruit-carvings img
   height 30px
+  display none
+  
+  @media screen and (min-width: 768px)
+    display block

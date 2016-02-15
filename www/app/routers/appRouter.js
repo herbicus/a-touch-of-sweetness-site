@@ -28,7 +28,7 @@ var AppRouter = Backbone.Router.extend({
     this.gallery = new Gallery({el: $('#gallery'), model: this.model});
     this.services = new Services({el: $('#services'), model: this.model});
     this.contact = new Contact({el: $('#contact'), model: this.model});
-    this.logo = new Logo({el: $('#logo'), model: this.model});
+    this.logo = new Logo({el: $('.logo'), model: this.model});
 
 
     Backbone.history.start({pushState: false});

@@ -13,7 +13,8 @@ var Nav = Backbone.View.extend({
   events: {
     'click #toggleClick': 'onClick',
     'click .btn-hamburger-toggle': 'navAnimation',
-    'click #gotoContent': 'clickHome',
+    'click .btn-goto-top': 'clickHome',
+    'click #gotoContent': 'clickContent',
     'click #gotoGallery': 'clickGallery',
     'click #gotoServices': 'clickServices',
     'click #gotoContact': 'clickContact'
@@ -39,6 +40,11 @@ var Nav = Backbone.View.extend({
   clickHome: function(e) {
     e.preventDefault();
     this.navItemClicked($('body'));
+  },
+
+  clickContent: function(e) {
+    e.preventDefault();
+    this.navItemClicked($('#content'));
   },
 
   clickGallery: function(e) {
@@ -71,13 +77,26 @@ var Nav = Backbone.View.extend({
 
     this.model.set( 'isMenuOpen', !this.model.get('isMenuOpen'));
 
-    if (this.model.get('mobile') || this.model.get('tablet')) {
-      if ($('.nav-mobile ul').hasClass('opened')) {
-        TweenMax.to('.nav-mobile ul', 0.30, {right: -150, ease: Power2.easeOut});
-      } else {
-        TweenMax.to('.nav-mobile ul', 0.50, {right: 0, ease: Power2.easeOut});
-      }
-    }
+    // if (this.model.get('mobile') || this.model.get('tablet')) {
+    //   if ($('.nav-mobile ul').hasClass('opened')) {
+    //     TweenMax.to('.nav-mobile ul', 0.30, {right: -150, ease: Power2.easeOut});
+    //     // TweenMax.to('.logo-lockup', 0.30, {autoAlpha: 0, ease: Power2.easeOut});
+    //     TweenMax.to('.lockup-letter', 0.30, {y: 0, ease: Power1.easeOut});
+    //   } else {
+    //     TweenMax.to('.nav-mobile ul', 0.50, {right: 0, ease: Power2.easeOut});
+    //     // TweenMax.to('.lockup-letter', 0.30, {autoAlpha: 1, ease: Power2.easeOut});
+    //     TweenMax.to('.lockup-letter', 0.30, {y: -100, ease: Power1.easeOut});
+    //   }
+    // }
+    if ($('.nav-mobile ul').hasClass('opened')) {
+      TweenMax.to('.nav-mobile ul', 0.30, {right: -150, ease: Power2.easeOut});
+      // TweenMax.to('.logo-lockup', 0.30, {autoAlpha: 0, ease: Power2.easeOut});
+      TweenMax.to('.lockup-letter', 0.30, {y: 0, ease: Power1.easeOut});
+    } else {
+      TweenMax.to('.nav-mobile ul', 0.50, {right: 0, ease: Power2.easeOut});
+      // TweenMax.to('.lockup-letter', 0.30, {autoAlpha: 1, ease: Power2.easeOut});
+      TweenMax.to('.lockup-letter', 0.30, {y: -100, ease: Power1.easeOut});
+    };
 
     $('.nav-mobile ul').toggleClass('opened');
 

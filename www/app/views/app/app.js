@@ -20,16 +20,17 @@ var App = Backbone.View.extend({
     this.loading++;
     this.model.fetch();
 
-    // if ( this.model.get('mobile') ){
-    //   this.loadImage( 'images/mobile-background.jpg' );
-    // } else {
-    //   this.loadImage( 'images/desktop-background.jpg' );
-    // }
+    this.manifest = [
+      'images/bg-flour.jpg',
+      'images/bg-book.jpg',
+      'images/bg-cutter.jpg',
+      'images/bg-bowl-chips_1700x1700.png',
+      'images/bg-bowl-chips_1700x1700_75.png'
+    ];
 
-    this.loadImage( 'images/bg-flour.jpg' );
-    this.loadImage( 'images/bg-book.jpg' );
-    this.loadImage( 'images/bg-cutter.jpg' );
-    this.loadImage( 'images/bg-bowl-chips_1700x1700.png' );
+    for (var i = 0; i < this.manifest.length; i++) {
+      this.loadImage(this.manifest[i]);
+    };
 
   },
 
