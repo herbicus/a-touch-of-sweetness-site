@@ -11,8 +11,8 @@ var Nav = Backbone.View.extend({
 
   // nav animation events
   events: {
-    'click a': 'onClick',
-    'click .btn-mobile-nav': 'navAnimation',
+    'click #toggleClick': 'onClick',
+    'click .btn-hamburger-toggle': 'navAnimation',
     'click #gotoContent': 'clickHome',
     'click #gotoGallery': 'clickGallery',
     'click #gotoServices': 'clickServices',
@@ -33,39 +33,38 @@ var Nav = Backbone.View.extend({
   },
 
   onClick: function(event) {
-    this.navAnimation(null);
+    //this.navAnimation(null);
   },
 
   clickHome: function(e) {
-    console.log('clicked');
     e.preventDefault();
-    $('html, body').animate({
-        scrollTop: $('body').offset().top
-    }, 1000);
+    this.navItemClicked($('body'));
   },
 
   clickGallery: function(e) {
-    console.log('clicked');
     e.preventDefault();
-    $('html, body').animate({
-        scrollTop: $('#gallery').offset().top
-    }, 1000);
+    this.navItemClicked($('#gallery'));
   },
 
   clickServices: function(e) {
-    console.log('clicked');
     e.preventDefault();
-    $('html, body').animate({
-        scrollTop: $('#services').offset().top
-    }, 1000);
+    this.navItemClicked($('#services'));
   },
 
   clickContact: function(e) {
-    console.log('clicked');
     e.preventDefault();
+    this.navItemClicked($('#contact'));
+  },
+
+  navItemClicked: function(element) {
+  
+    this.element = element;
+
     $('html, body').animate({
-        scrollTop: $('#contact').offset().top
+        scrollTop: element.offset().top
     }, 1000);
+
+    this.navAnimation();
   },
 
   navAnimation: function() {
@@ -73,14 +72,14 @@ var Nav = Backbone.View.extend({
     this.model.set( 'isMenuOpen', !this.model.get('isMenuOpen'));
 
     if (this.model.get('mobile') || this.model.get('tablet')) {
-      if ($('header nav').hasClass('opened')) {
-        TweenMax.to('header nav', 0.30, {left: '-80%', ease: Power2.easeOut});
+      if ($('.nav-mobile ul').hasClass('opened')) {
+        TweenMax.to('.nav-mobile ul', 0.30, {right: -150, ease: Power2.easeOut});
       } else {
-        TweenMax.to('header nav', 0.50, {left: 0, ease: Power2.easeOut});
+        TweenMax.to('.nav-mobile ul', 0.50, {right: 0, ease: Power2.easeOut});
       }
-    } 
+    }
 
-    $('header nav').toggleClass('opened');
+    $('.nav-mobile ul').toggleClass('opened');
 
   }
 });
