@@ -1,20 +1,19 @@
-#loading
-  transition all 0.5s ease-in-out
+#loading 
   centerer(50%)
   position fixed
-  top: 50%
-  left: 50%
   width 200px
-  height: 20px
+  height 20px
   border 5px solid #267579
   overflow hidden
+  -webkit-transition all 0.5s ease-in-out 
+  -moz-transition all 0.5s ease-in-out 
+  -ms-transition all 0.5s ease-in-out 
+  -o-transition all 0.5s ease-in-out 
+  transition all 0.5s ease-in-out
   
   &:before
     content ''
-    position absolute
-    top 0
-    left 0
-    background black 
+    coverer() 
 
   #loading-bar
     background-color #e6aeac
@@ -24,8 +23,8 @@
 
 #debug
   position fixed
-  bottom: 0
-  left: 0
+  bottom 0
+  left 0
   padding 20px
   background-color white
   display none

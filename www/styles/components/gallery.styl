@@ -13,15 +13,21 @@
 	background-image url('../images/icon-asterisk-white.png')
 	background-repeat no-repeat
 	background-position center center
-	background-size 25px
+  -webkit-background-size 25px 
+   -o-background-size 25px 
+   background-size 25px  
 	padding 2px 0
  
 .title-cakes
   background url('../images/title-bg-cakes.png')no-repeat center center
+  -webkit-background-size contain
+  -o-background-size contain
   background-size contain
 
 .title-cupcakes
   background url('../images/title-bg-cupcakes.png')no-repeat center center
+  -webkit-background-size contain
+  -o-background-size contain
   background-size contain
 
 .title-carvings
@@ -29,6 +35,8 @@
   
   @media screen and (min-width: 824px)
     background url('../images/title-bg-carvings.png')no-repeat center center
+    -webkit-background-size contain
+    -o-background-size contain
     background-size contain
 		
 #slick
@@ -48,6 +56,8 @@
 
     img
       display inline-block
+      -webkit-box-sizing border-box
+      -moz-box-sizing border-box
       box-sizing border-box
       outline none
       width 100%
@@ -97,6 +107,8 @@
       
 .slider-container
     position relative
+    -webkit-box-sizing border-box
+    -moz-box-sizing border-box
     box-sizing border-box
     
 .slick-slide
