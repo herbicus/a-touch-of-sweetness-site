@@ -20,11 +20,19 @@
 	
 		  
 	.service-section
-		width 100% 
-		padding 25px 0
+		width 100%
+		background $white
+		boxShadow()
+		padding 50px
+		margin 50px 0
+		-webkit-border-radius 4px 
+		border-radius 4px 
+		
+		@media $desktop
+			padding 25px
 
 	.service-title-fill
-		fill $offWhite
+		fill $primary
 
 	.service-title
 		text-align center
@@ -44,6 +52,7 @@
 		letterspacing 1px
 		padding 0
 		margin 0
+		color $primary
 		
 		@media $tablet
 			font-size 20px
