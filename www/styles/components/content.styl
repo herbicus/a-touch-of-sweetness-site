@@ -7,16 +7,19 @@
 		
 	hr
 		margin 20px 33%
+		outline none 
 		border-bottom-color $primary
 
 .content-container
 	width 100%
 	
 	.three
-		width 100%
-		float left
+		-webkit-flex 1
+		-ms-flex 1
+		flex 1
 		text-align center
-		margin-bottom 20px
+		width 100%
+		margin 0 10px 20px 10px 
 		padding 20px
 		background $white 
 		-webkit-border-radius 4px 
@@ -28,28 +31,14 @@
 			border 0
 				
 		@media $tablet
-			width 30.333333333%
-			margin 0 1.5%
-			padding 25px
+			margin 0 20px 20px 20px
+			padding 25px 5px
 			
 			&:first-child
 				margin-left 0
 				
 			&:last-child
 				margin-right 0
-			
-			// &:first-child
-			// 	border-right 2px dotted rgba($offWhite, 1)
-			// 	// -webkit-border-image url('../images/icon-asterisk-white.png') 15px repeat /* Safari 3.1-5 */
-			// 	// -o-border-image url('../images/icon-asterisk-white.png') 15px repeat /* Opera 11-12.1 */
-			// 	// border-image url('../images/icon-asterisk-white.png') 15px repeat
-				
-			// &:last-child
-			// 	border-left 2px dotted rgba($offWhite, 1)
-			// 	// -webkit-border-image url('../images/icon-asterisk-white.png') 15px repeat /* Safari 3.1-5 */
-			// 	// -o-border-image url('../images/icon-asterisk-white.png') 15px repeat /* Opera 11-12.1 */
-			// 	// border-image url('../images/icon-asterisk-white.png') 15px repeat
-
 		
 		h4
 			margin 20px 0

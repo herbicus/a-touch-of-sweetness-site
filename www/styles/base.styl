@@ -62,7 +62,7 @@ section
   @media $tablet
     padding 50px
     
-.l-section-flex
+.l-flex-col
   display -webkit-box
   display -ms-flexbox
   display -webkit-flex
@@ -75,18 +75,38 @@ section
   -webkit-justify-content center
   justify-content center
   width 100%
-  max-width 1040px
-  margin 0 auto
-  padding 25px
   
+.l-col-reverse
+  @media $tablet
+    -webkit-flex-direction column-reverse
+    -ms-flex-direction column-reverse
+    flex-direction column-reverse
+    
+.l-flex-row
+  display -webkit-box
+  display -ms-flexbox
+  display -webkit-flex
+  display flex
+  -webkit-flex-direction column
+  -ms-flex-direction column
+  flex-direction column
+  -webkit-align-items center
+  align-items center
+  -webkit-justify-content center
+  justify-content center
+  width 100%
+  
+  @media $tablet
+    -webkit-flex-direction row
+    -ms-flex-direction row
+    flex-direction row
+  
+.l-row-reverse
   @media $tablet
     -webkit-flex-direction row-reverse
     -ms-flex-direction row-reverse
     flex-direction row-reverse
-    
-  @media $desktop
-    padding 50px
-  
+
 .flex
   -webkit-flex 1 
   -ms-flex 1 
