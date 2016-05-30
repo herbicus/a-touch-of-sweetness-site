@@ -4,6 +4,7 @@ var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
 var template = require('./nav.html');
+var ScrollTo = require('../../vendor/gsap/ScrollToPlugin');
 
 var Nav = Backbone.View.extend({
 
@@ -11,13 +12,14 @@ var Nav = Backbone.View.extend({
 
   // nav animation events
   events: {
-    'click #toggleClick': 'onClick',
     'click .btn-hamburger-toggle': 'navAnimation',
     'click .btn-goto-top': 'clickHome',
     'click #gotoContent': 'clickContent',
     'click #gotoGallery': 'clickGallery',
     'click #gotoServices': 'clickServices',
     'click #gotoContact': 'clickContact'
+
+
   },
 
   autoHide: function() {
@@ -37,28 +39,39 @@ var Nav = Backbone.View.extend({
     //this.navAnimation(null);
   },
 
-  clickHome: function(e) {
-    e.preventDefault();
-    this.navItemClicked($('body'));
+  clickHome: function() {
+
+    TweenMax.to($(window), 1, {
+        scrollTo: {
+            y: $('body').offset().top, 
+            autoKill: true
+        }, 
+        ease:Power4.easeOut 
+     });
+
   },
 
   clickContent: function(e) {
     e.preventDefault();
+
     this.navItemClicked($('#content'));
   },
 
   clickGallery: function(e) {
     e.preventDefault();
+
     this.navItemClicked($('#gallery'));
   },
 
   clickServices: function(e) {
     e.preventDefault();
+
     this.navItemClicked($('#services'));
   },
 
   clickContact: function(e) {
     e.preventDefault();
+
     this.navItemClicked($('#contact'));
   },
 
@@ -66,41 +79,34 @@ var Nav = Backbone.View.extend({
   
     this.element = element;
 
-    $('html, body').animate({
-        scrollTop: element.offset().top
-    }, 1000);
+    TweenMax.to($(window), 1.75, {
+        scrollTo: {
+            y: element.offset().top - 50, 
+            autoKill: true
+        }, 
+        ease:Power4.easeOut 
+     });
 
-    this.navAnimation();
+  },
+
+  navOpen: function() {
+    TweenMax.to('.nav-mobile ul', 0.50, {right: 0, ease: Power2.easeOut});
+  },
+
+  navClose: function() {
+    TweenMax.to('.nav-mobile ul', 0.30, {right: -150, ease: Power2.easeOut});
   },
 
   navAnimation: function() {
 
     this.model.set( 'isMenuOpen', !this.model.get('isMenuOpen'));
 
-    // if (this.model.get('mobile') || this.model.get('tablet')) {
-    //   if ($('.nav-mobile ul').hasClass('opened')) {
-    //     TweenMax.to('.nav-mobile ul', 0.30, {right: -150, ease: Power2.easeOut});
-    //     // TweenMax.to('.logo-lockup', 0.30, {autoAlpha: 0, ease: Power2.easeOut});
-    //     TweenMax.to('.lockup-letter', 0.30, {y: 0, ease: Power1.easeOut});
-    //   } else {
-    //     TweenMax.to('.nav-mobile ul', 0.50, {right: 0, ease: Power2.easeOut});
-    //     // TweenMax.to('.lockup-letter', 0.30, {autoAlpha: 1, ease: Power2.easeOut});
-    //     TweenMax.to('.lockup-letter', 0.30, {y: -100, ease: Power1.easeOut});
-    //   }
-    // }
-    if ($('.nav-mobile ul').hasClass('opened')) {
-      TweenMax.to('.nav-mobile ul', 0.30, {right: -150, ease: Power2.easeOut});
-      // TweenMax.to('.logo-lockup', 0.30, {autoAlpha: 0, ease: Power2.easeOut});
-      TweenMax.to('.lockup-letter', 0.30, {y: 0, ease: Power1.easeOut});
-    } else {
-      TweenMax.to('.nav-mobile ul', 0.50, {right: 0, ease: Power2.easeOut});
-      // TweenMax.to('.lockup-letter', 0.30, {autoAlpha: 1, ease: Power2.easeOut});
-      TweenMax.to('.lockup-letter', 0.30, {y: -100, ease: Power1.easeOut});
-    };
+    $('.nav-mobile ul').hasClass('opened') ? this.navClose() : this.navOpen();
 
     $('.nav-mobile ul').toggleClass('opened');
 
   }
+
 });
 
 module.exports = Nav;

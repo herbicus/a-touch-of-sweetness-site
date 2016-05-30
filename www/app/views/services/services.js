@@ -11,7 +11,7 @@ var Services = Backbone.View.extend({
   template: _.template(template()),
 
   events: {
-    'click a': 'onClick',
+
   },
 
   initialize: function() {
@@ -22,8 +22,6 @@ var Services = Backbone.View.extend({
     };
     this.$el.html(this.template(content));
 
-    this.listenTo(this.model, 'change:route', this.onRouteChange);
-
     this.animate = new AnimationController();
   },
 
@@ -33,19 +31,6 @@ var Services = Backbone.View.extend({
 
   show: function() {
     this.animate.animateIn(this.el);
-  },
-
-  onClick:function(event) {
-    // tracking call here
-  },
-
-  onRouteChange: function() {
-
-    // if (this.model.get('route') === 'update' ){
-    //   this.show();
-    // } else {
-    //   this.hide();
-    // }
   }
 });
 

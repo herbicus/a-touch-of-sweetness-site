@@ -10,17 +10,13 @@ var Logo = Backbone.View.extend({
   template: _.template(template()),
 
   events: {
-    // 'click #logo': 'onClick',
+
   },
 
   initialize: function() {
     
     this.$el.html(template());
 
-  },
-
-  onClick:function(event) {
-    console.log('logo clicked');
   }
 
 });

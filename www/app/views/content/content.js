@@ -11,11 +11,10 @@ var Content = Backbone.View.extend({
   template: _.template(template()),
 
   events: {
-    'click a': 'onClick',
+
   },
 
   initialize: function() {
-    this.listenTo(this.model, 'change:route', this.onRouteChange);
 
     var content = {
       data: this.model.get('data')[0]
@@ -32,20 +31,8 @@ var Content = Backbone.View.extend({
 
   show: function() {
     this.animate.animateIn(this.el);
-  },
-
-  onClick:function(event) {
-    // tracking call here
-
-  },
-
-  onRouteChange: function() {
-    // if (this.model.get('route') === 'home' ){
-    //   this.show();
-    // } else {
-    //   this.hide();
-    // }
   }
+
 });
 
 module.exports = Content;

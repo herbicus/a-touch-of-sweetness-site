@@ -12,7 +12,7 @@ var Gallery = Backbone.View.extend({
   template: _.template(template()),
 
   events: {
-    'click #gotoGallery': 'onClick',
+
   },
 
   initialize: function() {
@@ -22,8 +22,6 @@ var Gallery = Backbone.View.extend({
     };
 
     this.$el.html(this.template(content));
-
-    this.listenTo(this.model, 'change:route', this.onRouteChange);
 
     this.animate = new AnimationController();
 
@@ -89,12 +87,6 @@ var Gallery = Backbone.View.extend({
 
     $(window).trigger('resize');
 
-    // $('#gotoGallery').click(function(e) {
-    //   e.preventDefault();
-    //   $('html, body').animate({
-    //       scrollTop: $('#gallery').offset().top -1
-    //   }, 2000);
-    // });
   },
 
 
@@ -105,23 +97,8 @@ var Gallery = Backbone.View.extend({
 
   show: function() {
     this.animate.animateIn(this.el);
-  },
-
-  onClick:function(event) {
-    // $('html, body').animate({
-    //     scrollTop: $('#gallery').offset().top -1
-    // }, 2000);
-  },
-
-  onRouteChange: function() {
-
-    // if (this.model.get('route') === 'about' ){
-
-    //   this.show();
-    // } else {
-    //   this.hide();
-    // }
   }
+
 });
 
 module.exports = Gallery;
