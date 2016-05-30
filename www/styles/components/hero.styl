@@ -1,6 +1,7 @@
 #hero
   // display block
-  background #D9B5B6 
+  background #D9B5B6
+  background url("../images/bg-cutter.jpg")no-repeat center center 
   padding-top 50px
   // background url("../images/bg-flour_raw-tint.jpg")no-repeat top center
   // background url("../images/bg-mix-logo.jpg")no-repeat center center
@@ -23,7 +24,8 @@
   
   @media $desktop
     background #D9B5B6
-    background url("../images/bg-mix-logo.jpg")no-repeat center center 
+    //background url("../images/bg-mix-logo.jpg")no-repeat center center
+    background url("../images/bg-cutter.jpg")no-repeat center center 
     -webkit-background-size cover 
     -o-background-size cover 
     background-size cover
@@ -31,7 +33,7 @@
   
   .hero-logo
     position relative
-    background url("../images/bg-bowl-chips_1700x1700_75.png")no-repeat center center
+    //background url("../images/bg-bowl-chips_1700x1700_75.png")no-repeat center center
     -webkit-background-size contain 
     -o-background-size contain 
     background-size contain
@@ -40,7 +42,7 @@
     visibility visible
       
     @media $desktop
-      visibility hidden
+      //visibility hidden
 
   .logo
     position relative
@@ -79,6 +81,7 @@
   
   .icon-logo-fill 
     fill $offWhite
+    fill $primary
   
   .hero-logo,
   .hero-copy
