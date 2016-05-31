@@ -1,10 +1,32 @@
+.l-flex-hero
+  display -webkit-box
+  display -ms-flexbox
+  display -webkit-flex
+  display flex
+  -webkit-flex-direction column
+  -ms-flex-direction column
+  flex-direction column
+  -webkit-align-items center
+  align-items center
+  -webkit-justify-content center
+  justify-content center
+  width 100%
+  
+  @media $logoBp
+    -webkit-flex-direction row
+    -ms-flex-direction row
+    flex-direction row
+  
+.l-hero-reverse
+  @media $logoBp
+    -webkit-flex-direction row-reverse
+    -ms-flex-direction row-reverse
+    flex-direction row-reverse
+
 #hero
-  // display block
   background #D9B5B6
-  background url("../images/bg-cutter.jpg")no-repeat center center 
+  background url("../images/bg-hero-3.jpg")no-repeat bottom center 
   padding-top 50px
-  // background url("../images/bg-flour_raw-tint.jpg")no-repeat top center
-  // background url("../images/bg-mix-logo.jpg")no-repeat center center
   -webkit-background-size cover 
   -o-background-size cover 
   background-size cover
@@ -22,66 +44,42 @@
   -webkit-justify-content center
   justify-content center
   
-  @media $desktop
+  // @media $desktop
+  @media $logoBp
     background #D9B5B6
-    //background url("../images/bg-mix-logo.jpg")no-repeat center center
-    background url("../images/bg-cutter.jpg")no-repeat center center 
+    background url("../images/bg-hero-5.jpg")no-repeat center center 
     -webkit-background-size cover 
     -o-background-size cover 
     background-size cover
     
   
   .hero-logo
-    position relative
-    //background url("../images/bg-bowl-chips_1700x1700_75.png")no-repeat center center
-    -webkit-background-size contain 
-    -o-background-size contain 
-    background-size contain
-    width 100%
-    max-width 100% 
-    visibility visible
-      
-    @media $desktop
-      //visibility hidden
+    padding 0 0 25px 0
+    
+    // @media $tablet
+    @media $logoBp
+      padding 0 0 0 50px
+
+    @media $tablet
+      padding 0 0 0 20px
 
   .logo
     position relative
     width 100%
-    max-width 100%
     top 10px
     
     svg
-      position relative
-      z-index 5
-      display block
+      z-index 1
       width 100%
-      max-width 90%
+      max-width 100%
       height auto
-      margin 0px auto
-      padding 25px
-      -webkit-transform scale(0.95)
-      -moz-transform scale(0.95)
-      -ms-transform scale(0.95)
-      -o-transform scale(0.95)
-      transform scale(0.95)
-      
-    // &:before
-    //   content ''
-    //   position absolute
-    //   z-index 1 
-    //   width 100%
-    //   height 100%  
-    //   top 5px
-    //   left -10px
-    //   opacity 0.85
-    //   background url("../images/bg-bowl-chips_1700x1700.png")no-repeat center center
-    //   -webkit-background-size contain 
-    //   -o-background-size contain 
-    //   background-size contain 
   
   .icon-logo-fill 
-    fill $offWhite
-    fill $primary
+    fill $white
+    
+    // @media $tablet
+    @media $logoBp
+      fill $primary
   
   .hero-logo,
   .hero-copy
@@ -105,8 +103,12 @@
       color $primary
     
     h1
-      font-size 41px
+      font-size 37px 
       line-height 46px
+      
+      @media screen and (min-width: 345px)
+        font-size 41px
+        
       @media $desktop
         font-size 52px 
         line-height 62px
