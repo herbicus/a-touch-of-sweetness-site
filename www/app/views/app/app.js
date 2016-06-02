@@ -21,11 +21,20 @@ var App = Backbone.View.extend({
     this.model.fetch();
 
     this.manifest = [
-      'images/bg-flour.jpg',
-      'images/bg-book.jpg',
-      'images/bg-cutter.jpg',
-      'images/bg-bowl-chips_1700x1700.png',
-      'images/bg-bowl-chips_1700x1700_75.png'
+      'images/bg-hero-3.jpg',
+      'images/bg-hero-5.jpg',
+      'images/title-bg-cakes.png',
+      'images/title-bg-cupcakes.png',
+      'images/title-bg-carvings.png',
+      'images/title-bg-service.png',
+      'images/icon-asterisk-primary.png',
+      'images/icon-asterisk-white.png',
+      'images/icon-phone.png',
+      'images/left-arrow-x.png',
+      'images/right-arrow-x.png'
+
+
+
     ];
 
     for (var i = 0; i < this.manifest.length; i++) {

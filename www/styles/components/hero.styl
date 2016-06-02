@@ -52,6 +52,14 @@
     -o-background-size cover 
     background-size cover
     
+  .site-line
+    height 1px 
+    margin 0px 0 25px 0
+    -webkit-align-self flex-start
+    align-self flex-start
+    
+    @media screen and (min-width: 995px)
+      margin 0px 0 25px 25px
   
   .hero-logo
     padding 0 0 25px 0
@@ -109,7 +117,8 @@
       @media screen and (min-width: 345px)
         font-size 41px
         
-      @media $desktop
+      // @media $desktop
+      @media screen and (min-width: 995px)
         font-size 52px 
         line-height 62px
         letter-spacing 2px
@@ -117,7 +126,8 @@
       
     p
       
-      @media $desktop
+      // @media $desktop
+      @media screen and (min-width: 995px)
         font-weight 300
         font-size 15px
         line-height 30px
