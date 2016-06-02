@@ -32,9 +32,6 @@ var App = Backbone.View.extend({
       'images/icon-phone.png',
       'images/left-arrow-x.png',
       'images/right-arrow-x.png'
-
-
-
     ];
 
     for (var i = 0; i < this.manifest.length; i++) {

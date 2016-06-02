@@ -4,6 +4,16 @@
     color $primary
     text-transform uppercase
     letter-spacing 4px
+    margin 25px 0 20px 0
+    
+    @media $tablet
+      margin 35px 0 30px 0
+    
+  .l-section-container
+    padding-top 0
+    
+    @media $tablet
+      padding-top 0
   	
 .gallery-divider
   width 100%
@@ -124,7 +134,15 @@
     max-width 250px
     boxShadow()
     -webkit-border-radius 4px 
-    border-radius 4px   
+    border-radius 4px
+    
+    @media screen and (min-width: 467px) and (max-width: 900px) {
+      -webkit-transform scale(0.9)
+      -moz-transform scale(0.9)
+      -ms-transform scale(0.9)
+      -o-transform scale(0.9)
+      transform scale(0.9)
+    }   
 
 .left-arrow-cakes,
 .right-arrow-cakes,
