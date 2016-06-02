@@ -18,8 +18,6 @@ var Nav = Backbone.View.extend({
     'click #gotoGallery': 'clickGallery',
     'click #gotoServices': 'clickServices',
     'click #gotoContact': 'clickContact'
-
-
   },
 
   autoHide: function() {
@@ -93,12 +91,14 @@ var Nav = Backbone.View.extend({
   },
 
   navOpen: function() {
+    TweenMax.to('.nav-icon-btn', 0.25, {left: -40, ease: Power4.easeOut});
     TweenMax.to('.l-nav-overlay', 0.25, {autoAlpha: 1});
     TweenMax.staggerTo('.lockup-letter', 0.25, {delay: 0.05, autoAlpha: 0}, 0.015);
     TweenMax.to('.nav-mobile ul', 0.50, {delay: 0.075, right: 0, ease: Power2.easeOut});
   },
 
   navClose: function() {
+    TweenMax.to('.nav-icon-btn', 0.25, {left: -65, ease: Power4.easeOut});
     TweenMax.to('.nav-mobile ul', 0.30, {right: -225, ease: Power2.easeOut});
     TweenMax.staggerTo('.lockup-letter', 0.50, {delay: 0.05, autoAlpha: 1}, 0.015);
     TweenMax.to('.l-nav-overlay', 0.25, {autoAlpha: 0});

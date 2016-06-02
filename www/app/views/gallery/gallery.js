@@ -30,6 +30,7 @@ var Gallery = Backbone.View.extend({
     // how slick
     $('#slickCakes').slick({
       arrows: true,
+      lazyLoad: 'ondemand',
       respondTo: 'slider',
       slidesToShow: 3,
       slidesToScroll: 1,
@@ -49,6 +50,7 @@ var Gallery = Backbone.View.extend({
 
     $('#slickCupCakes').slick({
       arrows: true,
+      lazyLoad: 'ondemand',
       respondTo: 'slider',
       slidesToShow: 3,
       slidesToScroll: 1,
@@ -68,6 +70,7 @@ var Gallery = Backbone.View.extend({
 
     $('#slickFruitCarvings').slick({
       arrows: true,
+      lazyLoad: 'ondemand',
       respondTo: 'slider',
       slidesToShow: 3,
       slidesToScroll: 1,
