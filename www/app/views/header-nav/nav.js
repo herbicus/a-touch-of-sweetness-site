@@ -12,7 +12,7 @@ var Nav = Backbone.View.extend({
 
   // nav animation events
   events: {
-    'click .btn-hamburger-toggle': 'navAnimation',
+    'click .nav-icon-btn': 'navAnimation',
     'click .btn-goto-top': 'clickHome',
     'click #gotoContent': 'clickContent',
     'click #gotoGallery': 'clickGallery',
@@ -85,16 +85,23 @@ var Nav = Backbone.View.extend({
             autoKill: true
         }, 
         ease:Power4.easeOut 
-     });
+    });
+
+    this.autoHide();
+
 
   },
 
   navOpen: function() {
-    TweenMax.to('.nav-mobile ul', 0.50, {right: 0, ease: Power2.easeOut});
+    TweenMax.to('.l-nav-overlay', 0.25, {autoAlpha: 1});
+    TweenMax.staggerTo('.lockup-letter', 0.25, {delay: 0.05, autoAlpha: 0}, 0.015);
+    TweenMax.to('.nav-mobile ul', 0.50, {delay: 0.075, right: 0, ease: Power2.easeOut});
   },
 
   navClose: function() {
-    TweenMax.to('.nav-mobile ul', 0.30, {right: -150, ease: Power2.easeOut});
+    TweenMax.to('.nav-mobile ul', 0.30, {right: -225, ease: Power2.easeOut});
+    TweenMax.staggerTo('.lockup-letter', 0.50, {delay: 0.05, autoAlpha: 1}, 0.015);
+    TweenMax.to('.l-nav-overlay', 0.25, {autoAlpha: 0});
   },
 
   navAnimation: function() {
@@ -104,6 +111,7 @@ var Nav = Backbone.View.extend({
     $('.nav-mobile ul').hasClass('opened') ? this.navClose() : this.navOpen();
 
     $('.nav-mobile ul').toggleClass('opened');
+    $('.nav-icon-btn').toggleClass('open');
 
   }
 

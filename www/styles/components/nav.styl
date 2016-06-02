@@ -1,3 +1,133 @@
 // -------------------------------------
-//   Nav Styles
+//   hamburger icon styles
 // -------------------------------------
+
+// ANIMATED HAMBURGER ICON TOGGLE BUTTON
+.nav-icon-btn
+    pointer-events auto
+    position absolute
+    z-index 25
+    zindex 105
+    width 40px
+    height 40px
+    cursor pointer
+    -webkit-transition-duration 0.35s
+    -moz-transition-duration 0.35s
+    -ms-transition-duration 0.35s
+    -o-transition-duration 0.35s
+    transition-duration 0.35s
+    top 6px
+    left -56px
+    -webkit-box-sizing border-box
+    -moz-box-sizing border-box
+    box-sizing border-box
+    
+    &:after
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+      content ' '
+      pointer-events none
+      background rgba(255, 255, 255, 0) 
+      z-index -1
+      opacity 0.85
+      -webkit-border-radius 3px 
+      border-radius 3px
+
+    .icon
+      position absolute
+      top 50%
+      left 50%
+      -webkit-transform translate(-50%, -50%)
+      -moz-transform translate(-50%, -50%)
+      -ms-transform translate(-50%, -50%)
+      -o-transform translate(-50%, -50%)
+      transform translate(-50%, -50%)
+      height 2px
+      width 15px
+      background-color $primary
+      
+
+      &:before
+        -webkit-transition-duration 0.35s
+        -moz-transition-duration 0.35s
+        -ms-transition-duration 0.35s
+        -o-transition-duration 0.35s
+        transition-duration 0.35s
+        position absolute
+        height 2px
+        width 15px
+        background-color $primary
+        content ""
+        top -5px
+        left 0
+
+
+      &:after
+        -webkit-transition-duration 0.35s
+        -moz-transition-duration 0.35s
+        -ms-transition-duration 0.35s
+        -o-transition-duration 0.35s
+        transition-duration 0.35s
+        position absolute
+        height 2px
+        width 15px
+        background-color $primary
+        content ""
+        top 5px
+        left 0
+
+
+      &:hover
+        cursor pointer
+
+
+
+    &.open
+      right 0
+      
+      &:after
+        opacity 0
+      
+      .icon,
+      .icon:before,
+      .icon:after
+        -webkit-box-shadow none
+        box-shadow none
+
+      .icon
+        background rgba(255, 255, 255, 0)
+
+        &:before
+          -webkit-transform rotateZ(45deg) scaleX(1.25) translate(4px, 4px)
+          -moz-transform rotateZ(45deg) scaleX(1.25) translate(4px, 4px)
+          -ms-transform rotateZ(45deg) scaleX(1.25) translate(4px, 4px)
+          -o-transform rotateZ(45deg) scaleX(1.25) translate(4px, 4px)
+          transform rotateZ(46deg) scaleX(1.24) translate(4px, 4px)
+
+
+        &:after
+          -webkit-transform rotateZ(-45deg) scaleX(1.25) translate(2px, -3px)
+          -moz-transform rotateZ(-45deg) scaleX(1.25) translate(2px, -3px)
+          -ms-transform rotateZ(-45deg) scaleX(1.25) translate(2px, -3px)
+          -o-transform rotateZ(-45deg) scaleX(1.25) translate(2px, -3px)
+          transform rotateZ(-44deg) scaleX(1.25) translate(2px, -3px)
+    // END ANIMATED HAMBURGER TOGGLE BUTTON
+
+    // HAMBURGER DESKTOP STYLES
+    @media screen and (min-width: 960px)
+      .icon,
+      .icon:before,
+      .icon:after
+        width 20px
+
+.l-nav-overlay
+	coverer()
+	position fixed
+	background rgba(0, 0, 0, 0.3)
+	z-index 103
+	pointer-events none
+	opacity 0
+	visibility hidden

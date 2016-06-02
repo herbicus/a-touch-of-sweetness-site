@@ -2,9 +2,9 @@
   position fixed
   width 100%
   height 50px
-  z-index 100
+  z-index 104
   background $white
-  boxShadow()
+  boxShadowLight()
   display -webkit-box
   display -ms-flexbox
   display -webkit-flex
@@ -68,12 +68,21 @@
       
       &:first-child
         border-left none
+        
+      &:hover > a
+        color $black
+        
       a
         font-family 'Lato', sans-serif
         font-weight 400
         text-decoration none
         letter-spacing 2px
         color $primary
+        -webkit-transition color 0.3s ease-in-out 
+        -moz-transition color 0.3s ease-in-out 
+        -ms-transition color 0.3s ease-in-out 
+        -o-transition color 0.3s ease-in-out 
+        transition color 0.3s ease-in-out 
         
 // mobile nav styles
 .nav-mobile
@@ -82,22 +91,22 @@
   ul
     position absolute
     top 0
-    right -150px
-    background $offPink 
-    width 150px
+    boxShadow()
+    right -225px
+    background #fefefe
+    width 200px
     margin 0
     padding 0
     height 100vh
-    border-left 3px solid $primary
-    border-right 3px solid $primary
     
     li
       list-style none
       padding-top 10px
       padding-bottom 10px
       padding 20px 0
-      border-top 1px solid $primary
-      border-bottom 1px solid $primary
+      
+      &:first-child
+        padding-top 50px
       
       &:last-child
         border-bottom none
@@ -118,12 +127,3 @@
   
   @media screen and (min-width: 835px)
     display block
-    
-.btn-hamburger-toggle
-  color $primary
-  font 400 24px/24px 'Lato', sans-serif
-  position absolute
-  top 14px
-  left -30px
-  z-index 101
-  cursor pointer
