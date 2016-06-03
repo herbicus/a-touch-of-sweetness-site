@@ -42,14 +42,17 @@
 		h4
 			margin 20px 0
 			color $primary
-			
-			br
-				display none
-							
-			@media $tablet
-				
+	
+			@media screen and (min-width: 384px) and (max-width: 768px)
+				br
+					display none
+					
+			@media $tablet				
 				br
 					display block
+				
+			@media screen and (min-width: 768px) and (max-width: 860px)
+				font-size 25px 
 		
 		ul
 			padding 0
