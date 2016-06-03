@@ -9,6 +9,9 @@ var Gallery = require('../views/gallery/gallery.js');
 var Contact = require('../views/contact/contact.js');
 var Services = require('../views/services/services.js');
 var Logo = require('../views/logo/logo.js');
+var Custom = require('../views/title-custom/custom.js');
+var Taste = require('../views/title-taste/taste.js');
+var Trays = require('../views/title-trays/trays.js');
 
 var AppRouter = Backbone.Router.extend({
 
@@ -29,6 +32,9 @@ var AppRouter = Backbone.Router.extend({
     this.services = new Services({el: $('#services'), model: this.model});
     this.contact = new Contact({el: $('#contact'), model: this.model});
     this.logo = new Logo({el: $('.logo'), model: this.model});
+    this.custom = new Custom({el: $('.title-custom'), model: this.model});
+    this.taste = new Taste({el: $('.title-taste'), model: this.model});
+    this.trays = new Trays({el: $('.title-trays'), model: this.model});
 
 
     Backbone.history.start({pushState: false});
@@ -42,7 +48,10 @@ var AppRouter = Backbone.Router.extend({
     gallery: 'routeGallery',
     contact: 'routeContact',
     services: 'routeServices',
-    logo: 'routeLogo'
+    logo: 'routeLogo',
+    custom: 'routeCustom',
+    taste: 'routeTaste',
+    trays: 'routeTrays'
   },
 
   routeNav: function() {
@@ -71,6 +80,18 @@ var AppRouter = Backbone.Router.extend({
 
   routeLogo: function() {
     this.model.set({route: 'logo'});
+  },
+
+  routeCustom: function() {
+    this.model.set({route: 'title-custom'});
+  },
+
+  routeTaste: function() {
+    this.model.set({route: 'title-taste'});
+  },
+
+  routeTrays: function() {
+    this.model.set({route: 'title-trays'});
   }
 });
 

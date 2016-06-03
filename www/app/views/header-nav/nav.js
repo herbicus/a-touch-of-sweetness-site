@@ -98,7 +98,7 @@ var Nav = Backbone.View.extend({
   },
 
   navClose: function() {
-    TweenMax.to('.nav-icon-btn', 0.25, {left: -65, ease: Power4.easeOut});
+    TweenMax.to('.nav-icon-btn', 0.025, {left: -65, ease: Power1.easeOut});
     TweenMax.to('.nav-mobile ul', 0.30, {right: -225, ease: Power2.easeOut});
     TweenMax.staggerTo('.lockup-letter', 0.50, {delay: 0.05, autoAlpha: 1}, 0.015);
     TweenMax.to('.l-nav-overlay', 0.25, {autoAlpha: 0});

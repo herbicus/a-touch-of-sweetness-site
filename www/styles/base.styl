@@ -120,7 +120,19 @@ section
   outline 0
   height 1px
   width 100px
-  background $primary 
+  background $primary
+  
+.mobile
+  display block
+  
+  @media $tablet
+    display none
+    
+.desktop
+  display none
+  
+  @media $tablet
+    display block
   
 // -------------------------------------
 //   Typography
