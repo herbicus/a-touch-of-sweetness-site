@@ -83,15 +83,23 @@
       padding 0 0 0 20px
 
   .logo
-    position relative
     width 100%
-    top 10px
     
     svg
       z-index 1
       width 100%
       max-width 100%
       height auto
+      max-height 100%
+      
+      @media screen and (min-width: 480px)
+        max-height 200px
+      
+      @media $logoBp
+        max-height 100%
+        
+      @media $tablet
+        max-height 100%
   
   .icon-logo-fill 
     fill $white

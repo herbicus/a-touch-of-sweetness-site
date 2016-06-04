@@ -21,8 +21,8 @@ var App = Backbone.View.extend({
     this.model.fetch();
 
     this.manifest = [
-      'images/bg-hero-3.jpg',
-      'images/bg-hero-5.jpg',
+      'images/bg-hero-9_flip.jpg',
+      'images/bg-hero-mobile-1.jpg',
       'images/title-bg-cakes.png',
       'images/title-bg-cupcakes.png',
       'images/title-bg-carvings.png',
