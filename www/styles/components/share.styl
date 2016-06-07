@@ -1,0 +1,78 @@
+// -------------------------------------
+//   Share
+// -------------------------------------
+// ----- share sidebar styles
+// -------------------------------------
+
+.share-sidebar
+  position fixed
+  //right 2px
+  right -35px
+  top 52px
+  opacity 0
+  visibility hidden
+  width 100%
+  max-width 30px
+  background $white 
+  z-index 5
+  boxShadow()
+  -webkit-border-radius 4px 
+  border-radius 4px
+  
+  @media $tablet
+    top 75px
+    max-width 50px
+  
+  ul
+    padding 0
+    margin 0
+    
+    li 
+      -webkit-flex 1
+      -ms-flex 1
+      flex 1
+      list-style none
+      color $primary
+      
+      &:first-child
+        display none
+        text-decoration underline
+        
+        @media $tablet
+          display block
+        
+      a
+        text-decoration none
+        color $primary
+        display block
+        
+        // &:hover > .fill
+        //   fill $offWhite
+        &:hover > svg .fill
+          fill $offWhite
+        
+  svg
+    width 100%
+    max-width 100%
+    height auto
+    position relative
+    z-index 1
+    
+.icon-fill-facebook
+.icon-fill-twitter
+.icon-fill-google
+  -webkit-transition fill 0.3s ease-in-out 
+  -moz-transition fill 0.3s ease-in-out 
+  -ms-transition fill 0.3s ease-in-out 
+  -o-transition fill 0.3s ease-in-out 
+  transition fill 0.3s ease-in-out
+
+.icon-fill-facebook
+  fill #3b5998
+
+.icon-fill-twitter
+  fill #4099FF
+
+.icon-fill-google
+  fill #d34836
+     

@@ -12,6 +12,7 @@ var Logo = require('../views/logo/logo.js');
 var Custom = require('../views/title-custom/custom.js');
 var Taste = require('../views/title-taste/taste.js');
 var Trays = require('../views/title-trays/trays.js');
+var Share = require('../views/share-sidebar/share.js');
 
 var AppRouter = Backbone.Router.extend({
 
@@ -35,6 +36,7 @@ var AppRouter = Backbone.Router.extend({
     this.custom = new Custom({el: $('.title-custom'), model: this.model});
     this.taste = new Taste({el: $('.title-taste'), model: this.model});
     this.trays = new Trays({el: $('.title-trays'), model: this.model});
+    this.share = new Share({el: $('#share'), model: this.model});
 
 
     Backbone.history.start({pushState: false});
@@ -51,7 +53,8 @@ var AppRouter = Backbone.Router.extend({
     logo: 'routeLogo',
     custom: 'routeCustom',
     taste: 'routeTaste',
-    trays: 'routeTrays'
+    trays: 'routeTrays',
+    share: 'routeShare'
   },
 
   routeNav: function() {
@@ -92,6 +95,10 @@ var AppRouter = Backbone.Router.extend({
 
   routeTrays: function() {
     this.model.set({route: 'title-trays'});
+  },
+
+  routeShare: function() {
+    this.model.set({route: 'share'});
   }
 });
 
