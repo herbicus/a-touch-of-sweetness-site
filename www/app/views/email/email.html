@@ -1,34 +1,17 @@
 <div class="l-email-container l-flex-col">
-	<form id="contactForm" name="contact" method="post">  
-	  <fieldset>  
-	    <label for="name" id="name" class="flex">Name<span class="required">*</span></label>
-	    <input type="text"  class="flex" name="name" id="name" size="30" value="" required/>
+	
+	<form>
+	      <label for="form_name" class="flex">Name</label>
+	      <input name="form_name" id="form_name" type="text" class="flex" >
 
-	    <label for="email" id="emailField" class="flex">Email<span class="required">*</span></label>
-	    <input type="text" name="email" class="flex" id="emailField" size="30" value="" required/>
+	      <label for="form_email" class="flex">Email</label>
+	      <input name="form_email" id="form_email" type="email" class="flex" >
 
-	    <label for="phone" id="phone" class="flex">Phone</label>
-	    <input type="text" name="phone" class="flex" id="phone" size="30" value="" />
+	      <label for="form_msg" class="flex">Message</label>
+	      <textarea name="form_msg" id="form_msg" class="flex"></textarea>
+	      <input id="submit" class="button flex" name="submit" type="submit" value="Send">
 
-	    <label for="Message" id="message" class="flex">Message<span class="required">*</span></label>
-	    <textarea name="message" class="flex" id="message" required></textarea>
 
-	    <label for="Captcha" id="captcha" class="flex">Name the small house pet that says "<i>meow</i>"<span class="required">*</span></label>
-	    <input type="text" class="flex" name="captcha" value="" required/>
-
-	    <input id="submit" class="flex" type="submit" name="submit" value="Send" />  
-	  </fieldset>  
 	</form>
 
-	<div id="success">
-	  <span>
-	    <p>Your message was sent succssfully! I will be in touch as soon as I can.</p>
-	  </span>
-	</div>
-
-	<div id="error">
-	  <span>
-	    <p>Something went wrong, try refreshing and submitting the form again.</p>
-	  </span>
-	</div>
 </div>
