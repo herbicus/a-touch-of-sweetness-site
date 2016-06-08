@@ -1,8 +1,8 @@
 <?php
 	// if($_POST){
-	$name = $_POST['name'];
-	$email = $_POST['email'];
-	$message = $_POST['form_msg'];
+	$name = $_POST['name1'];
+	$email = $_POST['email1'];
+	$message = $_POST['message1'];
 
 	// $subject = $name;
 	// // To send HTML mail, the Content-type header must be set.
@@ -33,7 +33,7 @@
 		. 'This is a Contact Confirmation mail.'
 		. '<br/>'
 		. 'We Will contact You as soon as possible .</div>';
-		$sendmessage = "<div style=\"background-color:white; color:black;\">" . $template . "</div>";
+		$sendmessage = "<div style=\"background-color:#7E7E7E; color:white;\">" . $template . "</div>";
 		// Message lines should not exceed 70 characters (PHP rule), so wrap it.
 		$sendmessage = wordwrap($sendmessage, 70);
 		// Send mail by PHP Mail Function.
