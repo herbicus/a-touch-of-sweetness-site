@@ -18,9 +18,7 @@ var Email = Backbone.View.extend({
     this.$el.html(template());
 
     $(".l-email-container .button").click(function() {
-        var name = $("#form_name").val();
-        var email = $("#form_email").val();
-        var text = $("#msg_text").val();
+
 
     		var data = {
     		    name: $("#form_name").val(),
