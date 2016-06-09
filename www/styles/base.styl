@@ -143,7 +143,27 @@ section
   
   @media $tablet
     display block
+    
+button,
+.btn-sml
+  boxShadowSlight()
+  -webkit-border-radius 4px 
+  border-radius 4px 
+  -webkit-transition all 0.3s cubic-bezier(.25,.8,.25,1) 
+  -moz-transition all 0.3s cubic-bezier(.25,.8,.25,1) 
+  -ms-transition all 0.3s cubic-bezier(.25,.8,.25,1) 
+  -o-transition all 0.3s cubic-bezier(.25,.8,.25,1) 
+  transition all 0.3s cubic-bezier(.25,.8,.25,1)
+  outline none
+  border none
+  margin 0
+  padding 5px 10px
+  color $white
+  background $primary
+  font 400 13px/16px 'Lato', sans-serif
   
+  &:hover  
+    boxShadow()
 // -------------------------------------
 //   Typography
 // -------------------------------------

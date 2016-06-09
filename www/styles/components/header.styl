@@ -37,7 +37,10 @@
   max-width 255px 
   -webkit-flex 1
   -ms-flex 1
-  flex 1 
+  flex 1
+  
+  @media $tablet
+    left 25px
   
 .logo-lockup-fill
   fill $primary
@@ -70,7 +73,7 @@
         border-left none
         
       &:hover > a
-        color darken($primary, 15)
+        color lighten($primary, 15)
         
       a
         font-family 'Lato', sans-serif

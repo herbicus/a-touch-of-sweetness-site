@@ -4,17 +4,28 @@
 // ----- email form feild styles
 // -------------------------------------
 
+.email-container-overlay
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100%
+  z-index 1
+  background rgba(0, 0, 0, 0.4)
+  opacity 0
+  visibility hidden 
+
 #emailForm
   position fixed
   width 100%
-  max-width 500px
+  max-width 300px
   padding 25px
   height auto
   background $white
-  boxShadow()
+  box-shadow 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
   -webkit-border-radius 4px 
   border-radius 4px  
-  top 50%
+  top 55%
   left 50%
   z-index 5 
   -webkit-transform translate(-50%, -50%)
@@ -22,57 +33,84 @@
   -ms-transform translate(-50%, -50%)
   -o-transform translate(-50%, -50%)
   transform translate(-50%, -50%)
-   
+  visibility hidden
+  opacity 0
+  display none
+
+  @media $tablet
+    max-width 500px 
+
+  h2
+    color $primary
+    margin-bottom 0
+    margin-top 25px
+    font-size 16px
+    font-weight 20px
+
+    @media $tablet
+      font-size 28px
+      font-weight 28px
+      margin-top 20px
+
+
   form
     margin 0
-     
+
   .flex
     display block
 
   form label
-    margin-bottom .2em
-    font-size 1.3rem
-    line-height 1.3rem
-    font-size 13px
-    line-height 13px
+    margin-bottom 5px
+    font 300 14px/16px "Lato", sans-serif
     color $primary
 
   form label.error
-    margin-bottom 1em
-    font-size 1.2rem
-    line-height 1.2rem
-    font-size 12px
-    line-height 12px
+    margin-bottom 15px
+    font 300 12px/14px "Lato", sans-serif
     color $orange
 
-  form input[type="text"], form textarea
-    margin-bottom 1.25em
-    font-family "Lato", sans-serif
-    font-size 1.4rem
-    line-height 1.4rem
-    font-size 14px
-    line-height 14px
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="tel"],
+  form textarea
+    margin-bottom 20px
+    font 300 14px/22px sans-serif
     box-shadow none
     -moz-box-shadow none
     -webkit-box-shadow none
     background $creme
     border 1px solid $primary
-    -moz-border-radius 0.2em
-    -webkit-border-radius 0.2em
-    border-radius 0.2em
+    -webkit-border-radius 4px 
+    border-radius 4px 
 
-  form input[type="text"] focus, form textarea focus
-    border-color $primary
+  form input[type="text"] focus,
+  form input[type="email"] focus,
+  form input[type="tel"] focus,
+  form textarea focus
+    border-color $orange
     box-shadow none
+    background $white 
     -moz-box-shadow none
     -webkit-box-shadow none
 
-  form input[type="text"][disabled], form textarea[disabled]
+  form input[type="text"][disabled],
+  form input[type="email"][disabled],
+  form input[type="tel"][disabled],
+  form textarea[disabled]
     background $creme
 
-  form input[type="text"].error, form textarea.error
+  form input[type="text"].error,
+  form input[type="email"].error,
+  form input[type="tel"].error,
+  form textarea.error
     background $creme
     border-color $primary
+
+  form textarea
+    width 100%
+    max-width 400px
+    height 100%
+    max-height 100px 
 
   fieldset
     border 0px
@@ -99,3 +137,22 @@
 
   #error span p
     color $orange
+
+  .btn-close
+    position absolute
+    top 15px
+    right 25px
+    cursor pointer
+    color $primary
+    font 300 18px/18px sans-serif
+    -webkit-transition color 0.3s ease-in-out 
+    -moz-transition color 0.3s ease-in-out 
+    -ms-transition color 0.3s ease-in-out 
+    -o-transition color 0.3s ease-in-out 
+    transition color 0.3s ease-in-out
+    
+    &:hover
+      color lighten($primary, 15)
+      
+    @media screen and (min-width: 320px) and (max-width: 414px)
+      top 35px
