@@ -38,7 +38,7 @@
   display none
 
   @media $tablet
-    max-width 500px 
+    max-width 500px
 
   h2
     color $primary
@@ -137,6 +137,41 @@
 
   #error span p
     color $orange
+    
+  .thank-you
+    position absolute
+    top 50%
+    left 50%
+    z-index 5
+    width 100% 
+    max-width 300px
+    height auto
+    padding 25px
+    background $white
+    text-align center
+    boxShadowLight()
+    -webkit-border-radius 4px 
+    border-radius 4px
+    -webkit-transform translate(-50%, -50%)
+    -moz-transform translate(-50%, -50%)
+    -ms-transform translate(-50%, -50%)
+    -o-transform translate(-50%, -50%)
+    transform translate(-50%, -50%)
+    pointer-events none
+    opacity 0
+    visibility hidden
+    
+    p
+      font 700 16px/24px 'Nixie One', sans-serif
+      color $primary
+      
+    svg
+      width 100%
+      max-width 120px
+      height auto
+      
+    .icon-logo-fill
+      fill $primary  
 
   .btn-close
     position absolute

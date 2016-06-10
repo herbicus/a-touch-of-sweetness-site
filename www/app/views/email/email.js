@@ -17,55 +17,54 @@ var Email = Backbone.View.extend({
     
     this.$el.html(template());
 
-    // $('.contact-form-btn').on('click', function() {
-
-    //   // $('#emailForm').hasClass('email-open') ? this._contactFormClose() : this._contactFormOpen();
-
-    //   // $('#emailForm').toggleClass('email-open');
-    //   this._contactFormAnim();
-
-    // }.bind(this));
-
   $('.contact-form-btn').on('click', this._contactFormAnim.bind(this));
-  //$('.contact-form-btn').click(this._contactFormAnim.bind(this));
 
   },
 
   _onSubmit: function() {
     // selectors
     var data = {
-        name: $('#form_name').val(),
-        email: $('#form_email').val(),
-        message: $('#form_msg').val(),
-        phone: $('#form_phone').val()
+      name: $('#form_name').val(),
+      email: $('#form_email').val(),
+      message: $('#form_msg').val(),
+      phone: $('#form_phone').val()
     };
 
     $.post("email.php", {
-        name1: data.name,
-        email1: data.email,
-        message1: data.message,
-        phone1: data.phone
+      name1: data.name,
+      email1: data.email,
+      message1: data.message,
+      phone1: data.phone
     });
 
     $.ajax({
-        type: 'POST',
-        url: 'email.php',
-        data: data,
-        success: function() {
-            // console.log('success');
-            TweenMax.to($('#emailForm'), 0.25, {autoAlpha: 0, top: '52%', ease: Power4.easeOut});
-            TweenMax.to($('.email-container-overlay'), 0.25, {
-              delay: 0.0125, 
-              autoAlpha: 0, 
-              ease: Power4.easeOut, 
-              onComplete: function() {
-                TweenMax.set($('#emailForm'), {display: 'none'});
-              }
-            });
-            $('#emailForm').toggleClass('email-open');
+      type: 'POST',
+      url: 'email.php',
+      data: data,
+      success: function() {
+        // console.log('success');
+        TweenMax.to($('.thank-you'), 0.25, {
+          autoAlpha: 1, 
+          ease: Power4.easeOut,
+          onComplete: function() {
+            setTimeout(function() {
+              TweenMax.to($('#emailForm'), 0.25, {autoAlpha: 0, top: '52%', ease: Power4.easeOut});
+              TweenMax.to($('.email-container-overlay'), 0.25, {
+                delay: 0.0125, 
+                autoAlpha: 0, 
+                ease: Power4.easeOut, 
+                onComplete: function() {
+                  TweenMax.set($('#emailForm'), {display: 'none'});
+                  TweenMax.set($('.thank-you'), {autoAlpha: 0});
+                }
+              });
+              $('#emailForm').toggleClass('email-open');
 
-            $(".l-email-container form")[0].reset(); // To reset form fields on success.
-        }
+              $(".l-email-container form")[0].reset(); // To reset form fields on success.
+            }, 1000);
+          }
+        });
+      }
     });
 
     return false;
