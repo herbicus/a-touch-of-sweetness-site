@@ -17,13 +17,17 @@ var Email = Backbone.View.extend({
     
     this.$el.html(template());
 
-    $('.contact-form-btn').on('click', function() {
+    // $('.contact-form-btn').on('click', function() {
 
-      $('#emailForm').hasClass('email-open') ? this._contactFormClose() : this._contactFormOpen();
+    //   // $('#emailForm').hasClass('email-open') ? this._contactFormClose() : this._contactFormOpen();
 
-      $('#emailForm').toggleClass('email-open');
+    //   // $('#emailForm').toggleClass('email-open');
+    //   this._contactFormAnim();
 
-    }.bind(this));
+    // }.bind(this));
+
+  $('.contact-form-btn').on('click', this._contactFormAnim.bind(this));
+  //$('.contact-form-btn').click(this._contactFormAnim.bind(this));
 
   },
 
@@ -41,11 +45,6 @@ var Email = Backbone.View.extend({
         email1: data.email,
         message1: data.message,
         phone1: data.phone
-    }, function(data) {
-      // $("#returnmessage").append(data); // Append returned message to message paragraph.
-      // if (data == "Your Query has been received, We will contact you soon.") {
-      //   $("#form")[0].reset(); // To reset form fields on success.
-      // }
     });
 
     $.ajax({
@@ -53,7 +52,19 @@ var Email = Backbone.View.extend({
         url: 'email.php',
         data: data,
         success: function() {
-            console.log('success');
+            // console.log('success');
+            TweenMax.to($('#emailForm'), 0.25, {autoAlpha: 0, top: '52%', ease: Power4.easeOut});
+            TweenMax.to($('.email-container-overlay'), 0.25, {
+              delay: 0.0125, 
+              autoAlpha: 0, 
+              ease: Power4.easeOut, 
+              onComplete: function() {
+                TweenMax.set($('#emailForm'), {display: 'none'});
+              }
+            });
+            $('#emailForm').toggleClass('email-open');
+
+            $(".l-email-container form")[0].reset(); // To reset form fields on success.
         }
     });
 
@@ -62,40 +73,19 @@ var Email = Backbone.View.extend({
 
   _contactFormAnim: function() {
 
-    if ($('#emailForm').hasClass('email-open')) {
-      TweenMax.to('#emailForm', 0.25, {autoAlpha: 0, top: '55%', ease: Power4.easeOut});
-      TweenMax.to('.email-container-overlay', 0.25, {
-        delay: 0.0125,
-        autoAlpha: 0,
-        ease: Power4.easeOut, 
-        onComplete: function() {
-          TweenMax.set('#emailForm', {display: 'none'});
-        }
-      });
-    } else {
-      TweenMax.to('#emailForm', 0, {
-        display: 'block',
-        onComplete: function() {
-          TweenMax.to('.email-container-overlay', 0.25, {autoAlpha: 1, ease: Power4.easeOut});
-          TweenMax.to('#emailForm', 0.25, {delay: 0.0125, autoAlpha: 1, top: '50%', ease: Power4.easeOut});
-        }
-      });
-      
-    };
+    $('#emailForm').hasClass('email-open') ? this._contactFormClose() : this._contactFormOpen();
 
     $('#emailForm').toggleClass('email-open');
 
-
-    console.log('clicked');
-  }.bind(this),
+  },
 
   _contactFormOpen: function() {
     
-    TweenMax.to('#emailForm', 0, {
+    TweenMax.to($('#emailForm'), 0, {
       display: 'block',
       onComplete: function() {
-        TweenMax.to('.email-container-overlay', 0.25, {autoAlpha: 1, ease: Power4.easeOut});
-        TweenMax.to('#emailForm', 0.25, {delay: 0.0125, autoAlpha: 1, top: '50%', ease: Power4.easeOut});
+        TweenMax.to($('.email-container-overlay'), 0.25, {autoAlpha: 1, ease: Power4.easeOut});
+        TweenMax.to($('#emailForm'), 0.25, {delay: 0.0125, autoAlpha: 1, top: '50%', ease: Power4.easeOut});
       }
     });
 
@@ -103,13 +93,13 @@ var Email = Backbone.View.extend({
 
   _contactFormClose: function() {
     
-    TweenMax.to('#emailForm', 0.25, {autoAlpha: 0, top: '55%', ease: Power4.easeOut});
-    TweenMax.to('.email-container-overlay', 0.25, {
+    TweenMax.to($('#emailForm'), 0.25, {autoAlpha: 0, top: '52%', ease: Power4.easeOut});
+    TweenMax.to($('.email-container-overlay'), 0.25, {
       delay: 0.0125, 
       autoAlpha: 0, 
       ease: Power4.easeOut, 
       onComplete: function() {
-        TweenMax.set('#emailForm', {display: 'none'});
+        TweenMax.set($('#emailForm'), {display: 'none'});
       }
     });
 
