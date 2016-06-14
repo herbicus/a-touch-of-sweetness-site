@@ -39,6 +39,11 @@
 
   @media $tablet
     max-width 500px
+    
+  @supports (-ms-accelerator:true) 
+    width 500px
+    height 550px
+    overflow hidden
 
   h2
     color $primary
