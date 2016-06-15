@@ -40,7 +40,6 @@ var AppRouter = Backbone.Router.extend({
     this.share = new Share({el: $('#share'), model: this.model});
     this.email = new Email({el: $('#emailForm'), model: this.model});
 
-
     Backbone.history.start({pushState: false});
   },
 

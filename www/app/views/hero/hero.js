@@ -32,21 +32,21 @@ var Hero = Backbone.View.extend({
   },
 
   _parallaxHero: function() {
-      var aboveFoldParallax = new TimelineMax({paused: true});
-            
-      aboveFoldParallax.to("#hero", 1, {css:{"background-position-y": 100}});
+    var aboveFoldParallax = new TimelineMax({paused: true});
+          
+    aboveFoldParallax.to('#hero', 1, {css:{'background-position-y': 100}});
 
-      if ($('#hero').hasClass('parallax')) {
-        window.addEventListener("scroll", function(){
-          var parallaxTiming = document.body.scrollTop / 5000;
+    if ($('#hero').hasClass('parallax')) {
+      window.addEventListener('scroll', function() {
+        var parallaxTiming = document.body.scrollTop / 5000;
 
-          $("#hero").waypoint(function() {
+        $('#hero').waypoint(function() {
 
-            aboveFoldParallax.seek(parallaxTiming);
+          aboveFoldParallax.seek(parallaxTiming);
 
-          }, { offset: "90%" });
-        });
-      };
+        }, {offset: '90%'});
+      });
+    }
   }
 
 });

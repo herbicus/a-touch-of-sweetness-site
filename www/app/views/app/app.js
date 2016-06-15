@@ -36,7 +36,7 @@ var App = Backbone.View.extend({
 
     for (var i = 0; i < this.manifest.length; i++) {
       this.loadImage(this.manifest[i]);
-    };
+    }
 
   },
 

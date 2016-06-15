@@ -87,7 +87,6 @@ var Nav = Backbone.View.extend({
 
     this.autoHide();
 
-
   },
 
   navOpen: function() {

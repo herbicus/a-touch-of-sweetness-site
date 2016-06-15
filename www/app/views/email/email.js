@@ -30,7 +30,7 @@ var Email = Backbone.View.extend({
       phone: $('#form_phone').val()
     };
 
-    $.post("email.php", {
+    $.post('email.php', {
       name1: data.name,
       email1: data.email,
       message1: data.message,
@@ -60,7 +60,7 @@ var Email = Backbone.View.extend({
               });
               $('#emailForm').toggleClass('email-open');
 
-              $(".l-email-container form")[0].reset(); // To reset form fields on success.
+              $('.l-email-container form')[0].reset(); // To reset form fields on success.
             }, 1000);
           }
         });
