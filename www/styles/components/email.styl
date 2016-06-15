@@ -149,7 +149,7 @@
     left 50%
     z-index 5
     width 100% 
-    max-width 300px
+    max-width 90%
     height auto
     padding 25px
     background $white
@@ -167,8 +167,11 @@
     visibility hidden
     
     p
-      font 700 16px/24px 'Nixie One', sans-serif
+      font 700 14px/24px 'Nixie One', sans-serif
       color $primary
+      
+      @media $tablet
+        font-size 16px
       
     svg
       width 100%
@@ -176,7 +179,10 @@
       height auto
       
     .icon-logo-fill
-      fill $primary  
+      fill $primary
+      
+    @media $tablet
+      max-width 300px 
 
   .btn-close
     position absolute

@@ -9,10 +9,6 @@ var Logo = Backbone.View.extend({
 
   template: _.template(template()),
 
-  events: {
-
-  },
-
   initialize: function() {
     
     this.$el.html(template());

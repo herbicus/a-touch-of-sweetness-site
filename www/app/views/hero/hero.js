@@ -10,10 +10,6 @@ var Hero = Backbone.View.extend({
 
   template: _.template(template()),
 
-  events: {
-
-  },
-
   initialize: function() {
 
     var content = {
@@ -21,8 +17,6 @@ var Hero = Backbone.View.extend({
     };
 
     this.$el.html(this.template(content));
-
-    this.animate = new AnimationController();
 
     if (!this.model.get('mobile')) {
       $('#hero').addClass('parallax');
