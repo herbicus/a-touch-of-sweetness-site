@@ -17,10 +17,10 @@
 		$headers .= 'Cc:' . $email. "\r\n"; // Carbon copy to Sender
 		$template = '<div style="padding:50px; color:#000; font: 300 18px/24px sans-serif;">Hello ' . $name . ',<br/>'
 		. '<br/>Thank you...! For Contacting Us.<br/><br/>'
-		. 'Name:' . $name . '<br/>'
-		. 'Email:' . $email . '<br/>'
-		. 'Contact No:' . $phone . '<br/>'
-		. 'Message:' . $message . '<br/><br/>'
+		. 'Name: ' . $name . '<br/>'
+		. 'Email: ' . $email . '<br/>'
+		. 'Contact No: ' . $phone . '<br/>'
+		. 'Message: ' . $message . '<br/><br/>'
 		. 'This is a Contact Confirmation mail.'
 		. '<br/>'
 		. 'We Will contact You as soon as possible .</div>';
