@@ -9,8 +9,10 @@ var ScrollTo = require('../../vendor/gsap/ScrollToPlugin');
 var Nav = Backbone.View.extend({
 
   template: _.template(template()),
-
-  // nav animation events
+  
+  /*
+  * nav animation events
+  */
   events: {
     'click .nav-icon-btn': 'navAnimation',
     'click .btn-goto-top': 'clickHome',
@@ -72,7 +74,11 @@ var Nav = Backbone.View.extend({
 
     this.navItemClicked($('#contact'));
   },
-
+ 
+  /*
+  * scroll to section animation
+  * @param (element): the element/section to animate to
+  */
   navItemClicked: function(element) {
   
     this.element = element;

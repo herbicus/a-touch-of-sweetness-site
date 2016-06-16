@@ -4,6 +4,7 @@ var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
 var template = require('./hero.html');
+var waypoints = require('../../vendor/waypoints.min.js');
 var AnimationController = require('../../modules/AnimationController');
 
 var Hero = Backbone.View.extend({

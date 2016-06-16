@@ -17,12 +17,13 @@ var Email = Backbone.View.extend({
     
     this.$el.html(template());
 
-  $('.contact-form-btn').on('click', this._contactFormAnim.bind(this));
+    $('.contact-form-btn').on('click', this._contactFormAnim.bind(this));
 
   },
 
   _onSubmit: function() {
-    // selectors
+
+    // TODO: validation/honeypot
     var data = {
       name: $('#form_name').val(),
       email: $('#form_email').val(),
@@ -42,7 +43,6 @@ var Email = Backbone.View.extend({
       url: 'email.php',
       data: data,
       success: function() {
-        // console.log('success');
         TweenMax.to($('.thank-you'), 0.25, {
           autoAlpha: 1, 
           ease: Power4.easeOut,
@@ -58,9 +58,11 @@ var Email = Backbone.View.extend({
                   TweenMax.set($('.thank-you'), {autoAlpha: 0});
                 }
               });
+
               $('#emailForm').toggleClass('email-open');
 
-              $('.l-email-container form')[0].reset(); // To reset form fields on success.
+              $('.l-email-container form')[0].reset(); // reset form fields on success.
+
             }, 1000);
           }
         });
@@ -68,6 +70,7 @@ var Email = Backbone.View.extend({
     });
 
     return false;
+
   },
 
   _contactFormAnim: function() {
