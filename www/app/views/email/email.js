@@ -75,20 +75,23 @@ var Email = Backbone.View.extend({
           autoAlpha: 1, 
           ease: Power4.easeOut,
           onComplete: function() {
-            TweenMax.to($('#emailForm'), 0.45, {autoAlpha: 0, delay: 1, top: '52%', ease: Power4.easeOut});
-            TweenMax.to($('.email-container-overlay'), 0.45, {
-              delay: 1.25, 
-              autoAlpha: 0, 
-              ease: Power4.easeOut, 
-              onComplete: function() {
-                TweenMax.set($('#emailForm'), {display: 'none'});
-                TweenMax.set($('.thank-you'), {autoAlpha: 0});
-              }
-            });
+            setTimeout(function() {
+              TweenMax.to($('#emailForm'), 0.45, {autoAlpha: 0, top: '52%', ease: Power4.easeOut});
+              TweenMax.to($('.email-container-overlay'), 0.45, {
+                delay: 0.25, 
+                autoAlpha: 0, 
+                ease: Power4.easeOut, 
+                onComplete: function() {
+                  TweenMax.set($('#emailForm'), {display: 'none'});
+                  TweenMax.set($('.thank-you'), {autoAlpha: 0});
+                }
+              });
 
-            $('#emailForm').toggleClass('email-open');
+              $('#emailForm').toggleClass('email-open');
 
-            $('.l-email-container form')[0].reset(); // reset form fields on success.
+              $('.l-email-container form')[0].reset(); // reset form fields on success.
+
+            }, 1000);
           }
         });
       },
