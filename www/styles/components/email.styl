@@ -143,7 +143,9 @@
   #error span p
     color $orange
     
-  .thank-you
+  .thank-you,
+  .validate-email,
+  .error-email
     position absolute
     top 50%
     left 50%
@@ -183,6 +185,24 @@
       
     @media $tablet
       max-width 300px 
+
+  .validate-email,
+  .error-email
+    background $primary
+    
+    .icon-logo-fill
+      fill $white
+      
+    p
+      font 400 14px/24px 'Lato', sans-serif
+      color $white
+      letter-spacing 1px
+      
+      @media $tablet
+        font-size 16px
+        
+  .error-email p
+    letter-spacing 0  
 
   .btn-close
     position absolute

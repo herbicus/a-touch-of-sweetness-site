@@ -21,7 +21,29 @@ var Email = Backbone.View.extend({
 
   },
 
-  _onSubmit: function() {
+  _onSubmit: function(e) {
+    e.preventDefault();
+
+    var _email = $('#form_email').val();
+
+    if (this._validateEmail(_email) && !_email == '') {
+
+      this._ajaxCall();
+
+    } else {
+
+      this._validateEmailMessage();
+
+    }
+
+  },
+
+  _validateEmail: function(email) {
+    var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(email);
+  },
+
+  _ajaxCall: function() {
 
     // TODO: validation/honeypot
     var data = {
@@ -42,28 +64,59 @@ var Email = Backbone.View.extend({
       type: 'POST',
       url: 'email.php',
       data: data,
+      
+      /*
+      * on success - display thank you message
+      * close out email form window
+      * reset form fields
+      */
       success: function() {
         TweenMax.to($('.thank-you'), 0.25, {
           autoAlpha: 1, 
           ease: Power4.easeOut,
           onComplete: function() {
-            setTimeout(function() {
-              TweenMax.to($('#emailForm'), 0.25, {autoAlpha: 0, top: '52%', ease: Power4.easeOut});
-              TweenMax.to($('.email-container-overlay'), 0.25, {
-                delay: 0.0125, 
-                autoAlpha: 0, 
-                ease: Power4.easeOut, 
-                onComplete: function() {
-                  TweenMax.set($('#emailForm'), {display: 'none'});
-                  TweenMax.set($('.thank-you'), {autoAlpha: 0});
-                }
-              });
+            TweenMax.to($('#emailForm'), 0.45, {autoAlpha: 0, delay: 1, top: '52%', ease: Power4.easeOut});
+            TweenMax.to($('.email-container-overlay'), 0.45, {
+              delay: 1.25, 
+              autoAlpha: 0, 
+              ease: Power4.easeOut, 
+              onComplete: function() {
+                TweenMax.set($('#emailForm'), {display: 'none'});
+                TweenMax.set($('.thank-you'), {autoAlpha: 0});
+              }
+            });
 
-              $('#emailForm').toggleClass('email-open');
+            $('#emailForm').toggleClass('email-open');
 
-              $('.l-email-container form')[0].reset(); // reset form fields on success.
+            $('.l-email-container form')[0].reset(); // reset form fields on success.
+          }
+        });
+      },
 
-            }, 1000);
+      /*
+      * on error - display error message
+      * close out email form window
+      * reset form fields
+      */
+      error: function() {
+        TweenMax.to($('.error-email'), 0.25, {
+          autoAlpha: 1, 
+          ease: Power4.easeInOut,
+          onComplete: function() {
+            TweenMax.to($('#emailForm'), 0.45, {autoAlpha: 0, delay: 2, top: '52%', ease: Power4.easeOut});
+            TweenMax.to($('.email-container-overlay'), 0.45, {
+              delay: 2.25, 
+              autoAlpha: 0, 
+              ease: Power4.easeOut, 
+              onComplete: function() {
+                TweenMax.set($('#emailForm'), {display: 'none'});
+                TweenMax.set($('.error-email'), {autoAlpha: 0});
+              }
+            });
+
+            $('#emailForm').toggleClass('email-open');
+
+            $('.l-email-container form')[0].reset();
           }
         });
       }
@@ -105,6 +158,20 @@ var Email = Backbone.View.extend({
       }
     });
 
+  },
+
+  _validateEmailMessage: function() {
+    TweenMax.to($('.validate-email'), 0.25, {
+      autoAlpha: 1.25, 
+      ease: Power4.easeInOut,
+      onComplete: function() {
+        TweenMax.to($('.validate-email'), 0.25, {
+          delay: 1,
+          autoAlpha: 0,
+          ease: Power4.easeInOut
+        });
+      }
+    });
   }
 
 });
