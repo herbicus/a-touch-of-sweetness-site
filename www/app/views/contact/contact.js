@@ -4,15 +4,10 @@ var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
 var template = require('./contact.html');
-var AnimationController = require('../../modules/AnimationController');
 
 var Contact = Backbone.View.extend({
 
   template: _.template(template()),
-
-  events: {
-  
-  },
 
   initialize: function() {
     
@@ -22,8 +17,6 @@ var Contact = Backbone.View.extend({
     };
     
     this.$el.html(this.template(content));
-
-    this.animate = new AnimationController();
   }
   
 });

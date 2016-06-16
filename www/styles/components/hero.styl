@@ -1,31 +1,43 @@
 .l-flex-hero
   display -webkit-box
+  display -moz-box
   display -ms-flexbox
   display -webkit-flex
   display flex
   -webkit-flex-direction column
+  -moz-flex-direction column
   -ms-flex-direction column
+  -o-flex-direction column
   flex-direction column
-  -webkit-align-items center
-  align-items center
+  -webkit-box-pack center
+  -moz-box-pack center
+  -ms-flex-pack center
   -webkit-justify-content center
   justify-content center
+  -webkit-box-align center
+  -moz-box-align center
+  -ms-flex-align center
+  -webkit-align-items center
+  align-items center
   width 100%
   
   @media $logoBp
     -webkit-flex-direction row
+    -moz-flex-direction row
     -ms-flex-direction row
+    -o-flex-direction row
     flex-direction row
   
 .l-hero-reverse
   @media $logoBp
     -webkit-flex-direction row-reverse
+    -moz-flex-direction row-reverse
     -ms-flex-direction row-reverse
+    -o-flex-direction row-reverse
     flex-direction row-reverse
 
 #hero
   background #D9B5B6
-  // background url("../images/bg-hero-9_flip.jpg")no-repeat bottom center
   background url("../images/bg-hero-mobile-1.jpg")no-repeat center center 
   padding-top 50px
   -webkit-background-size cover 
@@ -34,41 +46,57 @@
   height 100%
   min-height 100vh 
   display -webkit-box
+  display -moz-box
   display -ms-flexbox
   display -webkit-flex
   display flex
   -webkit-flex-direction column
+  -moz-flex-direction column
   -ms-flex-direction column
+  -o-flex-direction column
   flex-direction column
-  -webkit-align-items center
-  align-items center
+  -webkit-box-pack center
+  -moz-box-pack center
+  -ms-flex-pack center
   -webkit-justify-content center
   justify-content center
-  
-  // @media $desktop
+  -webkit-box-align center
+  -moz-box-align center
+  -ms-flex-align center
+  -webkit-align-items center
+  align-items center
+
   @media $logoBp
     background #D9B5B6
     background url("../images/bg-hero-9_flip.jpg")no-repeat fixed
     background-position-x 50% 
     background-position-y 0
-    //background url("../images/bg-hero-mobile-1.jpg")no-repeat center center 
     -webkit-background-size cover 
     -o-background-size cover 
     background-size cover
     
   // portrait
-  // ipad
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1)
+  // ipad & nexus tab
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
     min-height 1px
     max-height 100%
+    background url("../images/bg-hero-9_flip_mobile_x2.jpg")no-repeat center bottom
+    -webkit-background-size cover 
+    -o-background-size cover 
+    background-size cover
     
   @media screen and (device-width: 601px) and (device-height: 906px) and (-webkit-min-device-pixel-ratio: 1.331) and (-webkit-max-device-pixel-ratio: 1.332) and (orientation: portrait)
     min-height 1px
     max-height 100%
+    background url("../images/bg-hero-9_flip_mobile_x2.jpg")no-repeat center bottom
+    -webkit-background-size cover 
+    -o-background-size cover 
+    background-size cover
     
   .site-line
     margin 0px 0 25px 0
     -webkit-align-self flex-start
+    -ms-align-self flex-start
     align-self flex-start
     
     @media screen and (min-width: 995px)
@@ -76,8 +104,7 @@
   
   .hero-logo
     padding 0 0 25px 0
-    
-    // @media $tablet
+
     @media $logoBp
       padding 0 0 0 50px
 
@@ -105,8 +132,7 @@
   
   .icon-logo-fill 
     fill $white
-    
-    // @media $tablet
+
     @media $logoBp
       fill $primary
   
@@ -137,8 +163,7 @@
       
       @media screen and (min-width: 345px)
         font-size 41px
-        
-      // @media $desktop
+
       @media screen and (min-width: 995px)
         font-size 52px 
         line-height 62px
@@ -147,9 +172,8 @@
       
     p
       font-weight 300
-      // @media $desktop
+
       @media screen and (min-width: 995px)
-        // font-weight 300
         font-size 16px
         line-height 30px
         letter-spacing 1px

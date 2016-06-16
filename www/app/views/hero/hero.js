@@ -4,15 +4,12 @@ var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
 var template = require('./hero.html');
+var waypoints = require('../../vendor/waypoints.min.js');
 var AnimationController = require('../../modules/AnimationController');
 
 var Hero = Backbone.View.extend({
 
   template: _.template(template()),
-
-  events: {
-
-  },
 
   initialize: function() {
 
@@ -22,31 +19,37 @@ var Hero = Backbone.View.extend({
 
     this.$el.html(this.template(content));
 
-    this.animate = new AnimationController();
-
-    if (!this.model.get('mobile')) {
+    /*
+    * parallax hero bg only on desktop
+    */
+    if (!this.model.get('mobile') || !this.model.get('tablet') || this.model.get('ff') ) {
       $('#hero').addClass('parallax');
     }
 
     this._parallaxHero();
+
+    if(this.model.get('ff')) {
+      $('#hero').css('background-position', 'center bottom');
+      $('#hero').css('background-attachment', 'inherit');
+    }
   },
 
   _parallaxHero: function() {
-      var aboveFoldParallax = new TimelineMax({paused: true});
-            
-      aboveFoldParallax.to("#hero", 1, {css:{"background-position-y": 100}});
+    var aboveFoldParallax = new TimelineMax({paused: true});
+          
+    aboveFoldParallax.to('#hero', 1, {css:{'background-position-y': 100}});
 
-      if ($('#hero').hasClass('parallax')) {
-        window.addEventListener("scroll", function(){
-          var parallaxTiming = document.body.scrollTop / 5000;
+    if ($('#hero').hasClass('parallax')) {
+      window.addEventListener('scroll', function() {
+        var parallaxTiming = document.body.scrollTop / 5000;
 
-          $("#hero").waypoint(function() {
+        $('#hero').waypoint(function() {
 
-            aboveFoldParallax.seek(parallaxTiming);
+          aboveFoldParallax.seek(parallaxTiming);
 
-          }, { offset: "90%" });
-        });
-      };
+        }, {offset: '90%'});
+      });
+    }
   }
 
 });

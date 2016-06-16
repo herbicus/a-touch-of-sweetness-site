@@ -3,11 +3,15 @@
 var $ = require('jquery');
 var _ = require('underscore');
 var Backbone = require('backbone');
-var template = require('./logo.html');
+var template = require('./email.html');
 
-var Logo = Backbone.View.extend({
+var Email = Backbone.View.extend({
 
   template: _.template(template()),
+
+  events: {
+
+  },
 
   initialize: function() {
     
@@ -17,4 +21,4 @@ var Logo = Backbone.View.extend({
 
 });
 
-module.exports = Logo;
+module.exports = Email;

@@ -10,27 +10,26 @@ var Share = Backbone.View.extend({
 
   template: _.template(template()),
 
-  events: {
-
-  },
-
   initialize: function() {
     
     this.$el.html(template());
 
-	this._scrolledTo();
+    this._scrolledTo();
 
   },
 
+  /*
+  * setTimout to let page load 
+  */
   _scrolledTo: function() {
     setTimeout(function() {
     	$('#gallery').waypoint(function() {
-		  	TweenMax.to(".share-sidebar", 0.6, {
-				right: 2,
-				autoAlpha: 1,
-				ease: Power4.easeOut
-			});
-		}, { offset: "25%" });
+        TweenMax.to('.share-sidebar', 0.6, {
+          right: 2,
+          autoAlpha: 1,
+          ease: Power4.easeOut
+        });
+		  }, {offset: '25%'});
     }, 0);
   }
 

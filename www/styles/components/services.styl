@@ -33,7 +33,6 @@
 		
 		@media $desktop
 			padding 50px
-			//margin 50px 0
 
 	.service-title-fill
 		fill $primary
@@ -79,6 +78,22 @@
 			font-size 18px
 			line-height 30px
 			padding 0 25px
+			
+	span
+		color $primary
+		margin 10px 0 0 0
+		padding-right 10px
+		font-weight 700
+		float right
+		cursor pointer
+		-webkit-transition color 0.3s ease-in-out 
+		-moz-transition color 0.3s ease-in-out 
+		-ms-transition color 0.3s ease-in-out 
+		-o-transition color 0.3s ease-in-out 
+		transition color 0.3s ease-in-out
+		
+		&:hover
+			color $offWhite
 	
 	.dessert
 		margin-bottom 0
@@ -88,19 +103,38 @@
 	.dessert .service-text p
 			padding 0
 			
+	.tasting .service-text,
+	.custom .service-text,
+	.dessert .service-text
+		text-align center
+			
 	@media $tablet
 		.tasting
-			.service-text p
-				padding-left 50px
+			.service-text
+				text-align left
+				p
+					padding-left 50px
+				span
+					padding-right 25px
 
 		.custom
-			.service-text p
-				padding-right 50px  
+			.service-text
+				text-align left
+				p
+					padding-right 50px 
+					
+				span
+					text-align right
+					padding-right 60px
 
 		.dessert
-			// margin-bottom 0
-			.service-text p
-				padding-left 50px
+			.service-text 
+				text-align left
+				p
+					padding-left 50px
+				
+				span
+					padding-right 25px
 	
 	.site-line
 		margin 15px auto 20px auto

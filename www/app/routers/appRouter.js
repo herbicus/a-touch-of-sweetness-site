@@ -13,6 +13,7 @@ var Custom = require('../views/title-custom/custom.js');
 var Taste = require('../views/title-taste/taste.js');
 var Trays = require('../views/title-trays/trays.js');
 var Share = require('../views/share-sidebar/share.js');
+var Email = require('../views/email/email.js');
 
 var AppRouter = Backbone.Router.extend({
 
@@ -37,7 +38,7 @@ var AppRouter = Backbone.Router.extend({
     this.taste = new Taste({el: $('.title-taste'), model: this.model});
     this.trays = new Trays({el: $('.title-trays'), model: this.model});
     this.share = new Share({el: $('#share'), model: this.model});
-
+    this.email = new Email({el: $('#emailForm'), model: this.model});
 
     Backbone.history.start({pushState: false});
   },
@@ -54,7 +55,8 @@ var AppRouter = Backbone.Router.extend({
     custom: 'routeCustom',
     taste: 'routeTaste',
     trays: 'routeTrays',
-    share: 'routeShare'
+    share: 'routeShare',
+    email: 'routeEmail'
   },
 
   routeNav: function() {
@@ -99,6 +101,10 @@ var AppRouter = Backbone.Router.extend({
 
   routeShare: function() {
     this.model.set({route: 'share'});
+  },
+
+  routeEmail: function() {
+    this.model.set({route: 'emailForm'});
   }
 });
 
