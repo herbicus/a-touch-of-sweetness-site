@@ -25,8 +25,9 @@ var Email = Backbone.View.extend({
     e.preventDefault();
 
     var _email = $('#form_email').val();
+    var _details = $('#form_details').val();
 
-    if (this._validateEmail(_email) && !_email == '') {
+    if (this._validateEmail(_email) && !_email == '' && _details == '') {
 
       this._ajaxCall();
 
@@ -72,8 +73,9 @@ var Email = Backbone.View.extend({
       */
       success: function() {
         TweenMax.to($('.thank-you'), 0.25, {
-          autoAlpha: 1, 
-          ease: Power4.easeOut,
+          autoAlpha: 1,
+          scale: 1,
+          ease: Back.easeInOut,
           onComplete: function() {
             setTimeout(function() {
               TweenMax.to($('#emailForm'), 0.45, {autoAlpha: 0, top: '52%', ease: Power4.easeOut});
@@ -83,7 +85,7 @@ var Email = Backbone.View.extend({
                 ease: Power4.easeOut, 
                 onComplete: function() {
                   TweenMax.set($('#emailForm'), {display: 'none'});
-                  TweenMax.set($('.thank-you'), {autoAlpha: 0});
+                  TweenMax.set($('.thank-you'), {autoAlpha: 0, scale: 0.8});
                 }
               });
 
@@ -103,17 +105,18 @@ var Email = Backbone.View.extend({
       */
       error: function() {
         TweenMax.to($('.error-email'), 0.25, {
-          autoAlpha: 1, 
-          ease: Power4.easeInOut,
+          autoAlpha: 1,
+          scale: 1, 
+          ease: Back.easeInOut,
           onComplete: function() {
             TweenMax.to($('#emailForm'), 0.45, {autoAlpha: 0, delay: 2, top: '52%', ease: Power4.easeOut});
             TweenMax.to($('.email-container-overlay'), 0.45, {
-              delay: 2.25, 
+              delay: 2.05, 
               autoAlpha: 0, 
               ease: Power4.easeOut, 
               onComplete: function() {
                 TweenMax.set($('#emailForm'), {display: 'none'});
-                TweenMax.set($('.error-email'), {autoAlpha: 0});
+                TweenMax.set($('.error-email'), {autoAlpha: 0, scale: 0.8});
               }
             });
 
@@ -165,13 +168,15 @@ var Email = Backbone.View.extend({
 
   _validateEmailMessage: function() {
     TweenMax.to($('.validate-email'), 0.25, {
-      autoAlpha: 1.25, 
-      ease: Power4.easeInOut,
+      autoAlpha: 1,
+      scale: 1,
+      ease: Back.easeInOut,
       onComplete: function() {
         TweenMax.to($('.validate-email'), 0.25, {
           delay: 1,
           autoAlpha: 0,
-          ease: Power4.easeInOut
+          scale: 0.8,
+          ease: Back.easeInOut
         });
       }
     });
