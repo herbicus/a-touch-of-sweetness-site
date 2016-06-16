@@ -1,6 +1,8 @@
-#Backbone Template
+#A Touch Of Sweetness
 
-Project scaffold using Backbone, underscore, gulp 4, and stylus
+This is a brochure site for A Touch Of Sweetness 2016.
+
+This project was built using Backbone, underscore, gulp 4, and stylus
 
 To get up and running, run:
 
@@ -19,3 +21,8 @@ To install gulp 4, run:
 To kick off a dev build, start a local server and open the project in a browser, run:
 
     gulp
+
+Run gulp build task as such
+
+    gulp build
+    gulp build prod
