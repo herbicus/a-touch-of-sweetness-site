@@ -19,8 +19,13 @@ var Hero = Backbone.View.extend({
 
     this.$el.html(this.template(content));
 
-    if (!this.model.get('mobile') || !this.model.get('tablet')) $('#hero').addClass('parallax');
-
+    /*
+    * parallax hero bg only on desktop
+    */
+    if (!this.model.get('mobile') || !this.model.get('tablet')) {
+      $('#hero').addClass('parallax');
+    }
+    
     this._parallaxHero();
   },
 
