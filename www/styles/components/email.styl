@@ -19,8 +19,9 @@
   position fixed
   width 100%
   max-width 300px
-  padding 25px
+  padding 15px
   height auto
+  max-height 95%
   background $white
   box-shadow 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
   -webkit-border-radius 4px 
@@ -36,6 +37,9 @@
   visibility hidden
   opacity 0
   display none
+  
+  @media $iphone6
+    padding 25px
 
   @media $tablet
     max-width 500px
@@ -78,7 +82,7 @@
   form input[type="email"],
   form input[type="tel"],
   form textarea
-    margin-bottom 20px
+    margin-bottom 5px
     font 300 14px/22px sans-serif
     box-shadow none
     -moz-box-shadow none
@@ -86,7 +90,10 @@
     background $creme
     border 1px solid $primary
     -webkit-border-radius 4px 
-    border-radius 4px 
+    border-radius 4px
+    
+    @media $iphone6
+      margin-bottom 20px
 
   form input[type="text"] focus,
   form input[type="email"] focus,
@@ -214,11 +221,16 @@
 
   .btn-close
     position absolute
-    top 15px
-    right 25px
+    top 35px
+    right 15px
+    width 30px
+    height 30px
+    -webkit-border-radius 50% 
+    border-radius 50% 
+    text-align center
     cursor pointer
     color $primary
-    font 300 18px/18px sans-serif
+    font 300 18px/30px sans-serif
     -webkit-transition color 0.3s ease-in-out 
     -moz-transition color 0.3s ease-in-out 
     -ms-transition color 0.3s ease-in-out 
@@ -228,5 +240,11 @@
     &:hover
       color $offWhite
       
-    @media screen and (min-width: 320px) and (max-width: 414px)
-      top 35px
+    // @media screen and (min-width: 320px) and (max-width: 414px)
+    //   top 35px
+      
+    @media $iphone6
+      top 10px
+      
+    @media $tablet
+      top 15px
