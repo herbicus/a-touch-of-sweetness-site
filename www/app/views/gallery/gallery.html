@@ -6,7 +6,7 @@
 	    <div id="slickCakes">
 	      <%_.each(data.imagesCakes, function(value, key, obj) {%>
 	      <div class="detail-slide">
-	        <img src="<%= value %>">
+	        <img data-lazy="<%= value %>">
 	      </div>
 	      <%});%>
 	    </div>
@@ -25,7 +25,7 @@
 	    <div id="slickCupCakes">
 	      <%_.each(data.imagesCupCakes, function(value, key, obj) {%>
 	      <div class="detail-slide">
-	        <img src="<%= value %>">
+	        <img data-lazy="<%= value %>">
 	      </div>
 	      <%});%>
 	    </div>
@@ -44,7 +44,7 @@
 	    <div id="slickFruitCarvings">
 	      <%_.each(data.imagesFruitCarvings, function(value, key, obj) {%>
 	      <div class="detail-slide">
-	        <img src="<%= value %>">
+	        <img data-lazy="<%= value %>">
 	      </div>
 	      <%});%>
 	    </div>
