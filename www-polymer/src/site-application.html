@@ -1,0 +1,338 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner-lite.html">
+<link rel="import" href="../bower_components/paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+
+<!-- custom elements -->
+<link rel="import" href="my-icons.html">
+<link rel="import" href="site-carousel.html">
+<link rel="import" href="styles/normalize.html">
+
+<!-- TweenMax -->
+<script src="js/TweenMax.min.js"></script>
+<script src="js/ScrollToPlugin.min.js"></script>
+<script src="js/swiper.min.js"></script>
+
+<dom-module id="site-application">
+  <template>
+    <style include="normalize">
+
+      :host {
+        --app-primary-color: #4285f4;
+        --app-secondary-color: black;
+
+        display: block;
+      }
+
+      /*
+      * paper-drawer-panel selector
+      * site shell
+      */
+      .site {
+
+      }
+
+      /*
+      * Off Canvas Nav
+      */
+      .offcanvas--links a {
+        display: block;
+        padding: 0 16px;
+        text-decoration: none;
+        color: var(--app-secondary-color);
+        line-height: 40px;
+      }
+
+      .offcanvas--links a.iron-selected {
+        color: black;
+        font-weight: bold;
+      }
+
+      .offcanvas--links paper-icon-button {
+        color: black;
+        --paper-icon-button-ink-color: #4285f4;
+      }
+
+      /*
+      * Header
+      */
+      .content--header-nav {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex: 1px;
+        -ms-flex: 1px;
+        flex: 1px;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-align-items: center;
+                align-items: center;
+        justify-content: space-between;
+      }
+
+      .content--header-title {
+        -webkit-flex: 1px;
+        -ms-flex: 1px;
+        flex: 1px;
+      }
+
+      .content--menu-btn {
+        color: #fff;
+        --paper-icon-button-ink-color: #fff;
+      }
+
+      /*
+      * Main Content Styles
+      */
+      .site--content-main {}
+
+
+      /* test styles - delete */
+      .__test-section {
+        height: 2000px;
+        width: 100%;
+      }
+
+      .content--gallery site-carousel {
+        margin: 50px auto;
+      }
+
+      .gallery-guts {
+        -webkit-transition: opacity 1200s ease-out;
+           -moz-transition: opacity 1200s ease-out;
+            -ms-transition: opacity 1200s ease-out;
+             -o-transition: opacity 1200s ease-out;
+                transition: opacity 1200s ease-out;
+      }
+
+      .gallery-guts[hidden] {
+        opacity: 0;
+      }
+
+      @-webkit-keyframes reveal {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @-o-keyframes reveal {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @-moz-keyframes reveal {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes reveal {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+    </style>
+
+    <!-- site shell -->
+    <paper-drawer-panel force-narrow disable-swipe class="site">
+
+      <!-- off canvas menu -->
+      <paper-header-panel drawer class="site--offcanvas-nav" id="paperDrawer">
+        <!-- off canvas header -->
+        <paper-toolbar class="offcanvas--header">
+          <h3 class="offcanvas--header-title">Mobile</h3>
+        </paper-toolbar>
+
+        <!-- off canvas nav -->
+        <iron-selector class="offcanvas--links" selected="[[page]]" attr-for-selected="name" role="navigation">
+           <a paper-drawer-toggle on-tap="_scrollToPricing">PRICING</a>
+           <a paper-drawer-toggle on-tap="_scrollToGallery">GALLERY</a>
+           <a paper-drawer-toggle on-tap="_scrollToServices">SERVICES</a>
+           <a paper-drawer-toggle on-tap="_scrollToContent">CONTENT</a>
+           <paper-icon-button icon="social:facebook-alt" class="content--menu-btn" paper-drawer-toggle></paper-icon-button>
+           <paper-icon-button icon="social:twitter-alt" class="content--menu-btn" paper-drawer-toggle></paper-icon-button>
+           <paper-icon-button icon="social:instagram" class="content--menu-btn" paper-drawer-toggle></paper-icon-button>
+        </iron-selector>
+      </paper-header-panel>
+
+      <!-- site main content section -->
+      <paper-scroll-header-panel main class="site--content" id="siteContent">
+
+        <!-- main content header -->
+        <paper-toolbar class="site--content-header">
+
+          <!-- header nav left -->
+          <div class="content--header-title">Title</div>
+
+          <!-- header nav right/links -->
+          <iron-selector selected="[[page]]" attr-for-selected="name" class="content--header-nav" role="navigation">
+
+            <a on-tap="_scrollToPricing">PRICING</a>
+            <a on-tap="_scrollToGallery">GALLERY</a>
+            <a on-tap="_scrollToServices">SERVICES</a>
+            <a on-tap="_scrollToContent">CONTENT</a>
+            <!-- menu btn -->
+            <paper-icon-button icon="iconz:menu" class="content--menu-btn" paper-drawer-toggle></paper-icon-button>
+
+          </iron-selector>
+
+        </paper-toolbar>
+
+        <!-- main content container -->
+        <div class="site--content-main">
+
+          <!-- hero -->
+          <section class="cotent--hero" id="hero">
+
+            <content select="[hero-title]"></content>
+            <content select="[hero-copy]"></content>
+
+          </section>
+
+          <!-- pricing -->
+          <section class="content--pricing" id="pricing">
+
+          </section>
+
+          <iron-ajax
+              auto
+              url="../data.json"
+              handle-as="json"
+              last-response="{{response}}"
+              on-response="_onResponse"
+              debounce-duration="300">
+          </iron-ajax>
+
+          <!-- gallery -->
+          <section class="content--gallery" id="gallery">
+
+            <paper-spinner-lite active="{{galleryEmpty}}" style="margin: 0 auto;"></paper-spinner-lite>
+            
+            <div class="gallery-guts" hidden$="{{galleryEmpty}}">
+              <h1>Cakes</h1>
+              <site-carousel images="{{imagesCakes}}"></site-carousel>
+
+              <h1>Cupcakes</h1>
+              <site-carousel images="{{imagesCupCakes}}"></site-carousel>
+
+              <h1>Desserts</h1>
+              <site-carousel images="{{imagesDesserts}}"></site-carousel>
+            </div>
+            
+          </section>
+
+          <!-- services -->
+          <section class="content--services" id="services">
+
+          </section>
+
+          <!-- contact -->
+          <section class="content--contact">
+
+          </section>
+
+        </div>
+
+      </paper-scroll-header-panel>
+
+    </paper-drawer-panel>
+
+  </template>
+
+  <script>
+
+    Polymer({
+      is: 'site-application',
+
+      properties: {
+        response: {
+          type: Array,
+          notify: true
+        },
+
+        imagesCakes: {
+          type: Array,
+          notify: true
+        },
+
+        imagesCakes: {
+          type: Array,
+          notify: true
+        },
+
+        imagesDesserts: {
+          type: Array,
+          notify: true
+        },
+
+        galleryEmpty: {
+          type: Boolean,
+          value: true,
+          computed: '_computeGalleryEmpty(response)'
+        }
+
+      },
+
+      ready: function() {
+
+      },
+
+      _onResponse: function() {
+        console.log(this.response.images[0].imagesCakes.length, this.response.images[0].imagesCakes.length - 1);
+        this.imagesCakes = this.response.images[0].imagesCakes;
+        this.imagesCupCakes = this.response.images[0].imagesCupCakes;
+        this.imagesDesserts = this.response.images[0].imagesDesserts;
+      },
+
+      _computeGalleryEmpty: function(response) {
+        return response.length === 0;
+      },
+
+      /*
+      * scroll to section animation
+      * @param (element): the element/section to animate to
+      */
+      navItemClicked: function(element) {
+
+        TweenMax.to(this.$.siteContent.scroller, 1, {
+            scrollTo: {
+                y: element.offsetTop,
+                autoKill: true
+            },
+            ease:Power2.easeOut
+        });
+
+      },
+
+      _scrollToPricing: function() {
+        this.navItemClicked(this.$.pricing);
+      },
+
+      _scrollToGallery: function() {
+        this.navItemClicked(this.$.gallery);
+      },
+
+      _scrollToServices: function() {
+        this.navItemClicked(this.$.services);
+      },
+
+      _scrollToContact: function() {
+        this.navItemClicked(this.$.contact);
+      },
+
+    });
+  </script>
+</dom-module>

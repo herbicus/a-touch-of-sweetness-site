@@ -1,0 +1,19 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/site-application.html",
+  "fragments": [
+    "src/site-carousel.html",
+    "src/site-application.html"
+  ],
+  "sourceGlobs": [
+    "src/**/*",
+    "images/**/*",
+    "bower.json"
+  ],
+  "includeDependencies": [
+    "manifest.json",
+    "data.json",
+    "bower_components/webcomponentsjs/webcomponents.min.js",
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}
