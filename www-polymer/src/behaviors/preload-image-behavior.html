@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<script>
+  /**
+   * @fileoverview Usage:
+   * this.preloadImages([array], function(loaded){
+   *    //callback
+   * });
+   */
+  Polymer.PreloadImagesBehavior = {
+    properties: {
+      /**
+       * Array of image src's
+       * @type {!Array.<!string>}
+       */
+      images: {
+        type: Array
+      },
+      /**
+       * Array of images that have been loaded
+       * @type {!Array.<!Image>}
+       */
+      loadedImages: {
+        type: Array,
+        value: function(){
+          return [];
+        }
+      }
+    },
+    /**
+     * @param {!Array.<!Image>} images Array of images to load.
+     * @param {function} callback Callback for image load completion.
+     */
+    preloadImages: function(images, callback) {
+        //array of images
+        this.images = images;
+        var counter = 0;
+        //wait for final load to be complete before callback
+        var loadComplete = function(e) {
+          counter++;
+          if(counter === images.length && callback){
+            callback(this.loadedImages);
+          }
+        }.bind(this);
+        //loop over array && load images
+        for(var i = 0; i < images.length; i++){
+          this.loadedImages[i] = new Image();
+          this.loadedImages[i].src = images[i];
+          this.loadedImages[i].onload = loadComplete;
+          this.loadedImages[i].onError = loadComplete;
+        }
+    }
+  };
+</script>
