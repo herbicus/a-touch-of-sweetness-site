@@ -1,0 +1,114 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="portfolio-footer.html">
+
+<dom-module id="portfolio-contact">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      main {
+        @apply(--layout-flex);
+        -webkit-align-items: flex-end;
+                align-items: flex-end;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+        height: 79vh;
+        background: url('../images/contact-bg.jpg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        -webkit-background-size: cover;
+             -o-background-size: cover;
+                background-size: cover;
+      }
+
+      section {
+        text-align: right;
+        color: #FFFFFF;
+      }
+
+      h1 {
+        font-size: 48px;
+        line-height: 52px;
+      }
+
+      h3 {
+        font-size: 36px;
+        line-height: 42px;
+      }
+
+      @media screen and (max-width: 767px) {
+        main {
+          background-position: center right;
+          height: 75vh;
+        }
+
+        h1 {
+          font-size: 38px;
+          line-height: 44px;
+        }
+
+        h3 {
+          font-size: 32px;
+          line-height: 38px;
+        }
+
+      }
+
+    </style>
+    
+    <main>
+      
+      <section class="l-content-container">
+
+        <h1>Herb Torres</h1>
+        <h3>(678)353-1893</h3>
+        <h4>herbtorres960@gmail.com</h4>
+        <h4>Ann Arbor, Michigan</h4>
+        
+      </section>
+
+    </main>
+
+    <portfolio-footer></portfolio-footer>
+
+  </template>
+  <script>
+    /**
+     * Registers element within Polymer.
+     * @constructor
+     */
+    Polymer({
+      /**
+       * Specifies HTML tag name for custom Polymer element.
+       * @prop
+       */
+      is: 'portfolio-contact',
+      /**
+       * Declares properties on custom Polymer element.
+       *
+       */
+      properties: {
+       
+      },
+     
+      scrollToTop: function() {
+        this.fire('scroll-top');
+      }
+
+    });
+  </script>
+</dom-module>

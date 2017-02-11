@@ -1,0 +1,404 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!-- Layout elements -->
+<link rel="import" href="../portfolio-footer/portfolio-footer.html">
+
+<!-- Pages -->
+<link rel="import" href="../portfolio-page-home/portfolio-page-home.html">
+<link rel="import" href="../portfolio-page-apply/portfolio-page-apply.html">
+<link rel="import" href="../portfolio-page-learn/portfolio-page-learn.html">
+<link rel="import" href="../portfolio-page-post/portfolio-page-post.html">
+
+<link rel="import" href="../../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animatable.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animations.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+
+<dom-module id="portfolio-main">
+
+  <template>
+
+    <style>
+      body {
+        overflow: hidden;
+        @apply(--layout-fullbleed);
+        @apply(--layout-vertical);
+      }
+      .content {
+        height: 100%;
+      }
+      neon-animated-pages {
+        height: 100%;
+      }
+      neon-animatable {
+        height: 100%
+      }
+    </style>
+
+    <app-location route="{{route}}" use-hash-as-path></app-location>
+    <app-route route="{{route}}" pattern="/:page" data="{{pageData}}" tail="{{pageTail}}"></app-route>
+    <portfolio-page-post post="{{postsData.slug}}" active="{{postsActive}}"></portfolio-page-post>
+
+    <style is="custom-style" include="iron-flex iron-flex-alignment iron-flex-reverse iron-flex-factors iron-positioning">
+
+      :host {
+        @apply(--layout-flex);
+        @apply(--layout-vertical);
+        font-family: 'Roboto';
+      }
+
+      #main-nav .title {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+        color: #444444;
+        /*margin-left: 0;*/
+      }
+
+      #logo-container {
+        width: 100%;
+      }
+
+      #main-nav #logo-link {
+        display: inline-block;
+        /*@apply(--layout-horizontal);*/
+        color: #444444;
+        text-decoration: none;
+        /*width: 100%;*/
+        height: 100%;
+      }
+
+      #logo-link .title {
+        display: inline-block;
+        @apply(--layout-inline);
+      }
+
+      #main-nav .title span {
+        @apply(--layout-self-center);
+        font-size: 16px;
+        font-family: 'Product Sans';
+      }
+
+      #main-nav .title #logo {
+        display: inline-block;
+        margin-right: 5px;
+        width: 60px;
+        height: 20px;
+      }
+
+      #main-nav paper-toolbar {
+        z-index: 10;
+        --paper-toolbar-height: 50px;
+        --paper-toolbar-background: #ffffff;
+        box-shadow: 0 2px 2px rgba(120, 120, 120, .3);
+      }
+
+      #main-nav paper-icon-button {
+        display: none;
+        margin-right: 0;
+        /*color: #000000;*/
+
+      }
+
+      #main-nav paper-tabs {
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        --paper-tabs-selection-bar-color: #1653d2;
+      }
+
+      #main-nav paper-tab {
+        margin: 0 30px;
+        text-align: center;
+      }
+
+      #main-nav paper-tab a {
+        height: 30px;
+        color: #969696;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      paper-item a {
+        color: #969696;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .paper-item-link {
+        color: inherit;
+        text-decoration: none;
+        display: block;
+        background: #fff;
+      }
+
+      .paper-item-link paper-item {
+        background: #fff;
+      }
+
+      @media screen and (min-width: 480px) {
+
+        #main-nav paper-toolbar {
+          --paper-toolbar-height: 96px;
+          --paper-toolbar-content: {
+            max-width: 480px;
+            margin: 0 auto;
+          };
+        }
+
+        #main-nav .title #logo {
+          width: 72px;
+          height: 24px;
+        }
+
+        #main-nav .title span {
+          font-size: 18px;
+        }
+
+      }
+
+      @media screen and (min-width: 600px) {
+        #main-nav paper-toolbar {
+          --paper-toolbar-content: {
+            max-width: 600px;
+            margin: 0 auto;
+          };
+        }
+
+        #main-nav .title #logo {
+          width: 80px;
+          height: 27px;
+        }
+
+        #main-nav .title span {
+          font-size: 24px;
+        }
+
+      }
+
+      @media screen and (min-width: 960px) {
+        #main-nav paper-toolbar {
+          --paper-toolbar-content: {
+            max-width: 960px;
+            margin: 0 auto;
+          };
+        }
+
+        #main-nav .title #logo {
+          margin-right: 10px;
+          width: 92px;
+          height: 32px;
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        #main-nav paper-toolbar {
+          --paper-toolbar-content: {
+            max-width: 1024px;
+            margin: 0 auto;
+          };
+        }
+
+      }
+
+      @media screen and (min-width: 1280px) {
+        #main-nav .title #logo {
+          /*margin-left: 5%;*/
+        }
+
+        #main-nav paper-toolbar {
+          --paper-toolbar-content: {
+            max-width: 1280px;
+            margin: 0 auto;
+          };
+        }
+
+
+      }
+
+      @media screen and (max-width: 800px) {
+
+        #main-nav paper-tabs {
+          display: none;
+        }
+
+        #main-nav paper-icon-button {
+          display: block;
+          color: #969696;
+        }
+
+        .paper-item-link {
+          color: inherit;
+          text-decoration: none;
+          display: block;
+          background: #fff;
+        }
+
+        .paper-item-link paper-item {
+          background: #fff;
+        }
+
+      }
+    </style>
+    <paper-drawer-panel responsive-width="600px" force-narrow="true" selected="{{drawerState}}" id="drawer">
+
+      <nav drawer>
+        <paper-menu>
+          <a href="#/home" class="paper-item-link"><paper-item noink key='home'>Home</paper-item></a>
+          <a href="#/apply" class="paper-item-link"><paper-item noink key='apply'>Apply</paper-item></a>
+          <a href="#/learn-more" class="paper-item-link"><paper-item noink key='learn-more'>Learn More</paper-item></a>
+        </paper-menu>
+      </nav>
+
+
+      <paper-scroll-header-panel class="flex" fixed main id="scroll">
+
+        <!-- Main Navigation Menu -->
+        <nav id="main-nav" class="paper-header">
+          <paper-toolbar>
+          <div id="logo-container">
+            <a href="#/home" id="logo-link">
+              <div class="title">
+                <img src="../../images/diversity_google_logo.svg" id="logo" alt="Google">
+                <span>Diversity Impact Fund</span>
+              </div>
+            </a>
+            </div>
+            <paper-tabs selected='{{pageData.page}}' attr-for-selected='key' noink>
+              <paper-tab noink link key='home' on-tap="handleScrollTop"><a href="#/home">Home</a></paper-tab>
+              <paper-tab noink link key='apply' on-tap="handleScrollTop"><a href="#/apply">Apply</a></paper-tab>
+              <paper-tab noink link key='learn-more' on-tap="handleScrollTop"><a href="#/learn-more">Learn More</a></paper-tab>
+            </paper-tabs>
+            <paper-icon-button icon="menu" id="menu-icon" paper-drawer-toggle>
+            </paper-icon-button>
+          </paper-toolbar>
+        </nav>
+
+        <!-- <a href="#/portfolio-post" class="paper-item-link" on-tap="handleScrollTop">Port Post</a> -->
+
+        <iron-ajax
+          auto
+          url="[[_computeURL(category)]]"
+          handle-as="json"
+          loading="{{loading}}"
+          last-response="{{postList}}"></iron-ajax>
+
+        <template is="dom-repeat" items="{{postList.posts}}">
+          <div class="post">
+            <a href="#/[[category]]/posts/[[item.slug]]">
+              <iron-image style="width:900px; height:512px;" placeholder="[[item.img_placeholder]]"
+                          sizing="cover" preload fade src="[[item.img]]"
+                          alt="[[item.img_alt]]"></iron-image>
+              <h2>[[item.title]]</h2>
+              <p>This is a list-page! Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </a>
+          </div>
+        </template>
+
+        <!-- Diversity Site Pages -->
+        <neon-animated-pages selected="{{pageData.page}}"
+                             attr-for-selected="key"
+                             entry-animation="fade-in-animation"
+                             exit-animation="fade-out-animation">
+
+          <neon-animatable key="home">
+            <portfolio-home on-scroll-top="handleScrollTop"></portfolio-home>
+          </neon-animatable>
+
+          <neon-animatable key="apply">
+            <portfolio-apply route="{{pageTail}}" on-scroll-top="handleScrollTop"></portfolio-apply>
+          </neon-animatable>
+
+          <neon-animatable key="learn-more">
+            <portfolio-about route="{{pageTail}}" on-scroll-top="handleScrollTop"></portfolio-about>
+          </neon-animatable>
+
+          <neon-animatable key="portfolio-post">
+            <portfolio-page-post route="{{pageTail}}" on-scroll-top="handleScrollTop"></portfolio-page-post>
+          </neon-animatable>
+
+        </neon-animated-pages>
+
+      </paper-scroll-header-panel>
+
+    </paper-drawer-panel>
+
+  </template>
+
+  <script>
+  /**
+   * Registers element within Polymer.
+   * @constructor
+   */
+  Polymer({
+    /**
+     * Specifies HTML tag name for custom Polymer element.
+     * @prop
+     */
+    is: 'portfolio-main',
+
+    properties: {
+
+      route: {
+        type: Object,
+        notify: true,
+        observer: '_routeChanged'
+      }
+
+    },
+    /**
+     * Sets route after element is attached to document
+     * @function
+     */
+    attached: function() {
+      if (!this.route.path){
+        this.set('route.path', '/home');
+      }
+    },
+    /**
+     * Observes route change and closes mobile drawer
+     * @function
+     * @param {string} newValue
+     * @param {string} oldValue
+     */
+    _routeChanged: function(newValue, oldValue) {
+
+      if(newValue.path === '' || newValue.path === null) {
+        this.set('route.path', '/home');
+      }
+
+      if(this.drawerState === 'drawer'){
+        this.$.drawer.closeDrawer();
+      }
+
+    },
+    /**
+     * Handles smooth scrolling to top of page
+     * @function
+     */
+    handleScrollTop: function(){
+      this.$.scroll.scrollToTop(true);
+    }
+
+  });
+
+  </script>
+
+</dom-module>

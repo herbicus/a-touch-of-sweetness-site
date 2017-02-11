@@ -1,0 +1,48 @@
+{
+  "private": true,
+  "dependencies": {
+    "layout": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.3",
+    "babel-preset-es2015": "^6.1.2",
+    "babelify": "^7.2.0",
+    "browser-sync": "^2.6.4",
+    "browserify": "^13.0.0",
+    "browserify-shim": "^3.7.0",
+    "del": "^2.2.0",
+    "exorcist": "^0.4.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-change": "^1.0.0",
+    "gulp-cli": "github:gulpjs/gulp-cli#4.0",
+    "gulp-concat": "^2.4.0",
+    "gulp-concat-sourcemap": "^1.3.1",
+    "gulp-crisper": "^1.0.0",
+    "gulp-csso": "~0.2.9",
+    "gulp-eslint": "^1.1.0",
+    "gulp-htmlmin": "^1.3.0",
+    "gulp-if": "^2.0.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-streamify": "^1.0.2",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-stylus": "^2.3.1",
+    "gulp-uglify": "^1.0.0",
+    "gulp-useref": "^3.0.8",
+    "gulp-util": "^3.0.1",
+    "gulp-vulcanize": "^6.0.1",
+    "karma": "^0.12.23",
+    "merge-stream": "^0.1.8",
+    "nib": "^1.0.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  },
+  "scripts": {
+    "gulp4": "npm uninstall gulp -g && npm install gulpjs/gulp-cli#4.0 -g"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

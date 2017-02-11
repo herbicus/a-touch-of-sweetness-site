@@ -1,0 +1,220 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="portfolio-page-hero">
+  <template>
+    <style>
+      :host {
+        @apply(--layout-relative);
+        min-height: 176px;
+        margin-bottom: 25px;
+      }
+
+      :host #background-container {
+        @apply(--layout-vertical);
+      }
+
+      :host ::content p {
+        max-width: 100%;
+        padding: 0 5%;
+        margin-top: 33px;
+        color: #969696;
+        font-size: 16px;
+        line-height: 1.6;  
+      }
+
+      :host ::content a {
+        max-width: 100%;
+        @apply(--layout-self-center);
+      }
+      
+      :host .background {
+        width: 100%;
+        height: 100%;
+        min-height: 176px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+
+      :host .outside-container {
+        @apply(--layout-vertical);
+        @apply(--layout-center);
+        height: 100%;
+      }
+
+      :host .content {
+        max-width: 320px;
+        max-width: 100%;
+      }
+
+      :host .inner-content {
+        @apply(--layout-vertical);
+      }
+
+      :host .gradient {
+        display: none;
+      }
+
+
+      @media screen and (min-width: 480px) {
+        :host {
+          min-height: 264px;
+          margin-bottom: 55px;
+        }
+
+        :host .background {
+          height: 100%;
+          min-height: 264px;
+          background-position: center 30%;
+        }
+
+        :host .content {
+          max-width: 480px;
+        }
+
+      }
+
+
+
+      @media screen and (min-width: 600px) {
+
+        :host {
+          min-height: 266px;
+          margin-bottom: 72px;
+        }
+
+        :host .background {
+          height: 100%;
+          min-height: 266px;
+          background-position: center center;
+        }
+
+        :host .content {
+          max-width: 600px;
+        }
+
+
+      }
+
+
+
+      @media screen and (min-width: 960px) {
+        
+        :host {
+          @apply(--layout-vertical);
+          min-height: 396px;
+          background-color:#fafafa;
+          margin-bottom: 68px;
+        }
+
+        :host ::content p {
+          padding: 0;
+          font-size: 18px;
+        }
+
+        :host ::content a {
+          max-width: 100%;
+          @apply(--layout-self-start);
+        }
+
+        :host .outside-container {
+          @apply(--layout-fit);
+          /*@apply(--layout-horizontal);*/
+          @apply(--layout-center-center);
+          /*background-position: right center;*/
+          /*background-size: contain; */
+        }
+
+        :host .inner-content {
+          -ms-align-items: stretch;
+          -webkit-align-items: stretch;
+          align-items: stretch;
+          width: 25%;
+          margin-left: 10%;
+        }
+        
+        :host .content {
+          /*@apply(--layout-flex);*/
+          max-width: 100%;
+        }
+
+        :host .background {
+          @apply(--layout-self-end);
+          line-height: 0;
+          height: 100%;
+          width: 58%;
+          min-height: 396px;
+          background-size: cover;
+          background-position: left center;
+        }
+
+        :host .gradient {
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0%;
+          right: 0%;
+          height: 100%;
+          background: -moz-linear-gradient(left,  rgba(250,250,250,1) 0%, rgba(250,250,250,1) 42%, rgba(250,250,250,0) 70%);
+          background: -webkit-linear-gradient(left,  rgba(250,250,250,1) 0, rgba(250,250,250,1) 42%,rgba(250,250,250,0) 70%);
+          background: linear-gradient(to right,  rgba(250,250,250,1) 0%, rgba(250,250,250,1) 42%,rgba(250,250,250,0) 70%);
+        }
+
+
+      }
+
+      @media screen and (min-width: 1024px) {
+        :host .content {
+          max-width: 1024px;
+        }
+      }
+
+      @media screen and (min-width: 1280px) {
+        
+        :host .content {
+          max-width: 1280px;
+        }
+
+      }
+
+    </style>
+    <div id="background-container">
+      <div class="background" style$="{{computedBackgroundImage(backgroundImage)}}"></div>
+      <div class="gradient"></div>
+    </div>
+
+      <div class="outside-container">
+        <div class="content">
+          <div class="inner-content">
+            <!-- <div class="centered"> -->
+              <content></content>
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    
+  </template>
+  <script>
+  /**
+   * Registers element within Polymer.
+   * @constructor
+   */
+    Polymer({
+      /**
+       * Specifies HTML tag name for custom Polymer element.
+       * @prop
+       */
+      is: 'portfolio-page-hero',
+      /**
+       * Builds and returns a CSS background image property and value
+       * @function
+       * @param {string} backgroundImage
+       */
+      computedBackgroundImage: function(backgroundImage) {
+        return "background-image: url(" + backgroundImage + ')';
+      }
+    })
+  </script>
+</dom-module>

@@ -1,0 +1,137 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="portfolio-footer.html">
+
+<dom-module id="portfolio-about">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      main {
+        @apply(--layout-flex);
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-justify-content: center;
+                justify-content: center;
+        min-height: 79vh;
+      }
+
+      iron-image ::content img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      a {
+        color: #000;
+        font-weight: 700;
+      }
+
+      ul,
+      section {
+        @apply(--layout-flex);
+        -webkit-align-items: center;
+                align-items: center;
+      }
+
+      #image {
+        -webkit-flex: 2;
+            -ms-flex: 2;
+                flex: 2;
+        margin-right: 25px;
+      }
+
+      #content {
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+      }
+
+      ul {
+        padding: 0;
+        margin-top: 25px;
+      }
+
+      ul li {
+        list-style: none;
+        margin-right: 1%;
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+      }
+
+      ul li:last-child {
+        margin-right: 0;
+      }
+
+      @media screen and (max-width: 767px) {
+        main {
+          display: block;
+          min-height: 1px;
+          height: auto;
+        }
+
+        section {
+          -webkit-flex-direction: column;
+              -ms-flex-direction: column;
+                  flex-direction: column;
+        }
+      }
+
+    </style>
+
+    <main class="l-content-container">      
+      <section>
+
+        <div id="image">
+          <iron-image preload fade src="../../images/about-img.jpg"></iron-image>
+        </div>
+
+        <div id="content">
+          <p>I'm a front end developer based out of Ann Arbor, Michigan. I live with my lovely wife and two little rugrats. I'm originally from Grand Rapids, Michigan but lived in Atlanta, Georgia for a little over 20 years. Currenly, I am working at <a href="http://byhook.com/work" target="_blanbk">Hook Studios</a> here in Ann Arbor.</p>
+
+          <p>When i'm not working, I spend most my free time with the family but I also have been known to shoot some basketball and play a mean Imperial DPS on Elder Scrolls Online for the PS4.</p>
+
+          <ul>
+            <li><iron-image preload fade src="../../images/badge-certified.png"></iron-image></li>
+            <li><iron-image preload fade src="../../images/badge-YTMasthead.png"></iron-image></li>
+            <li><iron-image preload fade src="../../images/badge-HTML5.png"></iron-image></li>
+          </ul>
+
+        </div>
+
+      </section>
+    </main>
+
+    <portfolio-footer></portfolio-footer>
+
+  </template>
+  <script>
+      /**
+       * Registers element within Polymer.
+       * @constructor
+       */
+      Polymer({
+        /**
+         * Specifies HTML tag name for custom Polymer element.
+         * @prop
+         */
+        is: 'portfolio-about'
+
+      });
+  </script>
+</dom-module>

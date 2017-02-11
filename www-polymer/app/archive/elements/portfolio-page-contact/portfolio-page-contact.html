@@ -1,0 +1,835 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="portfolio-about">
+  <template>
+    <style>
+      :host {
+        line-height: 1.6;
+        @apply(--layout-vertical);
+      }
+
+      :host a {
+        color: #3268d5;
+        text-decoration: none;
+      }
+
+      :host portfolio-page-hero paper-button {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: uppercase;
+        padding: 0;
+        line-height: 36px;
+      }
+
+      :host .container {
+        margin: auto;
+      }
+
+      :host .content {
+        padding: 0 5%;
+      }
+
+      :host .disable-container {
+        margin: 0;
+      }
+
+      :host .disable-content {
+        padding: 0;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+
+      /* TABS STYLES */
+
+      #tabs-container {
+        margin-bottom: 10px;
+      }
+
+      #tabs-container paper-tabs {
+        @apply(--layout-end);
+        @apply(--layout-self-end);
+        --paper-tabs-selection-bar-color: #7babf8;
+      }
+
+      #tabs-container paper-tab {
+        @apply(--layout-end);
+        @apply(--layout-self-end);
+        @apply(--layout-flex-none);
+        margin: auto;
+        padding: 0;
+        font-size: 10.5px;
+        font-weight: 500;
+        color: #969696;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      #tabs-container paper-tabs a {
+        color: #969696;
+        line-height: 48px;
+      }
+
+      #tabs-container #divider-line {
+        width: 100%;
+        height: 2px;
+        background-color: #efefef;
+      }
+
+
+      #investments-section h2,
+      #team-section h2 {
+        font-size: 23px;
+        font-weight: 300;
+        color: #444444;
+      }
+
+
+      /* INVESTMENTS SECTION STYLES */
+
+      #investments-section h2 {
+        text-align: center;
+      }
+
+      #investments-section .project {
+        padding: 45px 0;
+      }
+
+      #investments-section .project:nth-child(even) {
+        background-color: #fafafa;
+      }
+
+
+      #investments-section .project-inner {
+        @apply(--layout-vertical);
+        @apply(--layout--self-center);
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
+      #investments-section .image-container {
+        max-width: 320px;
+        /*max-height: 350px;*/
+        @apply(--layout-center);
+      }
+
+      #investments-section .image-container img {
+        max-width: 320px;
+        /*max-height: 350px;*/
+        width: 100%;
+
+      }
+
+      #investments-section .project-text {
+        padding: 0 5%;
+      }
+
+      #investments-section .project-text p {
+        color: #969696;
+      }
+
+      #investments-section .project-text h2 {
+        margin-top: 19px;
+      }
+
+      /* TEAM SECTION STYLES */
+
+
+      #team-section {
+        @apply(--layout-wrap);
+      }
+
+      #team-section h3 {
+        margin: 45px 0 17px;
+        font-size: 21px;
+        font-weight: 400;
+        color: #444444;
+      }
+
+      .team-grouping {
+        @apply(--layout-wrap);
+        @apply(--layout-horizontal);
+        text-align: center;
+        /*@apply(--layout-center);*/
+      }
+
+      .team-member {
+        width: 42%;
+        margin: 20px 10px;
+      }
+
+      .team-member iron-image {
+        --iron-image-width: 81px;
+      }
+
+      .team-member .name{
+        color: #3268d5;
+        font-weight: 300;
+        line-height: 1.2;
+      }
+
+      .team-member .title {
+        font-size: 12px;
+        color: #747474;
+        font-weight: 500;
+        line-height: 1.2;
+      }
+
+      .back-top-container {
+        text-align: right;
+      }
+
+      .back-to-top {
+        max-width: 320px;
+        margin: 10px auto;
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: none;
+        color: #3268d5;
+      }
+
+      .back-to-top iron-icon {
+        vertical-align: sub;
+        margin-left: 10px;
+      }
+
+      @media screen and (min-width: 480px) {
+        :host portfolio-page-hero paper-button {
+          font-size: 23px;
+        }
+
+        :host portfolio-page-hero iron-icon {
+          vertical-align: sub;
+        }
+
+        :host .container {
+          max-width: 480px;
+          margin: auto;
+        }
+
+        #tabs-container paper-tab {
+          font-size: 16px;
+        }
+
+        #investments-section .project-inner {
+          max-width: 480px;
+        }
+
+        #investments-section .image-container {
+          max-width: 395px;
+          /*max-height: 425px;*/
+          @apply(--layout-self-center);
+        }
+
+        #investments-section .image-container img {
+          max-width: 395px;
+          /*max-height: 425px;*/
+        }
+
+        #team-section h2 {
+          font-size: 36px;
+        }
+
+        #team-section h2 {
+          font-size: 30px;
+        }
+
+        .team-member .name{
+          font-size: 25px;
+        }
+
+        .team-member .title {
+          font-size: 16px;
+        }
+
+        .back-to-top {
+          max-width: 480px;
+          margin: 30px auto 0;
+          font-size: 20px;
+        }
+
+      }
+
+      @media screen and (min-width: 600px) {
+        :host .container {
+          max-width: 600px;
+        }
+
+        :host portfolio-page-hero paper-button {
+          font-size: 20px;
+        }
+
+        #investments-section .project-inner {
+          max-width: 600px;
+        }
+
+        .team-member {
+          width: 46%;
+        }
+
+        .back-to-top {
+          max-width: 600px;
+          margin: 31px auto 0;
+          font-size: 20px;
+        }
+
+      }
+
+      @media screen and (min-width: 960px) {
+        :host .container {
+          max-width: 960px;
+        }
+
+        :host .content {
+          padding: 0 10%;
+        }
+
+        #tabs-container paper-tab {
+          margin-left: 24px;
+          margin-right: 20px;
+          font-size: 18px;
+        }
+
+        #investments-section h2,
+        #team-section h2 {
+          line-height: 1.2;
+        }
+
+        #investments-section h2 {
+          font-size: 30px;
+        }
+
+        #investments-section .project-text {
+          padding: 0 ;
+        }
+
+        #investments-section .project-inner {
+          max-width: 960px;
+        }
+
+        #team-section h2 {
+          font-size: 40px;
+        }
+
+        #team-section h3 {
+          margin: 45px 0 17px;
+          font-size: 30px;
+        }
+
+        .team-grouping {
+          @apply(--layout-wrap);
+          @apply(--layout-horizontal);
+        }
+
+        .team-member {
+          @apply(--layout-horizontal);
+          @apply(--layout-center);
+          width: 45%;
+          margin: 25px 10px;
+        }
+
+        .team-member iron-image {
+          @apply(--layout-flex-none);
+          --iron-image-width: 81px;
+        }
+
+        .team-member .member-text {
+          text-align: left;
+          margin-left: 20px;
+        }
+
+        .team-member .name{
+          font-size: 25px;
+        }
+
+        .team-member .title {
+          line-height: 1.2;
+        }
+
+        .back-to-top {
+          max-width: 960px;
+          margin: 31px auto;
+          font-size: 23px;
+        }
+
+      }
+
+      @media screen and (min-width: 1024px) {
+        :host .container {
+          max-width: 1024px;
+        }
+
+        #investments-section .project:nth-child(odd) .project-inner {
+          @apply(--layout-horizontal-reverse);
+        }
+
+        #investments-section .project:nth-child(odd) .image-container {
+          margin-left: 50px;
+        }
+
+        #investments-section .project:nth-child(even) .image-container {
+          margin-right: 50px;
+        }
+
+        #investments-section .project-inner {
+          @apply(--layout-horizontal);
+          @apply(--layout-center);
+          max-width: 1024px;
+          margin: 0 auto;
+        }
+
+        #investments-section .image-container {
+          width: 395px;
+          /*height: 425px;*/
+          /*@apply(--layout-self-start);*/
+        }
+
+        #investments-section .project-text {
+          @apply(--layout-center);
+          width: 50%;
+          flex-grow: 1;
+          flex-shrink: 1;
+          flex-basis: 0;
+        }
+
+        #investments-section .project-text  h2{
+          margin-top: 0;
+        }
+
+        .team-member {
+          width: 47%;
+        }
+
+        .back-to-top {
+          max-width: 1024px;
+          margin: 77px auto 0;
+        }
+
+      }
+
+      @media screen and (min-width: 1280px) {
+        :host .container {
+          max-width: 1280px;
+        }
+
+        :host portfolio-page-hero paper-button {
+          font-size: 23px;
+        }
+
+        #investments-section .project:nth-child(odd) .image-container {
+          margin-left: 100px;
+        }
+
+        #investments-section .project:nth-child(even) .image-container {
+          margin-right: 100px;
+        }
+
+        .team-member {
+          width: 31%;
+        }
+
+        .back-to-top {
+          max-width: 1280px;
+        }
+
+      }
+    </style>
+    <portfolio-page-hero background-image="./images/diversity_learn_more_header.jpg">
+      <p>The Diversity Impact Fund is made possible by Googlers volunteering their skills and time. If you would like to volunteer to support the Diversity Impact Fund or one of its investments please join the Diversity Impact Fund’s Braintrust.</p>
+      <a href="https://docs.google.com/a/google.com/forms/d/10KG4Xu6e1haZr_8kPvEtSvwt-Z1ZRvRVb4VXHatsQiw/viewform" class="button" target="_blank"><paper-button noink>Braintrust sign up <iron-icon icon="icons:arrow-forward"></iron-icon></paper-button></a>
+    </portfolio-page-hero>
+    <carbon-route route="{{route}}" pattern="/:tabName" data="{{learnMoreData}}"></carbon-route>
+    <div id="tabs-container">
+      <div class="container disable-container">
+        <div class="content disable-content">
+          <paper-tabs selected="{{checkLearnTabSelected(learnMoreData.tabName)}}" attr-for-selected="name" noink>
+            <paper-tab link name="investments">
+              <a href="#/learn-more/investments">
+                Investments
+              </a>
+            </paper-tab>
+            <paper-tab link name="team">
+              <a href="#/learn-more/team">
+                Team
+              </a>
+            </paper-tab>
+          </paper-tabs>
+          <div id="divider-line"></div>
+        </div>
+      </div>
+    </div>
+    <iron-pages selected="{{checkLearnTabSelected(learnMoreData.tabName)}}" attr-for-selected="name">
+      <div id="investments-section" name="investments">
+        <div class="container">
+          <div class="content">
+            <h2>Here are some of the Diversity Impact Fund Investments. We call them DIFI’s!</h2>
+          </div> <!--End .content -->
+        </div> <!--End .container -->
+
+        <div class="project">
+          <div class="container disable-container">
+            <div class="content disable-content">
+              <div class="project-inner">
+                <div class="image-container">
+                  <h2>Accelerate.LGBT</h2>
+                  <img src="../../images/learn-more/acceleratelgbt.jpg" alt="Accelerate LGBT">
+                </div>
+                <div class="project-text">
+
+                  <p>Accelerate.LGBT helps LGBT-run or LGBT-focused small businesses and nonprofits grow online. The program is offered in partnership with the National Gay &amp; Lesbian Chamber of Commerce and invests into developing the ability for LGBT SMBs to leverage Google tools to grow online, helping them grow their businesses through Google's Supplier Diversity program and developing connections with LGBT community.</p>
+                  <p>Events have already taken place in Dublin, NYC, Seattle and Austin, with more coming in DC, Warsaw, Paris, London, Berlin and beyond. We're hoping to grow Accelerate.LGBT to more cities, especially in EMEA.</p>
+                </div>
+              </div> <!-- End .project-inner -->
+            </div> <!-- End .content -->
+          </div> <!-- End .container -->
+        </div>
+
+        <div class="project">
+          <div class="container disable-container">
+            <div class="content disable-content">
+              <div class="project-inner">
+                <div class="image-container">
+                  <h2>BGN EMEA Outreach</h2>
+                  <img src="../../images/learn-more/black-googler-network.png" alt="BGN EMEA Outreach">
+                </div>
+                <div class="project-text">
+
+                  <p>The Black Googler Network (BGN) EMEA hosted a two-day outreach event attended by 30 Googlers from 7 offices. The outreach focused on making external and internal impact.</p>
+                  <p>Externally, participants worked to increase computer science awareness among local UK schools by hosting coding workshops at three different London schools, attended by a total of 43 students.</p>
+                  <p>Internally, attendees focused on Googler career development and overall BGN strategy with two career development workshops and six inspirational Google speakers.</p>
+                </div>
+              </div> <!-- End .project-inner -->
+            </div> <!-- End .content -->
+          </div> <!-- End .container -->
+        </div>
+
+        <div class="project">
+          <div class="container disable-container">
+            <div class="content disable-content">
+              <div class="project-inner">
+                <div class="image-container">
+                  <h2>Dress Code</h2>
+                  <img src="../../images/learn-more/dress-code-logo.png" alt="Dress Code">
+                </div>
+                <div class="project-text">
+
+                  <p><a href="http://go/dresscode-pl" target="_blank">DressCode</a> is a pre-university, diversity outreach program targeted at teenage girls throughout Poland. The program is a collaboration between engineers from Google and three other Polish tech companies.</p>
+                  <p>Our goal is to nurture girls’ interest in coding, and encourage them to pursue learning opportunities. DressCode is a multi-stage online coding contest. Difficulty increase as participants progress and learn a new skill at each stage.</p>
+                  <p>The DressCode pilot program launched November 2015 and is scheduled to run until May 2016. Six of our seven challenges have launched and we have 300 active participants ranging from 10-19 years old hailing from Poland’s largest cities and its tiniest villages.</p>
+                </div>
+              </div> <!-- End .project-inner -->
+            </div> <!-- End .content -->
+          </div> <!-- End .container -->
+        </div>
+
+        <div class="project">
+          <div class="container disable-container">
+            <div class="content disable-content">
+              <div class="project-inner">
+                <div class="image-container">
+                  <h2>Mind the GAP - Turkey</h2>
+                  <img src="../../images/learn-more/mind-gap-turkey.jpg" alt="Mind the GAP - Turkey">
+                </div>
+                <div class="project-text">
+
+                  <p>The teenage years have been identified as the age when girls tend to drift away from mathematical scientific disciplines. Mind the GAP is a pre-university effort that aims to change the way girls perceive Computer Science and encourage them to develop an interest in the field. Through the Diversity Impact Fund, Mind the GAP hosted its first events in Turkey and Poland with great success: prior to the event, 54% of attendees did not wish to pursue a career in CS. Following the event, that number jumped to 93%!</p>
+                </div>
+              </div> <!-- End .project-inner -->
+            </div> <!-- End .content -->
+          </div> <!-- End .container -->
+        </div>
+
+        <div class="project">
+          <div class="container disable-container">
+            <div class="content disable-content">
+              <div class="project-inner">
+                <div class="image-container">
+                  <h2>#stridesummit</h2>
+                  <img src="../../images/learn-more/stride-summit2.jpg" alt="#stridesummit">
+                </div>
+                <div class="project-text">
+
+                  <p>The Women@Google #Stride Summit brought together 80 participants across GBO, G&amp;A and Tech in Dublin for a full day summit with the theme "connect &amp; empower." The day included keynotes, a panel with Dublin leaders, a session on Gender Intelligence as well as lots of networking opportunities. Participants donated an impressive &euro;4844 for <a href="http://www.plan.ie/" target="_blank">Plan International Ireland</a>, a charity dedicated to combating child poverty. Participant feedback was strong (97% evaluation score) and included quotes such as this one: <span class="italic">"I promptly went to a team dinner and evangelised the Women@ message to at least five of the guys to figure out how to get more men involved. I am fully inspired, thanks all. It was the best Google event I've ever been at."</span></p>
+                </div>
+              </div> <!-- End .project-inner -->
+            </div> <!-- End .content -->
+          </div> <!-- End .container -->
+        </div>
+
+
+        <div class="project">
+          <div class="container disable-container">
+            <div class="content disable-content">
+              <div class="project-inner">
+                <div class="image-container">
+                  <h2>YouTube's Women in S.T.E.A.M Think Tank</h2>
+                  <img src="../../images/learn-more/women-in-steam.jpg" alt="YouTube's Women in STEAM Think Tank">
+                </div>
+                <div class="project-text">
+
+                  <p>YouTube's Women in S.T.E.A.M (Science, Technology, Engineering, Arts, Math) Think Tank is an event series that  celebrates female creators and gives them a chance to connect as a community, learn and share ideas. The events gather female creators in the field of S.T.E.A.M for a day of learning, discussion and feedback around the themes of bridging the gender gap and empowering more female-driven content creation. YouTube Women in S.T.E.A.M Think Tank features prominent influencers in the field as keynote speakers and facilitates brainstormings on ways the community and YouTube can help encourage more women on the platform.</p>
+                </div>
+              </div> <!-- End .project-inner -->
+            </div> <!-- End .content -->
+          </div> <!-- End .container -->
+        </div>
+      </div> <!-- End Investments section -->
+
+      <div id="team-section" name="team">
+        <div class="container">
+          <div class="content">
+            <h2>The Fund Team</h2>
+            <div class="team-grouping">
+             <div class="team-member">
+                <iron-image src="../../images/learn-more/team/pip-baker.png" alt="Pip Baker"></iron-image>
+                <div class="member-text">
+                  <div class="name">Pip Baker</div>
+                  <div class="title">DIF Global Lead</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/julia-namgoong.png" alt="Julia Namgoong"></iron-image>
+                <div class="member-text">
+                  <div class="name">Julia Namgoong</div>
+                  <div class="title">Lead Analyst DIF Analytics</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/austin-swift.png" alt="Austin Swift"></iron-image>
+                <div class="member-text">
+                  <div class="name">Austin Swift</div>
+                  <div class="title">Analyst DIF Analytics</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/laura-lubetsky.png" alt="Laura Lubetsky"></iron-image>
+                <div class="member-text">
+                  <div class="name">Laura Lubetsky</div>
+                  <div class="title">DIF Portfolio Manager</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/jamie-reutershan.png" alt="Jamie Reutershan"></iron-image>
+                <div class="member-text">
+                  <div class="name">Jamie Reutershan</div>
+                  <div class="title">DIF Marketing and Communications Lead</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/katya-klinova.png" alt="Katya Klinova"></iron-image>
+                <div class="member-text">
+                  <div class="name">Katya Klinova</div>
+                  <div class="title">DIF Marketing and Communications Advisor</div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End .content -->
+        </div> <!-- End .container -->
+
+        <div class="container">
+          <div class="content">
+            <h2>Reviewers: Global Fund Committee</h2>
+            <div class="team-grouping">
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/chris-genteel.png" alt="Chris Genteel"></iron-image>
+                <div class="member-text">
+                  <div class="name">Chris Genteel</div>
+                  <div class="title">Head of Diversity Markets</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/chuck-stevens.png" alt="Chuck Stevens"></iron-image>
+                <div class="member-text">
+                  <div class="name">Chuck Stevens</div>
+                  <div class="title">Diversity Program Manager, EMEA</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/keerthana-mohan.png" alt="Keerthana Mohan"></iron-image>
+                <div class="member-text">
+                  <div class="name">Keerthana Mohan</div>
+                  <div class="title">Head of Diversity &amp; Inclusion, APAC</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/mo-fong.png" alt="Mo Fong"></iron-image>
+                <div class="member-text">
+                  <div class="name">Mo Fong</div>
+                  <div class="title">Director, K-12 Education Outreach</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/nancy-lee.png" alt="Nancy Lee"></iron-image>
+                <div class="member-text">
+                  <div class="name">Nancy Lee</div>
+                  <div class="title">VP, People Operations, Diversity, Integrity, &amp; Governance</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/nilka-thomas.png" alt="Nilka Thomas"></iron-image>
+                <div class="member-text">
+                  <div class="name">Nilka Thomas</div>
+                  <div class="title">Manager, Global Diversity &amp; Inclusion</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/sharleen-gutierrez.png" alt="Sharleen Gutierrez"></iron-image>
+                <div class="member-text">
+                  <div class="name">Sharleen Gutierrez</div>
+                  <div class="title">Googler Engagement Team Global Lead</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/yolanda-mangolini.png" alt="Yolanda Mangolini"></iron-image>
+                <div class="member-text">
+                  <div class="name">Yolanda Mangolini</div>
+                  <div class="title">Director, Global Diversity and Inclusion</div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End .content -->
+        </div> <!-- End .container -->
+
+        <div class="container">
+          <div class="content">
+            <h2>Regional Fund Committees</h2>
+            <h3>APAC</h3>
+            <div class="team-grouping">
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/cecelia-herbert.png" alt="Cecelia Herbert"></iron-image>
+                <div class="member-text">
+                  <div class="name">Cecelia Herbert</div>
+                  <div class="title">Diversity and Inclusion Manager</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/yuri-yamachi.png" alt="Yuri Yamachi"></iron-image>
+                <div class="member-text">
+                  <div class="name">Yuri Yamachi</div>
+                  <div class="title">Diversity Manager, Japan, Korea, China, Taiwan</div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End .content -->
+        </div> <!-- End .container -->
+
+        <div class="container">
+          <div class="content">
+            <h3>EMEA</h3>
+            <div class="team-grouping">
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/cassi-mecchi.png" alt="Cassi Mecchi"></iron-image>
+                <div class="member-text">
+                  <div class="name">Cassi Mecchi</div>
+                  <div class="title">Diversity Business Partner G&amp;A EMEA</div>
+                </div>
+              </div>
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/sofia-sharkova.png" alt="Sofia Sharkova"></iron-image>
+                <div class="member-text">
+                  <div class="name">Sofia Sharkova</div>
+                  <div class="title">Diversity Programs Manager, EMEA</div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End .content -->
+        </div> <!-- End .container -->
+
+        <div class="container">
+          <div class="content">
+            <h3>LATAM</h3>
+            <div class="team-grouping">
+              <div class="team-member">
+                <iron-image src="../../images/learn-more/team/sharleen-gutierrez.png" alt="Sharleen Gutierrez"></iron-image>
+                <div class="member-text">
+                  <div class="name">Sharleen Gutierrez</div>
+                  <div class="title">Googler Engagement Team Global Lead</div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End .content -->
+        </div> <!-- End .container -->
+
+        <div class="container">
+          <div class="content">
+            <h3>Special Advisors</h3>
+            <p>Additional special advisors will be added to application review team based on the nature of the application in question. These might include: Campus, Diversity Business Partners (DBPs), DIG Comms, Diversity Core, Diversity Markets, Employee Resource Group (ERG) Liaisons, Google.org, Googleserve, GPS, K-12, People Dev, and Others.</p>
+          </div> <!-- End .content -->
+        </div> <!-- End .container -->
+
+      </div> <!-- End Team Gallery section -->
+    </iron-pages>
+      <div class="content back-top-container">
+        <paper-button class="back-to-top" noink on-tap="scrollToTop">Back to top <iron-icon icon="icons:arrow-upward"></iron-icon></paper-button>
+      </div>
+    <portfolio-footer></portfolio-footer>
+  </template>
+  <script>
+    /**
+     * Registers element within Polymer.
+     * @constructor
+     */
+    Polymer({
+      /**
+       * Specifies HTML tag name for custom Polymer element.
+       * @prop
+       */
+      is: 'portfolio-about',
+      /**
+       * Declares properties on custom Polymer element.
+       *
+       */
+      properties: {
+        /**
+         * Gets or sets index of selected paper-tab and/or iron-page
+         * @prop
+         */
+        selected: {
+          type: String,
+          value: 0,
+          reflectToAttribute: true
+        },
+        route: {
+          type: Object,
+          notify: true
+        }
+      },
+      /**
+       * Checks to make sure an initial section is active.
+       * @function
+       * @param {string} section
+       */
+      checkLearnTabSelected: function(section) {
+        var section = section;
+        if(section == '' ||
+          section == null ||
+          section === 'faq' ||
+          section === 'criteria' ||
+          section === 'guidelines'){
+          section = 'investments';
+        }
+        return section;
+      },
+      /**
+       * Fires an event to scroll the page to the top
+       * @function
+       */
+      scrollToTop: function() {
+        this.fire('scroll-top');
+      }
+
+    });
+  </script>
+</dom-module>

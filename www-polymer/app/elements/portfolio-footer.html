@@ -1,0 +1,134 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="portfolio-icons.html">
+
+<dom-module id="portfolio-footer">
+  <template>
+    <style include="shared-styles">
+
+      footer {
+        @apply(--layout-flex);
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-align-content: center;
+                align-content: center;
+        -webkit-justify-content: center;
+                justify-content: center;
+        background: var(--logo-black);
+        height: 100px;
+      }
+
+      .footer-wrap {
+        @apply(--layout-flex);
+        -webkit-justify-content: flex-end;
+                justify-content: flex-end;
+        -webkit-align-content: flex-end;
+                align-content: flex-end;
+      }
+
+      .footer-content {
+        @apply(--layout-flex);
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-align-self: center;
+                align-self: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-content li {
+        margin: 0 50px 0 0;
+        padding: 0;
+        
+      }
+
+/*      .footer-content li:last-child {
+        margin-right: 0;
+        
+      }*/
+
+      .icon {
+        width: 40px;
+        height: 40px;
+        color: var(--white);
+      }
+
+      @media screen and (max-width: 767px) {
+        .icon {
+          width: 30px;
+          height: 30px;
+        }
+
+        .footer-content li {
+          margin: 0 40px 0 0;
+          
+        }
+      }
+
+    </style>
+
+    <footer>
+
+      <div class="l-content-container footer-wrap">
+
+        <ul class="footer-content">
+
+          <li>
+            <a href="https://www.linkedin.com/" target="_blank">
+              <iron-icon icon="social:linkedin" class="icon icon-youtube"></iron-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.facebook.com/" target="_blank">
+              <iron-icon icon="social:facebook" class="icon icon-youtube"></iron-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.facebook.com" target="_blank">
+              <iron-icon icon="social:twitter" class="icon icon-twitter"></iron-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.instagram.com/" target="_blank">
+              <iron-icon icon="social:instagram" class="icon icon-youtube"></iron-icon>
+            </a>
+          </li>
+          
+        </ul>
+        
+      </div>
+      
+    </footer>
+
+  </template>
+  <script>
+    /**
+    * Registers element within Polymer.
+    * @constructor
+    */
+    Polymer({
+      /**
+       * Specifies HTML tag name for custom Polymer element.
+       * @prop
+       */
+      is: 'portfolio-footer'
+    });
+  </script>
+</dom-module>

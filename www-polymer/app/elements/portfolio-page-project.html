@@ -1,0 +1,221 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="portfolio-page-project">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      .l-project-page {
+        @apply(--layout-flex);
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-align-items: flex-start;
+                align-items: flex-start;
+        -webkit-box-align: flex-start;
+            -moz-box-align: flex-start;
+            -ms-flex-align: flex-start;
+        -webkit-justify-content: flex-start;
+                justify-content: flex-start;
+      }
+
+      #sidebar {
+        min-height: 80vh;
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+      }
+
+      #content {
+        -webkit-flex: 2.5;
+            -ms-flex: 2.5;
+                flex: 2.5;
+        text-align: center;
+      }
+
+      #content ::content img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      #sidebar-header a {
+        color: #000;
+        -webkit-transition: color 0.3s ease-in-out;
+           -moz-transition: color 0.3s ease-in-out;
+            -ms-transition: color 0.3s ease-in-out;
+             -o-transition: color 0.3s ease-in-out;
+                transition: color 0.3s ease-in-out;
+      }
+
+      #sidebar ::content a:hover {
+        color: var(--logo-red);
+      }
+
+      .cta {
+        cursor: pointer;
+        /*padding-right: 25px;*/
+        text-decoration: none;
+        color: #000;
+        font-weight: 700;
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      .cta:after {
+        display: inline-block;
+        content: ' ';
+        background-image: url('../images/arrow.svg');
+        background-size: 28px 28px;
+        height: 28px;
+        width: 28px;
+        margin-left: 8px;
+        margin-bottom: 2px;
+        vertical-align: middle;
+      }
+
+      #visit,
+      #sidebar-header {
+        @apply(--layout-flex);      
+        -webkit-align-items: baseline;
+                align-items: baseline;
+        -webkit-justify-content: flex-start;
+                justify-content: flex-start;
+      }
+
+      #visit {
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        padding: 0 25px 25px 25px;
+      }
+
+      #sidebar-header {
+        padding: 0 25px;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+      }
+
+      .btn-back {
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #757575 !important;
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+      }
+
+      .btn-back:before {
+        display: inline-block;
+        content: ' ';
+        background-image: url('../images/arrow-back.svg');
+        background-repeat: no-repeat;
+        -webkit-background-size: contain;
+             -o-background-size: contain;
+                background-size: contain;
+        height: 18px;
+        width: 18px;
+        margin-right: 2px;
+        margin-bottom: 2px;
+        vertical-align: middle;
+      }
+
+      @media screen and (max-width: 767px) {
+        .l-project-page {
+          -webkit-flex-direction: column-reverse;
+              -ms-flex-direction: column-reverse;
+                  flex-direction: column-reverse;
+          -webkit-align-content: center;
+                  align-content: center;
+          -webkit-justify-content: center;
+                  justify-content: center;
+        }
+
+        #sidebar {
+          min-height: 1px;
+        }
+
+        #content,
+        #sidebar {
+          width: 100%;
+          -webkit-flex: 1;
+              -ms-flex: 1;
+                  flex: 1;
+        }
+
+        h1 {
+          margin-top: 0;
+        }
+      }
+
+    </style>
+
+    <div class="l-content-container">
+      <div class="l-project-page">
+        
+        <div id="sidebar">
+
+          <div id="sidebar-header">
+            <a href="{{link}}" target="_blank">
+              <h1>{{title}}</h1>
+            </a>
+
+            <a class="btn-back" href="/">Back</a>
+          </div>
+
+          <content select="[sidebar]"></content>
+
+
+
+          <div id="visit">
+            <a href="{{link}}" target="_blank" class="cta">Visit site</a>
+          </div>
+
+        </div>
+
+        <div id="content">
+          <content select="[content]"></content>      
+        </div>
+
+      </div>
+    </div>         
+
+  </template>
+  <script>
+      /**
+       * Registers element within Polymer.000
+       * @constructor
+       */
+      Polymer({
+        /**
+         * Specifies HTML tag name for custom Polymer element.
+         * @prop
+         */
+        is: 'portfolio-page-project',
+
+        /**
+         * Declares properties on custom Polymer element.
+         *
+         */
+        properties: {
+          link: String,
+          title: String
+        }
+
+      });
+  </script>
+</dom-module>

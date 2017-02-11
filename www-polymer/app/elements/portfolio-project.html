@@ -1,0 +1,133 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+
+<dom-module id="portfolio-project">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        margin: 20px 0;
+      }
+
+      a {
+        background: #FFF;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      a:hover > figure img {
+        opacity: 0.15;
+      }
+
+      a:hover > figure span {
+        opacity: 1;
+      }
+
+      figure {
+        padding: 0;
+        margin: 0;
+        position: relative;
+      }
+
+      figure img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        /*-webkit-border-radius: 50%;
+                border-radius: 50%;*/
+        -webkit-transition: opacity 0.3s ease-in-out;
+           -moz-transition: opacity 0.3s ease-in-out;
+            -ms-transition: opacity 0.3s ease-in-out;
+             -o-transition: opacity 0.3s ease-in-out;
+                transition: opacity 0.3s ease-in-out;
+      }
+
+      figcaption {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        z-index: 1;
+        -webkit-transform: translate(-50%, -50%);
+           -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+             -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+      }
+
+      span {
+        font: 400 18px/32px 'Open Sans', sans-serif;
+        color: black;
+        opacity: 0;
+        width: 100%;
+        -webkit-transition: opacity 0.3s ease-in-out;
+           -moz-transition: opacity 0.3s ease-in-out;
+            -ms-transition: opacity 0.3s ease-in-out;
+             -o-transition: opacity 0.3s ease-in-out;
+                transition: opacity 0.3s ease-in-out;
+      }
+
+
+    </style>
+    
+    <a href="{{url}}">
+      <figure>
+
+        <img src="{{image}}" alt="{{alt}}">
+       <!--  <iron-image spreload fade src="{{image}}" alt="{{alt}}"></iron-image> -->
+
+        <figcaption>
+          <span>{{title}}</span>
+        </figcaption>
+
+      </figure>
+    </a>
+    
+
+  </template>
+  <script>
+    /**
+     * Registers element within Polymer.
+     * @constructor
+     */
+    Polymer({
+      /**
+       * Specifies HTML tag name for custom Polymer element.
+       * @prop
+       */
+      is: 'portfolio-project',
+      /**
+       * Declares properties on custom Polymer element.
+       *
+       */
+      properties: {
+        url: String,
+
+        image: {
+          type: String,
+          value: ''
+        },
+
+        alt: {
+          type: String,
+          value: 'Portfolio Project'
+        },
+
+        title: String
+      }
+
+    });
+  </script>
+</dom-module>

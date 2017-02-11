@@ -1,0 +1,80 @@
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
+
+<link rel="import" href="portfolio-list.html">
+<link rel="import" href="portfolio-post.html">
+
+<dom-module id="portfolio-pages">
+
+  <template>
+
+    <style>
+      :host {
+        display: block;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-align-items: center;
+                align-items: center;
+        -webkit-justify-content: center;
+                justify-content: center;
+        background: #FFF;
+      }
+    </style>
+
+    <app-route route="{{route}}"
+               pattern="/list"
+               active="{{listActive}}"></app-route>
+
+    <app-route route="{{route}}"
+               pattern="/posts/:slug"
+               active="{{postsActive}}"
+               data="{{postsData}}"></app-route>
+
+    <portfolio-list category="{{category}}"
+               active={{listActive}}
+               loading="{{isLoading}}"></portfolio-list>
+
+    <portfolio-post post="{{postsData.slug}}"
+               active="{{postsActive}}"
+               loading="{{isLoading}}"></portfolio-post>
+
+    <div class="overlay" hidden$="[[!isLoading]]">
+      <paper-spinner active="[[isLoading]]"></paper-spinner>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'portfolio-pages',
+
+      observers: [
+        '_lockScroll(isLoading)'
+      ],
+
+      _lockScroll: function(isLoading) {
+        if (isLoading) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = 'visible';
+        }
+      }
+
+    });
+  </script>
+
+</dom-module>

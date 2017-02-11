@@ -1,0 +1,55 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../portfolio-page-project.html">
+
+<dom-module id="portfolio-page-project-slots">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+    </style>
+
+    <portfolio-page-project title="Holiday Slots 2015" link="http://herbtorres.com/happy-holidays/">
+
+      <aside sidebar>
+
+        <p>Holiday Slots is what I like to call a "Digital Holiday Card".  I plan on doing one of these every year to share with friends and family. It started with the Artifact Holiday Memory card in 2014, followed by this one in 2015.</p>
+      </aside>
+
+      <section content>
+
+        <iron-image preload fade src="../../images/preview/preview-slots.jpg"></iron-image>       
+      </section>
+
+    </portfolio-page-project>
+
+    <portfolio-footer></portfolio-footer>
+
+  </template>
+  <script>
+      /**
+       * Registers element within Polymer.
+       * @constructor
+       */
+      Polymer({
+        /**
+         * Specifies HTML tag name for custom Polymer element.
+         * @prop
+         */
+        is: 'portfolio-page-project-slots'
+
+      });
+  </script>
+</dom-module>

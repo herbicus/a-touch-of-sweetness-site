@@ -1,0 +1,85 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+
+<dom-module id="portfolio-page-post">
+
+  <template>
+
+    <style>
+      :host {
+        display: none;
+      }
+
+      :host([active]) {
+        display: block;
+      }
+
+      p {
+        font: 400 18px/33.18px "Roboto", sans-serif;
+        white-space: pre-wrap;
+      }
+
+      #placeholder {
+        height auto
+      }
+    </style>
+
+    <iron-ajax
+      auto
+      url="[[_computeURL(post)]]"
+      handle-as="json"
+      loading="{{loading}}"
+      last-response="{{postContent}}"></iron-ajax>
+
+    <article>
+      <h2>[[postContent.title]]</h2>
+      <h3>This is a portfolio-page-post!</h3>
+      <p>[[postContent.intro_text]]</p>
+      <!-- <iron-image style="width:900px; height:512px;" placeholder="[[postContent.img_placeholder]]"
+                  sizing="cover" preload fade src="[[postContent.img]]"
+                  alt="[[postContent.img_alt]]"></iron-image> -->
+      <img src="[[postContent.img]]" alt="[[postContent.img_alt">
+      <p>[[postContent.body_text]]</p>
+    </article>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'portfolio-page-post',
+
+      properties: {
+
+        active: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
+        },
+
+        loading: {
+          type: Boolean,
+          value: false,
+          notify: true
+        }
+
+      },
+
+      _computeURL: function(post) {
+        return `data/posts/${post}.json`;
+      }
+
+    });
+  </script>
+
+</dom-module>

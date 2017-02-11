@@ -1,0 +1,862 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../portfolio-page-hero/portfolio-page-hero.html">
+
+<dom-module id="portfolio-apply">
+  <template>
+    <style>
+      :host {
+        color: #969696;
+        @apply(--layout-vertical);
+        line-height: 1.6;
+      }
+
+      :host a {
+        color: #3268d5;
+        text-decoration: none;
+      }
+
+      :host portfolio-page-hero paper-button {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      :host .container {
+        margin: auto;
+      }
+
+      :host .content {
+        padding: 0 5%;
+      }
+
+      :host .disable-container {
+        margin: 0;
+      }
+
+      :host .disable-content {
+        padding: 0;
+      }
+
+      #tabs-container paper-tabs {
+        @apply(--layout-end);
+        @apply(--layout-self-end);
+        --paper-tabs-selection-bar-color: #7babf8;
+      }
+
+      #tabs-container paper-tab {
+        @apply(--layout-end);
+        @apply(--layout-self-end);
+        @apply(--layout-flex-none);
+        margin: auto;
+        padding: 0;
+        font-size: 10.5px;
+        font-weight: 500;
+        color: #969696;
+        letter-spacing: 1px;
+      }
+
+      #tabs-container paper-tabs a {
+        color: #969696;
+        line-height: 48px;
+      }
+
+      #tabs-container #divider-line {
+        width: 100%;
+        height: 2px;
+        background-color: #efefef;
+      }
+
+      /* PITCH GUIDELINES STYLES */
+
+      #guidelines-section {
+        margin-top: 31px;
+      }
+
+      #guidelines-section #guidelines-inner {
+        margin: 0 auto;
+      }
+
+      #guidelines-section ul {
+        list-style-position: outside;
+        margin: 0;
+        padding: 0 30px;
+      }
+
+      #guidelines-section li {
+        margin-bottom: 15px;
+      }
+
+      .bold {
+        font-weight: 700;
+      }
+
+
+
+      /* PITCH CRITERIA STYLES */
+
+      #criteria-section h2,
+      #faq-section h2 {
+        font-size: 23px;
+        font-weight: 300;
+        color: #444444;
+      }
+
+      #criteria-section h2 {
+        margin: 30px auto;
+      }
+
+      #criteria-section h3 {
+        font-size: 19px;
+        font-weight: 300;
+        color: #444444;
+      }
+
+      #criteria-section section:nth-child(even) {
+        background-color: #fafafa;
+      }
+
+      #criteria-section .section-inner {
+        padding: 20px 0;
+      }
+
+      #criteria-section .pillar-container {
+        margin: 48px 0;
+      }
+
+      #criteria-section .pillar span{
+        text-transform: uppercase;
+        color: #3268d5;
+        font-weight: 500;
+      }
+
+      #criteria-section li {
+        margin: 16px 0;
+      }
+
+      .italic {
+        font-style: italic;
+      }
+
+
+      /* FAQ STYLES */
+
+      #faq-section .faq-group:nth-child(even) {
+        background-color: #fafafa;
+      }
+
+
+      #faq-section .faq-inner {
+        margin: 0 auto;
+        padding: 25px 0;
+      }
+
+
+      #faq-section .faq {
+        display: block;
+        margin: 0 0 25px 0;
+      }
+
+      #faq-section .question {
+        @apply(--layout-center);
+        @apply(--layout-horizontal);
+        padding: 0;
+        font-size: 18px;
+        font-weight: 300;
+        color: #444444;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      #faq-section .faq-arrow {
+        @apply(--layout-flex-none);
+        @apply(--layout-self-start);
+        --iron-icon-width: 35px;
+        --iron-icon-height: 35px;
+        --iron-icon-fill-color: #3268d5;
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+      }
+
+      #faq-section .faq-arrow[expanded="true"] {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      #faq-section iron-collapse div {
+        margin-left: 41px;
+        padding: 35px 0;
+      }
+
+      #faq-section iron-collapse paper-button {
+        margin-left: 0;
+        padding-left: 0;
+      }
+
+      #faq-section iron-collapse p {
+        margin: 0 0 16px;
+      }
+
+      #faq-section iron-collapse ul {
+        margin-bottom: 0;
+      }
+
+      .back-top-container {
+        text-align: right;
+      }
+
+      .back-to-top {
+        max-width: 320px;
+        margin: 10px auto;
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: none;
+        color: #3268d5;
+      }
+
+      .back-to-top iron-icon {
+        vertical-align: sub;
+        margin-left: 10px;
+      }
+
+      @media screen and (min-width: 480px) {
+        :host .container {
+          max-width: 480px;
+          margin: auto;
+        }
+
+
+        :host portfolio-page-hero paper-button {
+          font-size: 23px;
+        }
+
+        :host portfolio-page-hero iron-icon {
+          vertical-align: sub;
+        }
+
+        #tabs-container paper-tab {
+          font-size: 16px;
+        }
+
+        #guidelines-section li {
+          line-height: 1.5;
+        }
+
+        .back-to-top {
+          max-width: 480px;
+          margin: 30px auto 0;
+          font-size: 20px;
+        }
+
+      }
+
+
+      @media screen and (min-width: 600px) {
+        :host .container {
+          max-width: 600px;
+        }
+
+        #tabs-container paper-tab {
+          font-size: 18px;
+        }
+
+        .back-to-top {
+          max-width: 600px;
+          margin: 31px auto 0;
+          font-size: 20px;
+        }
+
+
+      }
+
+      @media screen and (min-width: 960px) {
+
+
+        :host .container {
+          max-width: 960px;
+        }
+
+        :host portfolio-page-hero paper-button {
+          font-size: 20px;
+        }
+
+        :host .content {
+          padding: 0 10%;
+        }
+
+        #tabs-container paper-tab {
+          margin-left: 24px;
+          margin-right: 20px;
+          font-size: 18px;
+        }
+
+        #guidelines-section li {
+          font-size: 16px;
+        }
+
+        #criteria-section .pillar-container {
+          margin: 32px 0;
+        }
+
+        #criteria-section .pillar {
+          margin: 32px 0;
+        }
+
+        .back-to-top {
+          max-width: 960px;
+          margin: 31px auto;
+          font-size: 23px;
+        }
+
+      }
+
+
+      @media screen and (min-width: 1024px) {
+        :host .container {
+          max-width: 1024px;
+        }
+
+        .back-to-top {
+          max-width: 1024px;
+          margin: 77px auto 0;
+        }
+      }
+
+      @media screen and (min-width: 1280px) {
+        :host .container {
+          max-width: 1280px;
+        }
+
+        :host portfolio-page-hero paper-button {
+          font-size: 23px;
+        }
+
+        #guidelines-section {
+          margin-top: 50px;
+        }
+
+        #guidelines-section #guidelines-inner {
+          @apply(--layout-horizontal);
+        }
+
+        #guidelines-section ul {
+          width: 50%;
+        }
+
+        #guidelines-section li {
+          margin-bottom: 27px;
+        }
+
+        #criteria-section h2 {
+          margin-top: 50px;
+          margin-bottom: 35px;
+        }
+
+
+        #criteria-section h2,
+        #faq-section h2 {
+          font-size: 30px;
+        }
+
+        #criteria-section h3 {
+          font-size: 24px;
+        }
+
+        #criteria-section .section-inner {
+          margin: 0 auto;
+          padding: 20px 0;
+        }
+
+        #faq-section .faq-inner {
+          margin: 0 auto;
+          padding: 25px 0;
+        }
+
+        #faq-section iron-collapse div {
+          padding: 45px 0;
+        }
+
+        .back-to-top {
+          max-width: 1280px;
+        }
+
+      }
+    </style>
+
+    <portfolio-page-hero background-image="./images/diversity_apply_header.jpg">
+      <p>The Diversity Impact Fund invests in ambitious ideas from Googlers around the world across all aspects of diversity and inclusion. Applications are accepted year round on a rolling basis.</p>
+      <a href="https://dif.fluidreview.com/" class="button" target="_blank"><paper-button noink>Apply for funding <iron-icon icon="icons:arrow-forward"></iron-icon></paper-button></a>
+    </portfolio-page-hero>
+    <carbon-route route="{{route}}" pattern="/:tabName" data="{{tabData}}"></carbon-route>
+    <div id="tabs-container">
+      <div class="container disable-container">
+        <div class="content disable-content">
+          <paper-tabs selected="{{checkApplyTabSelected(tabData.tabName)}}" attr-for-selected="name" noink>
+            <paper-tab link name="guidelines"><a href="#/apply/guidelines">GUIDELINES</a></paper-tab>
+            <paper-tab link name="criteria"><a href="#/apply/criteria">SELECTION CRITERIA</a></paper-tab>
+            <paper-tab link name="faq"><a href="#/apply/faq">FAQs</a></paper-tab>
+          </paper-tabs>
+          <div id="divider-line"></div>
+        </div>
+      </div>
+    </div>
+    <iron-pages selected="{{checkApplyTabSelected(tabData.tabName)}}" attr-for-selected="name">
+      <div id="guidelines-section" name="guidelines">
+
+        <div class="container">
+          <div class="content">
+            <div id="guidelines-inner">
+              <ul>
+                <li>Please submit comprehensive project recommendations only. In the case of multiple approved projects by the same applicant, we recommend that the applicant only work on one project at a time.</li>
+                <li>All funds awarded must be spent in the calendar year in which they are awarded.</li>
+                <li>Funds awarded <span class="bold">cannot</span> be used for travel &amp; expenses.</li>
+              </ul>
+              <ul>
+                <li>Each application must delegate a point of contact who will be responsible for reporting progress and impact metrics if the project is successfully funded.</li>
+                <li>In 2016, we are not prioritizing charities, external partnerships or sponsorships as a standalone idea. If a charity, external partnership or sponsorship is a part of your broader proposal, please articulate a justification.</li>
+                <li>Please refer to the <a href="#/apply/faq" on-tap="scrollToTop">FAQs</a> for more information</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div> <!-- End Pitch Guidelines section -->
+      <div id="criteria-section" name="criteria"> <!-- Start Pitch Criteria section -->
+        <div class="container">
+          <div class="content">
+            <h2>The fund committee members will take into account the following criteria when reviewing pitches:</h2>
+          </div>
+        </div>
+        <section>
+          <div class="container">
+            <div class="content">
+              <div class="section-inner">
+                <h3>Alignment with Google's Diversity strategy (<a href="https://sites.google.com/a/google.com/portfolio-google/" target="_blank">go/diversity</a>):</h3>
+                <p>We're primarily looking for ideas that support one of the 4 pillars of Google Diversity strategy:</p>
+                <div class="pillar-container">
+                  <p class="pillar"><span>Hire diverse Googlers:</span> Innovation and creativity flourish when a variety of perspectives, backgrounds, and experiences are contributed. So we're expanding the ways we look for talent and creating more pathways into Google to create a more diverse workforce.</p>
+                  <p class="pillar"><span>Foster a fair and inclusive Google:</span> From creating an inclusive culture to checking our people processes, we all have a responsibility to ensure Google's a company where everyone has the opportunity to shine.</p>
+                  <p class="pillar"><span>Expand pool of technologists:</span> Inspire kids around the world not just to use technology, but to create it. We want to prepare the next generation for the workplace of the future, and expand access to CS education that engages and retains students from all backgrounds, particularly girls and minorities, who have historically been underrepresented in the field.</p>
+                  <p class="pillar"><span>Bridge the digital divide:</span> Increasing access to opportunities on the web for people of all backgrounds and experiences.</p>
+                </div>
+                <p>That said, if you have a “diversity moonshot” idea outside of these 4 pillars, please apply anyway!</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container">
+            <div class="content">
+              <div class="section-inner">
+                <h3>Innovation and thorough preparation.</h3>
+                <p>Think about new ways to use our products, technology or resources to innovate. Think big! We will only invest in new, impactful ideas.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container">
+            <div class="content">
+              <div class="section-inner">
+                <h3>Impact potential.</h3>
+                <p>The most successful proposals will have clearly defined metrics to measure impact. Here are some things to consider when evaluating impact:</p>
+                <ul>
+                  <li>Is the impact only short term or will the impact last past the initial investment?</li>
+                    <ul>
+                      <li>If long-term impact, how do you plan on collecting metrics over the life of the project?</li>
+                    </ul>
+                  <li>How many people are affected? A few people in a deep, lasting way or a large number of people?</li>
+                  <li>How significant is the impact? Is it internal, external or both?</li>
+                  <li>What is the return on investment? Think about how the funding will pay itself back in cultural change, diversity or greater good tied to Google’s Diversity strategy (<a href="https://sites.google.com/a/google.com/portfolio-google/" target="_blank">go/diversity</a>). In other words, does the outcome justify the amount requested?</li>
+                  <li>Will there be any direct impact on Google’s business? (e.g. ads revenue)</li>
+                  <li>What is the main vehicle used to drive impact? (e.g. event, software, tools)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container">
+            <div class="content">
+              <div class="section-inner">
+                <h3>Feasibility.</h3>
+                <p>The amount requested should be able to adequately address the intended purpose, where possible, by the end of the calendar year. While we are asking you to think big, we want to be sure progress can be made in the year you receive funding. However, exceptions can be made where applicable.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container">
+            <div class="content">
+              <div class="section-inner">
+                <h3>When allocating funds, we will try to keep a balance across geographic location and types of projects.</h3>
+                <p><span class="italic">However</span>, we are a fund so we will only invest in those ideas that we feel meet our criteria and are strategically aligned to our diversity and inclusion goals at Google.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div> <!-- End Pitch Criteria section -->
+      <div id="faq-section" name="faq"> <!-- Start FAQ section -->
+        <section class="faq-group">
+          <div class="container">
+            <div class="content">
+              <div class="faq-inner">
+                <h2>Eligibility</h2>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse1">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse1" expanded$="[[isExpanded(opened1)]]"></iron-icon>
+                    Who can apply?
+                  </div>
+                  <iron-collapse id="collapse1" opened="{{opened1}}">
+                    <div>
+                      <p>Applications are open to full-time employees at Google from all functions and locations globally.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse2">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse2" expanded$="[[isExpanded(opened2)]]"></iron-icon>
+                    I am a temp/vendor/contractor (TVC) or intern. May I apply?
+                  </div>
+                  <iron-collapse id="collapse2" opened="{{opened2}}">
+                    <div>
+                      <p>Sorry, the Diversity Impact Fund is open to full-time employees of Google only.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+              </div> <!-- End .faq-inner -->
+            </div> <!-- End .content -->
+          </div> <!-- End .container -->
+        </section>
+
+        <section class="faq-group">
+          <div class="container">
+            <div class="content">
+              <div class="faq-inner">
+                <h2>Application</h2>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse3">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse3" expanded$="[[isExpanded(opened3)]]"></iron-icon>
+                    How do I apply for funding?
+                  </div>
+                  <iron-collapse id="collapse3" opened="{{opened3}}">
+                    <div>
+                      <p>Please submit your application <a href="#/apply" on-tap="scrollToTop">here</a>.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse4">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse4" expanded$="[[isExpanded(opened4)]]"></iron-icon>
+                    Who should fill out the application form?
+                  </div>
+                  <iron-collapse id="collapse4" opened="{{opened4}}">
+                    <div>
+                      <p>Please have the project lead responsible for implementing the proposal fill out the <a href="#/apply" on-tap="scrollToTop">application form</a>.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse5">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse5" expanded$="[[isExpanded(opened5)]]"></iron-icon>
+                    When is the application due?
+                  </div>
+                  <iron-collapse id="collapse5" opened="{{opened5}}">
+                    <div>
+                      <p>Applications are accepted on a rolling basis so you can apply at any point throughout the year. Please be aware that applications submitted in Q4 may not receive funding until the following year. Please join the <a href="mailto:DIF-announce@google.com" target="_blank">DIF-announce@google.com</a> group to receive updates from the Diversity Impact Fund.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse6">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse6" expanded$="[[isExpanded(opened6)]]"></iron-icon>
+                    What does the application process look like?
+                  </div>
+                  <iron-collapse id="collapse6" opened="{{opened6}}">
+                    <div>
+                      <p>The application should be a detailed proposal addressing the criteria outlined <a href="#/apply/criteria" on-tap="scrollToTop">here</a>. The ideas and plan presented should be well-thought-out, and backed with solid impact and cost analyses. Applications are accepted on a rolling basis and will be reviewed when submitted. We anticipate the process from submission to outcome to take between 4-8 weeks based on the project scope and current application pipeline.</p>
+                      <ol>
+                        <li><p><span class="bold">First Review:</span> A review team will be put together to evaluate your application based on our <a href="#/apply/criteria" on-tap="scrollToTop">selection criteria</a>.</p></li>
+                        <li><p><span class="bold">Pitch Day:</span> If you pass the initial review round, you will be invited to a pitch day where you will present a 5 minute pitch on your idea followed by 10-15 minutes of Q&amp;A.</p></li>
+                        <li><p><span class="bold">Outcome:</span> Following the pitch day, you will be notified of the status of your application.</p></li>
+                      </ol>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse7">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse7" expanded$="[[isExpanded(opened7)]]"></iron-icon>
+                    How much can I apply for?
+                  </div>
+                  <iron-collapse id="collapse7" opened="{{opened7}}">
+                    <div>
+                      <p>We require a clear breakdown and justification of all requested funds, but big numbers don’t scare us! Although our budget is not infinite, do not let high costs prevent you from submitting a 10x idea.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse8">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse8" expanded$="[[isExpanded(opened8)]]"></iron-icon>
+                    May I submit multiple applications?
+                  </div>
+                  <iron-collapse id="collapse8" opened="{{opened8}}">
+                    <div>
+                      <p>Yes, you may submit more than one application. However, all submissions must be complete and well-thought-out. In the case of multiple approved projects, an applicant may only work on one project at a time.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse9">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse9" expanded$="[[isExpanded(opened9)]]"></iron-icon>
+                    Are there requirements for the project team?
+                  </div>
+                  <iron-collapse id="collapse9" opened="{{opened9}}">
+                    <div>
+                      <p>When delivering a successful Diversity Impact Fund Investment (DIFI) it’s as much about the team and execution as it is about having a great idea. We highly recommend that you clearly define the required roles and people on your team with your application. Think about the skillsets and working styles you will need on your team in order to achieve your goals.</p>
+                      <p>For those who are looking to connect with other interested Googlers, please click here to join the <a href="https://plus.sandbox.google.com/u/0/communities/112611125894435021053" target="_blank">Diversity Impact Fund G+ Community</a>.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+              </div> <!-- End .faq-inner -->
+            </div> <!-- End .content -->
+          </div> <!-- End .container -->
+        </section>
+
+        <section class="faq-group">
+          <div class="container">
+            <div class="content">
+              <div class="faq-inner">
+                <h2>Selection</h2>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse10">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse10" expanded$="[[isExpanded(opened10)]]"></iron-icon>
+                    How will the applications be reviewed?
+                  </div>
+                  <iron-collapse id="collapse10" opened="{{opened10}}">
+                    <div>
+                      <p>Please refer to the <a href="#/apply/criteria" on-tap="scrollToTop">Selection Criteria</a>.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse11">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse11" expanded$="[[isExpanded(opened11)]]"></iron-icon>
+                    Who will be reviewing the applications?
+                  </div>
+                  <iron-collapse id="collapse11" opened="{{opened11}}">
+                    <div>
+                      <p>For any given application, a review team will be put together based on the application’s strategic &amp; regional focus. A summary of the different review team members can be found <a href="#/learn-more/team" on-tap="scrollToTop">here</a>.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse12">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse12" expanded$="[[isExpanded(opened12)]]"></iron-icon>
+                    Why do I need to deliver a pitch?
+                  </div>
+                  <iron-collapse id="collapse12" opened="{{opened12}}">
+                    <div>
+                      <p>A pitch gives us an opportunity to go past the paper and get to know the people behind an application. Also we want to encourage moonshot thinking when it comes to diversity and inclusion at Google and what better way to do that than to ask applicants to think like entrepreneurs and pitch their best idea(s).</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse13">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse13" expanded$="[[isExpanded(opened13)]]"></iron-icon>
+                    When should I expect to hear back from the Diversity Impact Fund about my idea?
+                  </div>
+                  <iron-collapse id="collapse13" opened="{{opened13}}">
+                    <div>
+                      <p>Applications are accepted on a rolling basis and will be reviewed when submitted. We anticipate the process from submission to outcome to take between 4-8 weeks based on the project’s scope and current application pipeline.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse14">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse14" expanded$="[[isExpanded(opened14)]]"></iron-icon>
+                    Will all applications receive funding?
+                  </div>
+                  <iron-collapse id="collapse14" opened="{{opened14}}">
+                    <div>
+                      <p>No. We will only invest in ideas that have the potential for a large impact and are best aligned with Google’s Diversity goals. In some cases, an application may receive a conditional offer of funding if certain conditions stipulated by the fund committee are met.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+              </div> <!-- End .faq-inner -->
+            </div> <!-- End .content -->
+          </div> <!-- End .container -->
+        </section>
+
+        <section class="faq-group">
+          <div class="container">
+            <div class="content">
+              <div class="faq-inner">
+                <h2>Employee Resource Groups (ERGs)</h2>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse15">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse15" expanded$="[[isExpanded(opened15)]]"></iron-icon>
+                    Can an Employee Resource Group (ERG) submit more than one application?
+                  </div>
+                  <iron-collapse id="collapse15" opened="{{opened15}}">
+                    <div>
+                      <p>Yes, ERGs can submit more than one application per ERG. We recommend that ERGs select different project leads for each application in the event that multiple applications get approved. </p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+              </div> <!-- End .faq-inner -->
+            </div> <!-- End .content -->
+          </div> <!-- End .container -->
+        </section>
+
+        <section class="faq-group">
+          <div class="container">
+            <div class="content">
+              <div class="faq-inner">
+                <h2>Further Questions</h2>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse16">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse16" expanded$="[[isExpanded(opened16)]]"></iron-icon>
+                    What if I have additional questions?
+                  </div>
+                  <iron-collapse id="collapse16" opened="{{opened16}}">
+                    <div>
+                      <p>If you have general questions about the process or DIF in general, please email <a href="mailto:portfolio-impact-fund@google.com" target="_blank">portfolio-impact-fund@google.com</a>.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+                <div class="faq">
+                  <div class="question" on-click="toggle" data-args="#collapse17">
+                    <iron-icon class="faq-arrow" icon="icons:arrow-drop-down" data-args="#collapse17" expanded$="[[isExpanded(opened17)]]"></iron-icon>
+                    How can I get involved?
+                  </div>
+                  <iron-collapse id="collapse17" opened="{{opened17}}">
+                    <div>
+                      <p>The Diversity Impact Fund is made possible by Googlers volunteering their skills and time. If you would like to volunteer to support the Diversity Impact Fund or one of its investments, please join the Diversity Impact Fund’s Braintrust. <a href="https://docs.google.com/a/google.com/forms/d/10KG4Xu6e1haZr_8kPvEtSvwt-Z1ZRvRVb4VXHatsQiw/viewform" target="_blank"><paper-button noink>Braintrust sign up <iron-icon icon="icons:arrow-forward"></iron-icon></paper-button></a></p>
+                      <p>To receive Diversity Impact Fund news and updates, please join <a href="mailto:DIF-announce@google.com" target="_blank">DIF-announce@google.com</a> Google group.</p>
+                    </div>
+                  </iron-collapse>
+                </div>
+
+              </div> <!-- End .faq-inner -->
+            </div> <!-- End .content -->
+          </div> <!-- End .container -->
+        </section>
+      </div> <!-- End FAQ section-->
+    </iron-pages>
+    <div class="content back-top-container">
+      <paper-button class="back-to-top" noink on-tap="scrollToTop">Back to top <iron-icon icon="icons:arrow-upward"></iron-icon></paper-button>
+    </div>
+    <portfolio-footer></portfolio-footer>
+  </template>
+  <script>
+      /**
+       * Registers element within Polymer.
+       * @constructor
+       */
+      Polymer({
+        /**
+         * Specifies HTML tag name for custom Polymer element.
+         * @prop
+         */
+        is: 'portfolio-apply',
+        /**
+         * Declares properties on custom Polymer element.
+         *
+         */
+        properties: {
+          /**
+           * Gets or sets index of selected paper-tab and/or iron-page
+           * @prop
+           */
+          selected: {
+            type: String,
+            value: 0,
+            notify: true
+          },
+          /**
+           * Controls visibility of host element based on boolean value
+           * @prop {boolean}
+           */
+          active: {
+            type: Boolean,
+            value: false,
+            reflectToAttribute: true
+          }
+        },
+        /**
+         * Controls orientation of icon arrow depending on whether element is expanded or collapsed
+         * @function
+         * @param {boolean} opened
+         */
+        isExpanded: function(opened) {
+          // console.log(opened.toString());
+          return opened.toString();
+        },
+        /**
+         * Checks to make sure an initial section is active.
+         * @function
+         * @param {string} section
+         */
+        checkApplyTabSelected: function(section) {
+          var section = section;
+          if(section == '' ||
+            section == null ||
+            section === 'team' ||
+            section === 'investments'){
+            section = 'guidelines';
+          }
+          return section;
+        },
+        /**
+         * Fires an event to scroll the page to the top
+         * @function
+         */
+        scrollToTop: function() {
+          this.fire('scroll-top');
+        },
+        /**
+         * Controls toggling of iron-collapse element based on selector
+         * @function
+         * @param {object} event
+         */
+        toggle: function(e) {
+          var selector = e.target.getAttribute('data-args');
+          document.querySelector(selector).toggle();
+        }
+      });
+  </script>
+</dom-module>

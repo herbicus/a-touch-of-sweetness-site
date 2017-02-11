@@ -1,0 +1,326 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/google-youtube/google-youtube.html">
+
+<dom-module id="portfolio-home">
+  <template>
+    <style>
+
+      :host {
+        color: #969696;
+      }
+
+      #home-container {
+        max-width: 320px;
+        margin: auto;
+        padding: 0 16px;
+      }
+
+      #video-container {
+        max-width: 320px;
+        margin: 56px auto 0;
+      }
+
+      #video_img {
+        display: block;
+        margin-top:30px ;
+        width: 100%;
+      }
+
+      #home-text h1 {
+        font-size: 30px;
+        font-weight: 300;
+        color: #444444;
+      }
+
+      #home-text p {
+        margin-top: 36px;
+        line-height: 1.6;
+      }
+
+      #home-text #link-container {
+        margin-top: 30px;
+        /*@apply(--layout-vertical);*/
+        /*@apply(--layout-justified);*/
+        /*text-align: center;*/
+      }
+
+      #link-container a {
+        display: block;
+      }
+
+      #home-text  paper-button {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      #home-text a {
+        margin: 0;
+        color: #3268d5;
+        font-weight: 500;
+        text-decoration: none;
+        text-transform: uppercase;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 0;
+      }
+
+      #home-text .join paper-button{
+        text-transform: none;
+        text-align: left;
+        font-size: 16px;
+      }
+
+      #home-text a iron-icon {
+        vertical-align: sub;
+        --iron-icon-height: 22px;
+        margin-left: 5px;
+      }
+
+      #plan-b {
+        position: relative;
+      }
+
+      #plan-b p {
+        position: absolute;
+        width: 80%;
+        top: 30%;
+        left: 35px;
+        font-size: 14px;
+        -ms-transform: translateY(-30%);
+        -moz-transform: translateY(-30%);
+        -webkit-transform: translateY(-30%);
+        transform: translateY(-30%);
+        color: #969696;
+      } 
+
+      @media screen and (min-width: 480px) {
+        #home-container {
+          max-width: 480px;
+        }
+
+        #video-container {
+          max-width: 480px;
+        }
+
+        #home-text h1 {
+          font-size: 45px;
+        }
+
+        #home-text p {
+          font-size: 22px;
+        }
+
+        #home-text a {
+          font-size: 23px;
+          text-align: left;
+        }
+
+        #home-text a iron-icon {
+          margin-left: 10px;
+        }
+
+        #plan-b p {
+          width: 45%;
+          top: 35%;
+          left: 50px;
+          -ms-transform: translateY(-35%);
+          -moz-transform: translateY(-35%);
+          -webkit-transform: translateY(-35%);
+          transform: translateY(-35%);
+          padding: 0;
+          font-size: 16px;
+        }
+      }
+
+      @media screen and (min-width: 600px) {
+        #home-container {
+          max-width: 600px;
+        }
+
+        #video-container {
+          max-width: 600px;
+        }
+
+        #home-text h1 {
+          font-size: 55px;
+        }
+
+        #home-text a {
+          /*margin-top: 45px;*/
+        }
+
+        #plan-b p {
+          top: 40%;
+          left: 40px;
+          -ms-transform: translateY(-40%);
+          -moz-transform: translateY(-40%);
+          -webkit-transform: translateY(-40%);
+          transform: translateY(-40%);
+        }
+      }
+
+      @media screen and (min-width: 960px) {
+        #home-container {
+          max-width: 960px;
+          padding: 0 24px;
+        }
+
+        #video-container {
+          max-width: 960px;
+        }
+
+        #home-text {
+          max-width: 780px;
+          margin-left: 102px;
+        }
+
+        #home-text p {
+          font-size: 16px;
+          padding-bottom: 25px;
+        }
+
+        #home-text a {
+          display: block;
+        }
+
+        #plan-b p {
+          width: 45%;
+          top: 43%;
+          left: 75px;
+          -ms-transform: translateY(-43%);
+          -moz-transform: translateY(-43%);
+          -webkit-transform: translateY(-43%);
+          transform: translateY(-43%);
+          font-size: 20px;
+          line-height: 1.5;
+        }
+
+        
+      }
+
+      @media screen and (min-width: 1024px) {
+
+        #plan-b p {
+          width: 44%;
+          top: 43%;
+          left: 75px;
+          -ms-transform: translateY(-43%);
+          -moz-transform: translateY(-43%);
+          -webkit-transform: translateY(-43%);
+          transform: translateY(-43%);
+          font-size: 20px;
+        }
+
+      }
+
+      @media screen and (min-width: 1280px) {
+
+        #home-container {
+          max-width: 1280px;
+        }
+
+        #video-container {
+          max-width: 1280px;
+        }
+
+        #home-text {
+          max-width: 800px;
+          margin-left: 105px;
+        }
+
+        #home-text p {
+          padding-bottom: 25px;
+        }
+
+        #home-text .join paper-button{
+          text-transform: none;
+        }
+
+        #plan-b p {
+          width: 39%;
+          top: 45%;
+          left: 100px;
+          -ms-transform: translateY(-45%);
+          -moz-transform: translateY(-45%);
+          -webkit-transform: translateY(-45%);
+          transform: translateY(-45%);
+          font-size: 23px;
+        }
+      }
+
+
+
+    </style>
+
+    <div id="home-container">
+      <div id="video-container">
+        <!-- <img src="../../images/diversity_intro_video.jpg" id="video_img"> -->
+        <!-- <google-youtube video-id="QCWefHVeQeQ"  fluid="true"  thumbnail="./images/diversity_intro_video.jpg" id="youtube-video"></google-youtube> -->
+      </div>
+      <div id="plan-b">
+        <img src="../../images/diversity_home_header.jpg" id="video_img">
+        <p>The Diversity Impact Fund is a new internal investment fund focused on investing in bold, impactful ideas targeted at improving diversity and inclusion at Google, the tech industry and the wider world.</p>
+      </div>
+      <div id="home-text">
+        <!-- <p>The Diversity Impact Fund (DIF) is a new internal investment fund focused on investing in bold, impactful ideas targeted at improving diversity and inclusion at Google, the tech industry and the wider world.</p> -->
+        <div id="link-container">
+          <a href="#/apply" on-scroll-top="handleScrollTop" on-tap="scrollToTop"><paper-button noink>Apply for funding<iron-icon icon="icons:arrow-forward"></iron-icon></paper-button></a>
+          <a href="#/learn-more" on-scroll-top="handleScrollTop" on-tap="scrollToTop"><paper-button noink>Learn more<iron-icon icon="icons:arrow-forward"></iron-icon></a>
+        </div>
+        <a href="https://plus.sandbox.google.com/u/0/communities/112611125894435021053" class="join" target="_blank"> <paper-button noink>Join our G+ community to discuss early ideas</a>
+        <a href="https://groups.google.com/a/google.com/d/forum/dif-announce" class="join" target="_blank"> <paper-button noink>Join DIF-announce@ to receive the DIF news</iron-icon></a>
+      </div>
+    </div>
+    <portfolio-footer></portfolio-footer>
+  </template>
+  <script>
+    /**
+     * Registers element within Polymer.
+     * @constructor
+     */
+    Polymer({
+      /**
+       * Specifies HTML tag name for custom Polymer element.
+       * @prop
+       */
+      is: 'portfolio-home',
+      /**
+       * Declares properties on custom Polymer element.
+       *
+       */
+      properties: {
+        /**
+         * Controls visibility of host element based on boolean value
+         * @prop {boolean}
+         */
+        active: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
+        }
+
+      },
+
+      /**
+       * Fires an event to scroll the page to the top
+       * @function
+       */
+      scrollToTop: function() {
+        this.fire('scroll-top');
+      }
+
+    });
+  </script>
+</dom-module>
