@@ -45,9 +45,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --offPink: #D9B5B6;
         --box-shadow-slight: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         --box-shadow-light: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-        --box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        --box-shadow-high: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
         display: block;
+      }
+
+      /* typography */
+      h1, h2, h3, h4, h5, h6, p, span, li {
+        color: #000;
+      }
+  
+      h1 {
+        font: 32px/32px 'Nixie One', cursive;
+      }
+        
+        /*@media $tablet
+          font 24px/32px 'Nixie One', cursive*/
+        
+      h2, 
+      h3 {
+        font: 28px/28px 'Nixie One', cursive;
+      }
+        
+
+      h4, 
+      h5, 
+      h6 {
+        font: 28px/32px 'Nixie One', cursive;
+      }
+        
+       /* @media $tablet
+          font 22px/32px 'Nixie One', cursive*/
+        
+      p,
+      span,
+      li {
+        font: 400 14px/24px 'Lato', sans-serif;
+      }
+
+      a {
+        color: #fff;
+        font: 700 16px/24px 'Lato', sans-serif;
       }
 
       /*
@@ -65,7 +103,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: block;
         padding: 0 16px;
         text-decoration: none;
-        color: var(--app-secondary-color);
+        color: var(--primary);
         line-height: 40px;
       }
 
@@ -76,12 +114,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .offcanvas--links paper-icon-button {
         color: black;
-        --paper-icon-button-ink-color: #4285f4;
+        --paper-icon-button-ink-color: var(--primary);
       }
 
       /*
       * Header
       */
+      .site--content-header {
+        background: #FFF;
+        -webkit-box-shadow: var(--box-shadow-slight);
+                box-shadow: var(--box-shadow-slight);
+      }
+
       .content--header-nav {
         display: -webkit-flex;
         display: -moz-flex;
@@ -99,28 +143,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         justify-content: space-between;
       }
 
+      .content--header-nav a {
+        color: var(--primary);
+      }
+
       .content--header-title {
         -webkit-flex: 1px;
         -ms-flex: 1px;
         flex: 1px;
       }
 
+      /* hamburger btn */
       .content--menu-btn {
         color: #fff;
         --paper-icon-button-ink-color: #fff;
       }
 
-      /*
-      * Main Content Styles
+      /* ===============================================
+      *  Main Content Styles ===========================
+         ===============================================
       */
-      .site--content-main {}
+      .site--content-main {
+        opacity: 0;
+      }
 
-      .site--content-main section {
+      ./*site--content-main section {
         padding: 0 25px;
         -webkit-box-sizing: border-box;
            -moz-box-sizing: border-box;
                 box-sizing: border-box;
-      }
+      }*/
       /* test styles - delete */
       .__test-section {
         height: 2000px;
@@ -131,10 +183,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 50px auto;
       }
 
-      .gallery-guts {
-        opacity: 0;
-      }
-
       #spinner {
         position: absolute;
         left: 50%;
@@ -142,6 +190,58 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         width: 100%;
         height: 100%;
         margin: 0 auto;
+      }
+
+      /* hero styls
+         TODO: move to shared-styles
+      */
+      .content--hero {
+        background: url('../images/bg-hero.jpg');
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+             -o-background-size: cover;
+                background-size: cover;
+        background-position: center center;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+      }
+      
+      .hero--copy {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        width: 100%;
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 100px 25px;
+        
+      }
+
+      .hero--card h1 {
+        margin: 0;
+      }
+
+      .hero--card,
+      .hero--logo {
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+        padding: 25px;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+      }
+
+      .hero--card {
+        background: #FFF;
+        padding: 50px;
+        -webkit-border-radius: 4px;
+                border-radius: 4px;
+        -webkit-box-shadow: var(--box-shadow-high);
+                box-shadow: var(--box-shadow-high);
       }
 
     </style>
@@ -168,7 +268,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </iron-selector>
       </paper-header-panel>
 
-      <!-- site main content section -->
+      <!-- site main/body content section -->
       <paper-scroll-header-panel main class="site--content" id="siteContent">
 
         <!-- main content header -->
@@ -191,11 +291,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         </paper-toolbar>
 
+        <!-- loading spinner -->
+        <div id="spinner">
+          <paper-spinner-lite active></paper-spinner-lite>
+        </div>
+
         <!-- main content container -->
-        <div class="site--content-main">
+        <div class="site--content-main" id="siteMain">
 
           <!-- hero -->
-          <section class="cotent--hero" id="hero">
+          <section class="content--hero" id="hero">
+
+            <div class="hero--copy">
+              <div class="hero--card">
+                <h1>Hand Made.</h1>
+                <br>
+                <h1>Just for you.</h1>
+                <p>Everything is better with A Touch of Sweetness!  Life is full of special occasions.  From newborn babies, graduations, weddings or birthdays, there's always something to celebrate!  Let us add to the celebration by creating something special and unique to the event.  Wether it's cupcakes, fruit and dessert trays, or a custom designed cake, things are always better with A Touch of Sweetness!</p>
+              </div>
+
+              <div class="hero--logo"></div>
+ 
+            </div>
 
             <content select="[hero-title]"></content>
             <content select="[hero-copy]"></content>
@@ -218,10 +335,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <!-- gallery -->
           <section class="content--gallery" id="gallery">
-
-            <div id="spinner">
-              <paper-spinner-lite active></paper-spinner-lite>
-            </div>
             
             <div class="gallery-guts" id="guts">
               <h1>Cakes</h1>
@@ -305,7 +418,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _imagesAreLoaded: function() {
         console.log('images are loaded');
         TweenMax.to(this.$.spinner, 0.5, { opacity: 0});
-        TweenMax.to(this.$.guts, 1, { opacity: 1});
+        TweenMax.to(this.$.siteMain, 1, { opacity: 1});
       },
 
       _onResponse: function() {
