@@ -25,7 +25,8 @@
     "paper-input": "PolymerElements/paper-input#^1.1.22",
     "iron-image": "PolymerElements/iron-image#^1.2.5",
     "iron-ajax": "PolymerElements/iron-ajax#^1.4.3",
-    "paper-spinner": "PolymerElements/paper-spinner#^1.2.1"
+    "paper-spinner": "PolymerElements/paper-spinner#^1.2.1",
+    "lory": "^2.2.1"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
