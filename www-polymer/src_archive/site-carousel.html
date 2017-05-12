@@ -17,6 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="site-carousel">
   <template>
     <style include="gallery-styles">
+
       :host {
         position: relative;
         display: block;
@@ -24,14 +25,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         max-width: 1140px;
         margin: 0 auto;
       }
+
       .slide-image {
         width: 100%;
         max-width: 250px;
         height: auto;
       }
+
       .arrow-fill {
         fill: #CF6059;
       }
+
     </style>
 
     <!-- Swiper -->
@@ -71,17 +75,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
+
     Polymer({
       is: 'site-carousel',
+
       properties: {
+
         images: Array
+        
+      },
+
+      ready: function() {
+
+        this.async(this._initSwiper, 750);
 
       },
-      ready: function() {
-        this.async(this._initSwiper, 750);
-      },
+
       _initSwiper: function() {
         var swiper;
+
         swiper = new Swiper(this.$.container, {
           nextButton: this.$.next,
           prevButton: this.$.prev,
@@ -99,7 +111,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
           }
         });
+
       }
+
     });
   </script>
 </dom-module>
