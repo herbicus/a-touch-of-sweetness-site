@@ -33,11 +33,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="lazy-import" href="ats-main.html">
 <link rel="lazy-import" href="ats-404.html">
-<link rel="lazy-import" href="modules/ats-hero.html">
-<link rel="lazy-import" href="modules/ats-cakes.html">
-<link rel="lazy-import" href="modules/ats-gallery.html">
-<link rel="lazy-import" href="modules/ats-services.html">
-<link rel="lazy-import" href="modules/ats-contact.html">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/ScrollToPlugin.min.js"></script>
@@ -48,6 +43,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         --app-primary-color: #4285f4;
         --app-secondary-color: black;
+        --primary: #CF6059;
+        --offWhite: #ebe0dd;
+        --offPink: #D9B5B6;
+        --box-shadow-slight: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        --box-shadow-light: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        --box-shadow-high: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
         display: block;
       }
@@ -86,7 +87,90 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         text-decoration: none;
         position: relative;
 
-        --paper-tabs-selection-bar-color: red;
+        --paper-tabs-selection-bar-color: var(--primary);
+      }
+
+      /*
+      * Off Canvas Nav
+      */
+      .offcanvas-header__links a {
+        display: block;
+        padding: 0 16px;
+        text-decoration: none;
+        color: var(--primary);
+        line-height: 40px;
+      }
+
+      .offcanvas-header__links a.iron-selected {
+        color: black;
+        font-weight: bold;
+      }
+
+      .offcanvas-header__links paper-icon-button {
+        color: black;
+        --paper-icon-button-ink-color: var(--primary);
+      }
+
+      /*
+      * Header
+      */
+      .ats__header {
+        background: rgba(255, 255, 255, 1);
+        -webkit-box-shadow: var(--box-shadow-slight);
+                box-shadow: var(--box-shadow-slight);
+      }
+
+      .ats__header-nav paper-tab {
+        /*display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;*/
+        /*-webkit-flex: 1px;
+        -ms-flex: 1px;
+        flex: 1px;*/
+        /*-webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-align-items: center;
+                align-items: center;
+        justify-content: space-between;*/
+      }
+
+      .ats__header-nav span {
+        font: 700 16px/24px 'Lato', sans-serif;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .logo-lockup {
+        width: 100%;
+        max-width: 250px;
+      }
+      .logo-lockup-fill {
+        fill: var(--primary);
+      }
+
+      .ats__header-nav-hamburger,
+      .offcanvas-header__social-icon {
+        color: var(--primary);
+        --paper-icon-button-ink-color: #fff;
+      }
+
+      /* hamburger btn */
+      .ats__header-nav-hamburger {
+        display: none;
+      }
+
+      @media screen and (max-width: 767px) {
+        .ats__header-nav {
+          display: none;
+        }
+
+        .ats__header-nav-hamburger {
+          display: inline-block;
+        }
       }
 
     </style>
@@ -106,28 +190,110 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-drawer-layout fullbleed force-narrow narrow="{{narrow}}">
       <!-- Drawer content -->
       <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-        <app-toolbar>Menu</app-toolbar>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="[[rootPath]]view1">View One</a>
-          <a name="view2" href="[[rootPath]]view2">View Two</a>
-          <a name="view3" href="[[rootPath]]view3">View Three</a>
+        <app-toolbar class="offcanvas-header">
+          <h3 class="offcanvas-header__title">Mobile</h3>
+        </app-toolbar>
+
+        <!-- off canvas nav -->
+        <iron-selector class="offcanvas-header__links" selected="[[page]]" attr-for-selected="name" role="navigation">
+          <paper-tab drawer-toggle on-click="_scrollToCakes">home</paper-tab>
+          <paper-tab drawer-toggle on-click="_scrollToGallery">gallery</paper-tab>
+          <paper-tab drawer-toggle on-click="_scrollToServices">services</paper-tab>
+          <paper-tab drawer-toggle on-click="_scrollToContact">contact</paper-tab>
+           <paper-icon-button icon="social:facebook" class="offcanvas-header__social-icon" drawer-toggle></paper-icon-button>
+           <paper-icon-button icon="social:twitter" class="offcanvas-header__social-icon" drawer-toggle></paper-icon-button>
+           <paper-icon-button icon="social:instagram" class="offcanvas-header__social-icon" drawer-toggle></paper-icon-button>
         </iron-selector>
       </app-drawer>
 
       <!-- Main content -->
-      <app-header-layout>
+      <app-header-layout class="ats">
 
         <app-header slot="header" condenses reveals effects="waterfall">
-          <app-toolbar>
-            <div main-title>My App</div>
-            <paper-tabs selected="[[page]]" role="navigation"  noink>
-              <paper-tab on-click="_scrollToCakes">home</paper-tab>
-              <paper-tab on-click="_scrollToGallery">gallery</paper-tab>
-              <paper-tab on-click="_scrollToServices">services</paper-tab>
-              <paper-tab on-click="_scrollToContact">contact</paper-tab>
+          <app-toolbar class="ats__header">
+            <div main-title>
+              <!-- svg lockup -->
+              <svg version="1.1" class="logo-lockup" on-click="_scrollToHero" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="635.607px" height="85.606px" viewBox="0 0 635.607 85.606" enable-background="new 0 0 635.607 85.606"
+                 xml:space="preserve">
+                <path class="logo-lockup-fill" d="M73.862,42.425c0.254,2.146-1.515,4.04-3.66,4.04H54.04c-1.264,0-1.642,0.758-0.631,1.642l11.236,11.237
+                  c1.516,1.515,1.643,4.04,0,5.556c-0.758,0.632-1.642,1.011-2.524,1.011c-0.884,0-1.895-0.379-2.651-1.138L47.979,53.41
+                  c-0.631-0.632-1.641-0.126-1.641,0.631v16.162c0,2.146-1.896,3.914-4.041,3.662c-1.895-0.127-3.409-1.896-3.409-3.915V54.041
+                  c0-0.884-1.01-1.264-1.642-0.632L25.758,64.771c-0.758,0.759-1.642,1.138-2.651,1.138c-0.884,0-1.768-0.379-2.524-1.011
+                  c-1.517-1.389-1.517-4.041,0-5.556l11.235-11.363c0.632-0.632,0.126-1.642-0.632-1.642H15.024c-2.146,0-3.914-1.896-3.661-4.041
+                  c0.127-1.895,1.895-3.409,3.914-3.409h15.908c0.885,0,1.264-1.01,0.632-1.641L20.581,25.884c-1.39-1.389-1.643-3.661-0.379-5.177
+                  c1.389-1.643,3.914-1.769,5.43-0.252l11.489,11.362c0.632,0.633,1.642,0.126,1.642-0.631V15.024c0-2.146,1.895-3.914,4.04-3.66
+                  c1.896,0.126,3.409,1.894,3.409,3.913v15.908c0,0.885,1.011,1.264,1.642,0.632l11.363-11.362c1.516-1.517,4.041-1.391,5.43,0.252
+                  c1.264,1.516,1.011,3.788-0.379,5.177L53.029,37.248c-0.631,0.631-0.126,1.641,0.632,1.641h15.908
+                  C71.97,39.142,73.736,40.53,73.862,42.425z M85.605,42.803C85.605,19.191,66.414,0,42.803,0S0,19.191,0,42.803
+                  s19.19,42.804,42.803,42.804S85.605,66.414,85.605,42.803z M78.788,42.803c0,19.95-16.162,36.111-36.111,36.111
+                  S6.564,62.753,6.564,42.803c0-19.949,16.162-36.11,36.111-36.11S78.788,22.854,78.788,42.803z"/>
+                <g>
+                  <path class="logo-lockup-fill lockup-letter lockup-letter" d="M123.612,62.499h-10.606V31.187c0-3.409,0.631-5.557,1.894-6.565c1.263-1.01,3.662-1.515,8.838-1.515h4.293
+                    c5.177,0,7.576,0.378,8.838,1.515c1.263,1.01,1.894,3.156,1.894,6.565v31.439h-10.606v-8.334h-4.419v8.207H123.612z
+                     M128.031,45.454V35.101c0-2.525-0.757-3.662-2.272-3.662s-2.146,1.137-2.146,3.662v10.354H128.031z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M179.42,31.691h-4.798v30.808h-10.606V31.691h-4.798v-8.586h20.202V31.691L179.42,31.691z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M209.47,46.464c0,6.565-0.378,9.092-1.641,11.742c-1.389,2.904-4.167,4.293-8.838,4.293h-4.672
+                    c-4.672,0-7.45-1.389-8.838-4.293c-1.263-2.65-1.642-5.177-1.642-11.742v-7.449c0-6.565,0.379-9.092,1.642-11.742
+                    c1.388-2.904,4.166-4.293,8.838-4.293h4.672c4.671,0,7.449,1.263,8.838,4.293c1.263,2.65,1.641,5.177,1.641,11.742V46.464z
+                     M198.991,34.47c0-1.895-0.884-3.156-2.273-3.156c-1.389,0-2.272,1.263-2.272,3.156v16.919c0,1.895,0.884,3.156,2.272,3.156
+                    c1.388,0,2.273-1.137,2.273-3.156V34.47z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M240.783,23.105v31.438c0,3.409-0.631,5.557-1.894,6.565s-3.661,1.516-8.838,1.516h-4.293
+                    c-5.177,0-7.576-0.379-8.838-1.516c-1.263-1.01-1.894-3.156-1.894-6.565V23.105h10.606v27.523c0,2.525,0.758,3.662,2.146,3.662
+                    c1.515,0,2.273-1.137,2.273-3.662V23.105H240.783z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M263.763,31.691h-1.894c-2.777,0-3.283,0-3.914,0.757c-0.758,0.757-0.758,1.136-0.758,4.041v12.752
+                    c0,2.778,0.127,3.283,0.758,4.041c0.758,0.758,1.137,0.758,3.914,0.758h2.146v8.586h-6.944c-5.049,0-5.429-0.127-6.312-0.379
+                    c-3.283-0.885-4.167-3.788-4.167-13.889V35.731c0-2.272,0.252-6.313,0.631-7.576c0.505-2.778,1.769-4.167,3.915-4.672
+                    c0.885-0.252,1.641-0.252,5.934-0.378h6.692V31.691L263.763,31.691z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M279.673,23.105V38.51h4.545V23.105h10.606v39.394h-10.606V47.096h-4.545v15.403h-10.606V23.105H279.673z"
+                    />
+                  <path class="logo-lockup-fill lockup-letter" d="M342.551,46.464c0,6.565-0.379,9.092-1.643,11.742c-1.389,2.904-4.166,4.293-8.838,4.293h-4.672
+                    c-4.67,0-7.449-1.389-8.838-4.293c-1.262-2.65-1.641-5.177-1.641-11.742v-7.449c0-6.565,0.379-9.092,1.641-11.742
+                    c1.389-2.904,4.168-4.293,8.84-4.293h4.672c4.672,0,7.449,1.263,8.838,4.293c1.263,2.65,1.642,5.177,1.642,11.742L342.551,46.464
+                    L342.551,46.464z M332.07,34.47c0-1.895-0.883-3.156-2.271-3.156s-2.273,1.263-2.273,3.156v16.919c0,1.895,0.885,3.156,2.273,3.156
+                    s2.271-1.137,2.271-3.156V34.47z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M365.531,31.691h-6.692v6.818h6.692v8.585h-6.692v15.404h-10.606V23.105h17.299V31.691z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M406.566,31.691h-9.344v6.818h1.895c6.818,0,8.459,2.02,8.459,10.479v2.398
+                    c0,4.672-0.504,7.575-1.768,9.092c-1.01,1.389-2.271,1.894-4.672,2.02c-1.135,0-1.135,0-4.545,0h-9.85v-8.586h9.85v-6.817h-1.643
+                    c-4.039,0-5.807-0.632-6.943-2.525c-1.137-1.767-1.389-3.535-1.389-8.333v-2.399c0-4.798,0.885-8.081,2.398-9.343
+                    c1.389-1.136,2.65-1.389,8.334-1.389h9.09v8.586L406.566,31.691L406.566,31.691z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M438.258,48.358c0,3.156,0.506,4.166,2.146,4.166c1.643,0,2.146-0.884,2.146-4.166V23.105h10.605v28.661
+                    c0,5.682-0.125,6.944-1.01,8.46c-1.012,1.894-2.777,2.271-8.586,2.271c-8.461,0-9.85-0.631-10.605-4.672
+                    c-0.758,4.041-2.021,4.672-10.732,4.672c-5.682,0-7.449-0.505-8.459-2.271c-0.885-1.516-1.012-2.778-1.012-8.46V23.105h10.605
+                    v25.253c0,3.282,0.506,4.166,2.146,4.166c1.768,0,2.271-1.01,2.271-4.166V23.105h10.607v25.253H438.258z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M479.42,31.691h-9.723v6.818h9.723v8.585h-9.723v6.817h9.723v8.586h-9.848c-5.053,0-5.43-0.126-6.314-0.379
+                    c-3.281-0.884-4.166-3.787-4.166-13.889V35.605c0-2.273,0.252-6.188,0.631-7.576c0.506-2.777,1.77-4.167,3.914-4.671
+                    c0.885-0.252,1.643-0.252,5.936-0.379h9.85v8.712H479.42z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M505.178,31.691h-9.723v6.818h9.723v8.585h-9.723v6.817h9.723v8.586h-9.848
+                    c-5.053,0-5.432-0.126-6.314-0.379c-3.281-0.884-4.166-3.787-4.166-13.889V35.605c0-2.273,0.252-6.188,0.631-7.576
+                    c0.506-2.777,1.77-4.167,3.914-4.671c0.885-0.252,1.643-0.252,5.936-0.379h9.85v8.712H505.178z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M529.168,31.691h-4.799v30.808h-10.605V31.691h-4.799v-8.586h20.203V31.691L529.168,31.691z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M543.184,23.105c0.631,2.398,0.883,3.156,1.01,5.177c1.012-4.041,2.65-5.177,7.197-5.177
+                    c4.166,0,5.557,0.631,6.691,2.904c0.883,1.515,0.883,1.515,0.883,9.849v26.641h-10.605V35.354c0-2.146-0.631-3.156-2.145-3.156
+                    c-1.389,0-2.146,1.01-2.146,3.283v27.146h-10.605V32.07c0-3.788-0.127-5.556-1.01-8.964L543.184,23.105L543.184,23.105z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M584.977,31.691h-9.723v6.818h9.723v8.585h-9.723v6.817h9.723v8.586h-9.85c-5.051,0-5.43-0.126-6.312-0.379
+                    c-3.281-0.884-4.166-3.787-4.166-13.889V35.605c0-2.273,0.252-6.188,0.631-7.576c0.506-2.777,1.768-4.167,3.914-4.671
+                    c0.885-0.252,1.643-0.252,5.936-0.379h9.848V31.691L584.977,31.691z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M609.598,31.691h-9.217v6.818h1.893c6.818,0,8.461,2.02,8.461,10.479v2.398c0,4.672-0.506,7.575-1.77,9.092
+                    c-1.01,1.389-2.271,1.894-4.67,2.02c-1.137,0-1.137,0-4.547,0h-9.85v-8.586h9.85v-6.817h-1.643c-4.039,0-5.807-0.632-6.943-2.525
+                    c-1.137-1.767-1.389-3.535-1.389-8.333v-2.399c0-4.798,0.885-8.081,2.398-9.343c1.389-1.136,2.652-1.389,8.334-1.389h9.09v8.585
+                    H609.598z"/>
+                  <path class="logo-lockup-fill lockup-letter" d="M634.471,31.691h-9.217v6.818h1.895c6.816,0,8.459,2.02,8.459,10.479v2.398
+                    c0,4.672-0.506,7.575-1.768,9.092c-1.01,1.389-2.273,1.894-4.672,2.02c-1.137,0-1.137,0-4.545,0h-9.85v-8.586h9.85v-6.817h-1.643
+                    c-4.041,0-5.809-0.632-6.943-2.525c-1.139-1.767-1.391-3.535-1.391-8.333v-2.399c0-4.798,0.885-8.081,2.398-9.343
+                    c1.389-1.136,2.652-1.389,8.334-1.389h9.092V31.691L634.471,31.691z"/>
+                </g>
+              </svg>
+              <!-- end svg lockup -->
+            </div>
+            <paper-tabs selected="[[page]]" role="navigation" noink class="ats__header-nav">
+              <paper-tab on-click="_scrollToCakes"><span>home</span></paper-tab>
+              <paper-tab on-click="_scrollToGallery"><span>gallery</span></paper-tab>
+              <paper-tab on-click="_scrollToServices"><span>services</span></paper-tab>
+              <paper-tab on-click="_scrollToContact"><span>contact</span></paper-tab>
             </paper-tabs>
 
-            <paper-icon-button icon="ats-icons:menu" drawer-toggle></paper-icon-button>
+            <paper-icon-button icon="ats-icons:menu" class="ats__header-nav-hamburger" drawer-toggle></paper-icon-button>
 
           </app-toolbar>
         </app-header>
@@ -204,30 +370,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _showPage404() {
         this.page = 'ats-404';
       }
-
-    //   _scrollTo() {
-    //     console.log('clicked')
-    //     // TweenMax.to(window, 2, {scrollTo: '#contact'});
-    //     Array.prototype.slice.call(document.querySelectorAll('.scroll-to')).forEach(function (element, index) {
-    //       TweenMax.to(window, 1, {
-    //           scrollTo: {
-    //               y: element,
-    //               autoKill: true
-    //           },
-    //           ease:Power2.easeOut
-    //       });
-    //     });
-    //     // TweenMax.to(window, 1, {
-    //     //     scrollTo: {
-    //     //         // y: this.$.scrollContact.offsetTop - 50,
-    //     //         y: this.$.scrollContact,
-    //     //         //y: 400,
-    //     //         autoKill: true
-    //     //     },
-    //     //     ease:Power2.easeOut
-    //     // });
-    //   }
-    // }
 
     /*
       * scroll to section animation

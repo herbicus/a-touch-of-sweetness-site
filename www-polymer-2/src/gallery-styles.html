@@ -1,0 +1,72 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<!-- shared styles for all views -->
+<dom-module id="gallery-styles">
+  <template>
+    <style>
+    /**
+    * (optional) define here the style definitions which should be applied on the slider container
+    * e.g. width including further controls like arrows etc.
+    */
+    .slider {}
+
+      .frame {
+        /**
+        * (optional) wrapper width, specifies width of the slider frame.
+        */
+        width: 880px;
+
+        position: relative;
+        font-size: 0;
+        line-height: 0;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .slides {
+        display: inline-block;
+      }
+
+      li {
+        position: relative;
+        display: inline-block;
+
+        /**
+        * (optional) if the content inside the slide element has a defined size.
+        */
+        width: 880px;
+      }
+
+      .prev, .next {
+        position: absolute;
+        top: 50%;
+        margin-top: -25px;
+        display: block;
+        cursor: pointer;
+      }
+
+      .next {
+        right: 0;
+      }
+
+      .prev {
+        left: 0;
+      }
+
+      .next svg, .prev svg {
+        width: 25px;
+      }
+
+    </style>
+  </template>
+</dom-module>
