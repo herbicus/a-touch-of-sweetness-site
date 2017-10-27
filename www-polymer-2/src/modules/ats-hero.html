@@ -10,23 +10,86 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../shared-styles.html">
+<link rel="import" href="../ats-icons.html">
 
 <dom-module id="ats-hero">
   <template>
     <style include="shared-styles">
       :host {
         display: block;
+      }
 
-        padding: 10px;
+      .hero {
+        min-height: 90vh;
+        background: url('../../images/bg-hero.jpg');
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+             -o-background-size: cover;
+                background-size: cover;
+        background-position-x: 50%;
+        background-position-y: 0;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+      }
+
+      .hero__copy {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        width: 100%;
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 100px 25px;
+      }
+
+      .hero__card h1 {
+        font: 52px/62px 'Nixie One', cursive;
+        margin: 0;
+      }
+
+      .hero__card,
+      .hero__logo {
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+        padding: 25px;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+      }
+      .hero__logo-icon {
+        color: var(--primary);
+        --iron-icon-width: 100%;
+        --iron-icon-height: 100%;
+      }
+      .hero__card {
+        background: #FFF;
+        padding: 50px;
+        -webkit-border-radius: 4px;
+                border-radius: 4px;
+        -webkit-box-shadow: var(--box-shadow-high);
+                box-shadow: var(--box-shadow-high);
       }
     </style>
 
-    <div class="card" id="hero">
-      <div class="circle">1</div>
-      <h1>ATS Hero</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-    </div>
+    <section class="hero">
+      <div class="hero__copy">
+        <div class="hero__card">
+
+          <!-- <content select="[hero-title]"></content>
+          <content select="[hero-copy]"></content> -->
+
+        </div>
+
+        <div class="hero__logo">
+          <iron-icon class="hero__logo-icon" icon="logo-main:ats-logo"></iron-icon>
+        </div>
+
+      </div>
+    </section>
   </template>
 
   <script>
