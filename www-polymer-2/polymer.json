@@ -1,0 +1,35 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/ats-app.html",
+  "fragments": [
+    "src/ats-main.html",
+    "src/ats-404.html",
+    "src/modules/ats-hero.html",
+    "src/modules/ats-cakes.html",
+    "src/modules/ats-gallery.html",
+    "src/modules/ats-services.html",
+    "src/modules/ats-contact.html"
+  ],
+  "sources": [
+    "src/**/*",
+    "images/**/*"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/*.js"
+  ],
+  "lint": {
+    "rules": ["polymer-2"]
+  },
+  "builds": [
+    {
+      "preset": "es5-bundled"
+    },
+    {
+      "preset": "es6-bundled"
+    },
+    {
+      "preset": "es6-unbundled"
+    }
+  ]
+}
