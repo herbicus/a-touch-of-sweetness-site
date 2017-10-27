@@ -24,8 +24,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="ats-icons.html">
 
-<!-- <link rel="import" href="./vendor/tweenmax.html">
-<link rel="import" href="./vendor/scrollto.html"> -->
+<!-- sections -->
+<link rel="import" href="modules/ats-hero.html">
+<link rel="import" href="modules/ats-cakes.html">
+<link rel="import" href="modules/ats-gallery.html">
+<link rel="import" href="modules/ats-services.html">
+<link rel="import" href="modules/ats-contact.html">
 
 <link rel="lazy-import" href="ats-main.html">
 <link rel="lazy-import" href="ats-404.html">
@@ -111,27 +115,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </app-drawer>
 
       <!-- Main content -->
-      <app-header-layout has-scrolling-region>
+      <app-header-layout>
 
         <app-header slot="header" condenses reveals effects="waterfall">
           <app-toolbar>
             <div main-title>My App</div>
             <paper-tabs selected="[[page]]" role="navigation"  noink>
-              <paper-tab>
-                <!-- <a name="view1" href="[[rootPath]]view1">View One</a> -->
-                home
-              </paper-tab>
-              <paper-tab>
-                <!-- <a name="view2" href="[[rootPath]]view2">View Two</a> -->
-                gallery
-              </paper-tab>
-              <paper-tab>
-                <!-- <a name="view3" href="[[rootPath]]view3">View Three</a> -->
-                services
-              </paper-tab>
-              <paper-tab on-click="_scrollTo">
-                contact
-              </paper-tab>
+              <paper-tab on-click="_scrollToCakes">home</paper-tab>
+              <paper-tab on-click="_scrollToGallery">gallery</paper-tab>
+              <paper-tab on-click="_scrollToServices">services</paper-tab>
+              <paper-tab on-click="_scrollToContact">contact</paper-tab>
             </paper-tabs>
 
             <paper-icon-button icon="ats-icons:menu" drawer-toggle></paper-icon-button>
@@ -144,7 +137,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             attr-for-selected="name"
             fallback-selection="ats-404"
             role="main">
-          <ats-main name="ats-main" id="main"></ats-main>
+          <ats-main name="ats-main" id="main">
+            <ats-hero id="hero"></ats-hero>
+            <ats-cakes id="cakes"></ats-cakes>
+            <ats-gallery id="gallery"></ats-gallery>
+            <ats-services id="services"></ats-services>
+            <ats-contact id="contact"></ats-contact>
+          </ats-main>
           <ats-404 name="ats-404"></ats-404>
         </iron-pages>
       </app-header-layout>
@@ -206,19 +205,65 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.page = 'ats-404';
       }
 
-      _scrollTo() {
-        console.log('clicked')
-        // TweenMax.to(window, 2, {scrollTo: '#contact'});
-        TweenMax.to(this.$.main, 1, {
+    //   _scrollTo() {
+    //     console.log('clicked')
+    //     // TweenMax.to(window, 2, {scrollTo: '#contact'});
+    //     Array.prototype.slice.call(document.querySelectorAll('.scroll-to')).forEach(function (element, index) {
+    //       TweenMax.to(window, 1, {
+    //           scrollTo: {
+    //               y: element,
+    //               autoKill: true
+    //           },
+    //           ease:Power2.easeOut
+    //       });
+    //     });
+    //     // TweenMax.to(window, 1, {
+    //     //     scrollTo: {
+    //     //         // y: this.$.scrollContact.offsetTop - 50,
+    //     //         y: this.$.scrollContact,
+    //     //         //y: 400,
+    //     //         autoKill: true
+    //     //     },
+    //     //     ease:Power2.easeOut
+    //     // });
+    //   }
+    // }
+
+    /*
+      * scroll to section animation
+      * @param (element): the element/section to animate to
+      */
+      _scrollTo(element) {
+        TweenMax.to(window, 1, {
             scrollTo: {
-                // y: this.$.scrollContact.offsetTop - 50,
-                y: this.$.scrollContact,
+                y: element,
                 autoKill: true
             },
             ease:Power2.easeOut
         });
       }
+
+      _scrollToHero() {
+        this._scrollTo(this.$.hero);
+      }
+
+      _scrollToCakes() {
+        this._scrollTo(this.$.cakes);
+      }
+
+      _scrollToGallery() {
+        this._scrollTo(this.$.gallery);
+      }
+
+      _scrollToServices() {
+        this._scrollTo(this.$.services);
+      }
+
+      _scrollToContact() {
+        this._scrollTo(this.$.contact);
+      }
     }
+
 
     window.customElements.define(AtsApp.is, AtsApp);
   </script>

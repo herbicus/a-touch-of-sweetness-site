@@ -11,12 +11,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shared-styles.html">
 
-<link rel="import" href="modules/ats-hero.html">
-<link rel="import" href="modules/ats-cakes.html">
-<link rel="import" href="modules/ats-gallery.html">
-<link rel="import" href="modules/ats-services.html">
-<link rel="import" href="modules/ats-contact.html">
-
 <dom-module id="ats-main">
   <template>
     <style include="shared-styles">
@@ -27,11 +21,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <ats-hero></ats-hero>
-    <ats-cakes></ats-cakes>
-    <ats-gallery></ats-gallery>
-    <ats-services></ats-services>
-    <ats-contact id="scrollContact"></ats-contact>
+    <slot></slot>
 
   </template>
 
