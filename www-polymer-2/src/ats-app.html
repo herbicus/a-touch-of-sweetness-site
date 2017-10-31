@@ -116,8 +116,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       */
       .ats__header {
         background: rgba(255, 255, 255, 1);
-        -webkit-box-shadow: var(--box-shadow-slight);
-                box-shadow: var(--box-shadow-slight);
+
+        --app-header-shadow: {
+          -webkit-box-shadow: var(--box-shadow-slight);
+                  box-shadow: var(--box-shadow-slight);
+        };
+
       }
 
       .ats__header-nav paper-tab {
@@ -341,10 +345,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         ];
       }
 
-      ready() {
-        super.ready();
-        console.log('im ready');
-      }
+      // ready() {
+      //   super.ready();
+      //   console.log('im ready');
+      // }
 
       _routePageChanged(page) {
         // If no page was found in the route data, page will be an empty string.

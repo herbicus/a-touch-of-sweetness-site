@@ -22,7 +22,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         position: relative;
         display: block;
         width: 100%;
-        max-width: 1140px;
+        max-width: 960px;
         margin: 0 auto;
       }
 
@@ -46,44 +46,127 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       debounce-duration="300">
     </iron-ajax>
 
-    <div class="swiper-container" id="container">
-      <div class="swiper-wrapper">
+    <section class="gallery__cakes">
+      <div class="swiper-container" id="swiper_cakes">
+        <div class="swiper-wrapper">
 
-        <template is="dom-repeat" items="{{imagesCakes}}">
-          <!-- slides -->
-          <div class="swiper-slide">
-              <img src="{{item}}" class="swiper-lazy slide-image">
-              <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
-          </div>
-        </template>
+          <template is="dom-repeat" items="{{imagesCakes}}">
+            <!-- slides -->
+            <div class="swiper-slide">
+                <img src="{{item}}" class="swiper-lazy slide-image">
+                <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
+            </div>
+          </template>
+
+        </div>
+
+        <div class="swiper-button-prev" id="prev_cakes">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 37.4 66" style="enable-background:new 0 0 37.4 66;" xml:space="preserve">
+            <g>
+              <path class="arrow-fill" d="M1.6,36.1l28,28c1.7,1.7,4.4,1.7,6.1,0s1.7-4.4,0-6.1l-25-25l25-25c1.7-1.7,1.7-4.4,0-6.1s-4.4-1.7-6.1,0
+                l-28,28c-0.9,0.9-1.3,2-1.3,3.1C0.4,34.1,0.8,35.2,1.6,36.1z"/>
+            </g>
+          </svg>
+        </div>
+        <div class="swiper-button-next" id="next_cakes">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 37.4 66" style="enable-background:new 0 0 37.4 66;" xml:space="preserve">
+            <g>
+              <path class="arrow-fill" d="M35.7,29.9l-28-28c-1.7-1.7-4.4-1.7-6.1,0S0,6.3,1.6,8l25,25l-25,25c-1.7,1.7-1.7,4.4,0,6.1
+                c1.7,1.7,4.4,1.7,6.1,0l28-28c0.9-0.9,1.3-2,1.3-3.1C37,31.9,36.6,30.8,35.7,29.9z"/>
+            </g>
+          </svg>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="gallery__cupcakes">
+      <div class="swiper-container" id="swiper_cupcakes">
+        <div class="swiper-wrapper">
+
+          <template is="dom-repeat" items="{{imagesCupCakes}}">
+            <!-- slides -->
+            <div class="swiper-slide">
+                <img src="{{item}}" class="swiper-lazy slide-image">
+                <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
+            </div>
+          </template>
+
+        </div>
+
+        <div class="swiper-button-prev" id="prev_cupcakes">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 37.4 66" style="enable-background:new 0 0 37.4 66;" xml:space="preserve">
+            <g>
+              <path class="arrow-fill" d="M1.6,36.1l28,28c1.7,1.7,4.4,1.7,6.1,0s1.7-4.4,0-6.1l-25-25l25-25c1.7-1.7,1.7-4.4,0-6.1s-4.4-1.7-6.1,0
+                l-28,28c-0.9,0.9-1.3,2-1.3,3.1C0.4,34.1,0.8,35.2,1.6,36.1z"/>
+            </g>
+          </svg>
+        </div>
+        <div class="swiper-button-next" id="next_cupcakes">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 37.4 66" style="enable-background:new 0 0 37.4 66;" xml:space="preserve">
+            <g>
+              <path class="arrow-fill" d="M35.7,29.9l-28-28c-1.7-1.7-4.4-1.7-6.1,0S0,6.3,1.6,8l25,25l-25,25c-1.7,1.7-1.7,4.4,0,6.1
+                c1.7,1.7,4.4,1.7,6.1,0l28-28c0.9-0.9,1.3-2,1.3-3.1C37,31.9,36.6,30.8,35.7,29.9z"/>
+            </g>
+          </svg>
+        </div>
+
       </div>
 
-    </div>
 
-    <div class="swiper-button-prev" id="prev">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-         viewBox="0 0 37.4 66" style="enable-background:new 0 0 37.4 66;" xml:space="preserve">
-        <g>
-          <path class="arrow-fill" d="M1.6,36.1l28,28c1.7,1.7,4.4,1.7,6.1,0s1.7-4.4,0-6.1l-25-25l25-25c1.7-1.7,1.7-4.4,0-6.1s-4.4-1.7-6.1,0
-            l-28,28c-0.9,0.9-1.3,2-1.3,3.1C0.4,34.1,0.8,35.2,1.6,36.1z"/>
-        </g>
-      </svg>
-    </div>
-    <div class="swiper-button-next" id="next">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-         viewBox="0 0 37.4 66" style="enable-background:new 0 0 37.4 66;" xml:space="preserve">
-        <g>
-          <path class="arrow-fill" d="M35.7,29.9l-28-28c-1.7-1.7-4.4-1.7-6.1,0S0,6.3,1.6,8l25,25l-25,25c-1.7,1.7-1.7,4.4,0,6.1
-            c1.7,1.7,4.4,1.7,6.1,0l28-28c0.9-0.9,1.3-2,1.3-3.1C37,31.9,36.6,30.8,35.7,29.9z"/>
-        </g>
-      </svg>
-    </div>
+    </section>
+
+    <section class="gallery__desserts">
+      <div class="swiper-container" id="swiper_desserts">
+        <div class="swiper-wrapper">
+
+          <template is="dom-repeat" items="{{imagesDesserts}}">
+            <!-- slides -->
+            <div class="swiper-slide">
+                <img src="{{item}}" class="swiper-lazy slide-image">
+                <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
+            </div>
+          </template>
+
+        </div>
+
+        <div class="swiper-button-prev" id="prev_dessserts">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 37.4 66" style="enable-background:new 0 0 37.4 66;" xml:space="preserve">
+            <g>
+              <path class="arrow-fill" d="M1.6,36.1l28,28c1.7,1.7,4.4,1.7,6.1,0s1.7-4.4,0-6.1l-25-25l25-25c1.7-1.7,1.7-4.4,0-6.1s-4.4-1.7-6.1,0
+                l-28,28c-0.9,0.9-1.3,2-1.3,3.1C0.4,34.1,0.8,35.2,1.6,36.1z"/>
+            </g>
+          </svg>
+        </div>
+        <div class="swiper-button-next" id="next_desserts">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 37.4 66" style="enable-background:new 0 0 37.4 66;" xml:space="preserve">
+            <g>
+              <path class="arrow-fill" d="M35.7,29.9l-28-28c-1.7-1.7-4.4-1.7-6.1,0S0,6.3,1.6,8l25,25l-25,25c-1.7,1.7-1.7,4.4,0,6.1
+                c1.7,1.7,4.4,1.7,6.1,0l28-28c0.9-0.9,1.3-2,1.3-3.1C37,31.9,36.6,30.8,35.7,29.9z"/>
+            </g>
+          </svg>
+        </div>
+
+      </div>
+    </section>
 
   </template>
 
   <script>
     class AtsGallery extends Polymer.Element {
       static get is() { return 'ats-gallery'; }
+
+      // static get observers() {
+      //   return [
+      //     '_isImagesLoaded(imagesLoaded)'
+      //   ];
+      // }
 
       static get properties() {
         return {
@@ -96,7 +179,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: Array,
             notify: true
           },
-          imagesCakes: {
+          imagesCupCakes: {
             type: Array,
             notify: true
           },
@@ -104,43 +187,65 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             type: Array,
             notify: true
           },
+          imagesLoaded: {
+            type: Boolean,
+            notify: true,
+            value: true
+          },
 
         };
       }
 
-      ready() {
-        super.ready();
-
-        var swiper;
-        swiper = new Swiper(this.$.container, {
-          navigation: {
-            nextEl: this.$.next,
-            prevEl: this.$.prev,
-          },
-          slidesPerView: 3,
-          spaceBetween: 10,
-          preloadImages: false,
-          lazyLoading: true,
-          loop: true,
-          breakpoints: {
-            768: {
-                slidesPerView: 2
-            },
-            640: {
-                slidesPerView: 1
-            }
-          }
-        });
-      }
-
       _onResponse() {
-        // console.log(this.response.images);
         this.imagesCakes = this.response.images.imagesCakes;
         this.imagesCupCakes = this.response.images.imagesCupCakes;
         this.imagesDesserts = this.response.images.imagesDesserts;
+
+        var swipers = [
+          {
+            'el': this.$.swiper_cakes,
+            'prev': this.$.prev_cakes,
+            'next': this.$.next_cakes
+          },
+          {
+            'el': this.$.swiper_cupcakes,
+            'prev': this.$.prev_cupcakes,
+            'next': this.$.next_cupcakes
+          },
+          {
+            'el': this.$.swiper_desserts,
+            'prev': this.$.prev_desserts,
+            'next': this.$.next_desserts
+          }
+        ];
+
+        setTimeout(() => {
+          swipers.forEach( (item) => {
+            var swiper = new Swiper(item.el, {
+              navigation: {
+                nextEl: item.next,
+                prevEl: item.prev,
+              },
+              slidesPerView: 3,
+              spaceBetween: 10,
+              preloadImages: false,
+              lazyLoading: true,
+              loop: true,
+              breakpoints: {
+                768: {
+                    slidesPerView: 2
+                },
+                640: {
+                    slidesPerView: 1
+                }
+              }
+            });
+          });
+        }, 10);
       }
 
-    }
+
+    } // end class AtsGallery
 
     window.customElements.define(AtsGallery.is, AtsGallery);
   </script>
