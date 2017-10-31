@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../shared-styles.html">
 <link rel="import" href="../gallery-styles.html">
+<link rel="import" href="../ats-icons.html">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.3/js/swiper.min.js"></script>
 
@@ -22,8 +23,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         position: relative;
         display: block;
         width: 100%;
-        max-width: 960px;
         margin: 0 auto;
+        padding: 50px 0;
       }
 
       .slide-image {
@@ -34,6 +35,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .arrow-fill {
         fill: #CF6059;
+      }
+
+      .gallery__divider {
+        margin: 50px 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .gallery__logo {
+        padding: 8px 0;
+        color: #fff;
+        text-align: center;
+      }
+
+      .gallery__cakes,
+      .gallery__cupcakes,
+      .gallery__desserts {
+        width: 100%;
+        max-width: 960px;
+        margin: 0 auto;
       }
     </style>
 
@@ -82,6 +103,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </div>
     </section>
 
+    <section class="gallery__divider ats__section--primary"><iron-icon class="gallery__logo" icon="asterisk:star"></iron-icon></section>
+
     <section class="gallery__cupcakes">
       <div class="swiper-container" id="swiper_cupcakes">
         <div class="swiper-wrapper">
@@ -119,6 +142,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
     </section>
+
+    <section class="gallery__divider ats__section--primary"><iron-icon class="gallery__logo" icon="asterisk:star"></iron-icon></section>
 
     <section class="gallery__desserts">
       <div class="swiper-container" id="swiper_desserts">
