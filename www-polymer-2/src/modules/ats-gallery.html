@@ -9,7 +9,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../shared-styles.html">
 <link rel="import" href="../gallery-styles.html">
 <link rel="import" href="../ats-icons.html">
@@ -57,15 +56,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 0 auto;
       }
     </style>
-
-    <iron-ajax
-      auto
-      url="../../data.json"
-      handle-as="json"
-      last-response="{{response}}"
-      on-response="_onResponse"
-      debounce-duration="300">
-    </iron-ajax>
 
     <section class="gallery__cakes">
       <div class="swiper-container" id="swiper_cakes">
@@ -202,15 +192,78 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           },
           imagesCakes: {
             type: Array,
-            notify: true
+            notify: true,
+            value: () => {
+              return [
+                 "images/content/cake-bday-15.jpg",
+                 "images/content/cake-teacher.jpg",
+                 "images/content/cake-custom-3_inside-x.jpg",
+                 "images/content/cake-deco-penguins.jpg",
+                 "images/content/cake-bday-1_sml.jpg",
+                 "images/content/cake-bday-4.jpg",
+                 "images/content/cake-teacher-x.jpg",
+                 "images/content/cake-bday-5.jpg",
+                 "images/content/cake-bday-6_sml.jpg",
+                 "images/content/cake-bday-7.jpg",
+                 "images/content/cake-bday-hectagon.jpg",
+                 "images/content/cake-bday-8.jpg",
+                 "images/content/cake-3.jpg",
+                 "images/content/cake-bday-10.jpg",
+                 "images/content/cake-bday-harley.jpg",
+                 "images/content/cake-bday-10_fondit.jpg",
+                 "images/content/cake-bday-penguin.jpg",
+                 "images/content/cake-bday-11.jpg",
+                 "images/content/cake-bday-13.jpg",
+                 "images/content/cake-bday-14_multi.jpg",
+                 "images/content/cake-custom-1.jpg",
+                 "images/content/cake-2.jpg",
+                 "images/content/cake-wedding-flower.jpg",
+                 "images/content/cake-custom-2.jpg",
+                 "images/content/cake-custom-3.jpg",
+                 "images/content/cake-wedding-2.jpg",
+                 "images/content/cake-wedding-3.jpg",
+                 "images/content/cake-custom-3_inside.jpg",
+                 "images/content/cake-wedding-4.jpg",
+                 "images/content/cake-bday-penguin.jpg"
+              ]
+            }
           },
           imagesCupCakes: {
             type: Array,
-            notify: true
+            notify: true,
+            value: () => {
+              return [
+                 "images/content/cupcakes-1.jpg",
+                 "images/content/cupcakes-2.jpg",
+                 "images/content/cupcakes-pops.jpg",
+                 "images/content/cupcakes-3.jpg",
+                 "images/content/cupcakes-4.jpg",
+                 "images/content/cupcakes-5.jpg",
+                 "images/content/cupcakes-6.jpg"
+              ]
+            }
           },
           imagesDesserts: {
             type: Array,
-            notify: true
+            notify: true,
+            value: () => {
+              return [
+                 "images/content/carving-star.jpg",
+                 "images/content/carving-penguin.jpg",
+                 "images/content/carving-x.jpg",
+                 "images/content/carving-rasp-flower.jpg",
+                 "images/content/fruit-tray_variety.jpg",
+                 "images/content/carving-1_sml.jpg",
+                 "images/content/fruit-tray_tarts.jpg",
+                 "images/content/carving-1a_sml.jpg",
+                 "images/content/carving-2_sml.jpg",
+                 "images/content/carving-3.jpg",
+                 "images/content/carving-x_1.jpg",
+                 "images/content/fruit-tray.jpg",
+                 "images/content/strawberries.jpg",
+                 "images/content/carving-rasp.jpg"
+              ]
+            }
           },
           imagesLoaded: {
             type: Boolean,
@@ -221,10 +274,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         };
       }
 
-      _onResponse() {
-        this.imagesCakes = this.response.images.imagesCakes;
-        this.imagesCupCakes = this.response.images.imagesCupCakes;
-        this.imagesDesserts = this.response.images.imagesDesserts;
+      ready() {
+        super.ready();
 
         var swipers = [
           {
@@ -244,31 +295,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }
         ];
 
-        setTimeout(() => {
-          swipers.forEach( (item) => {
-            var swiper = new Swiper(item.el, {
-              navigation: {
-                nextEl: item.next,
-                prevEl: item.prev,
-              },
-              slidesPerView: 3,
-              spaceBetween: 10,
-              preloadImages: false,
-              lazyLoading: true,
-              loop: true,
-              breakpoints: {
-                768: {
-                    slidesPerView: 2
-                },
-                640: {
-                    slidesPerView: 1
-                }
-              }
-            });
-          });
-        }, 10);
+        setTimeout( () => this._init(swipers), 1);
       }
 
+      _init(array) {
+        array.forEach( (item) => {
+          var swiper = new Swiper(item.el, {
+            navigation: {
+              prevEl: item.prev,
+              nextEl: item.next,
+            },
+            slidesPerView: 3,
+            spaceBetween: 10,
+            preloadImages: false,
+            lazyLoading: true,
+            loop: true,
+            breakpoints: {
+              768: {
+                  slidesPerView: 2
+              },
+              640: {
+                  slidesPerView: 1
+              }
+            }
+          });
+        });
+      }
 
     } // end class AtsGallery
 
