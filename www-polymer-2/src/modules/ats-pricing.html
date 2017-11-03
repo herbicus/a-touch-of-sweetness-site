@@ -13,7 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../shared-styles.html">
 <link rel="import" href="../ats-icons.html">
 
-<dom-module id="ats-cakes">
+<dom-module id="ats-pricing">
   <template>
     <style include="shared-styles">
       :host {
@@ -32,23 +32,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: #fff;
       }
 
-      /* cakes__tyles */
-      .cakes {
+      /* pricing__tyles */
+      .pricing {
         background: var(--primary);
         color: var(--primary);
         padding: 50px 0;
       }
 
-      .cakes__content {
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
-        display: flex;
-        -webkit-align-items: center;
-                align-items: center;
-        -webkit-justify-content: space-between;
-                justify-content: space-between;
+      .pricing__content {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+        @apply(--layout-justified);
         width: 100%;
         max-width: 960px;
         margin: 0 auto;
@@ -58,14 +52,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 box-sizing: border-box;
       }
 
-      .cakes__card {
+      .pricing__card {
         text-align: center;
         background: #FFF;
         padding: 25px;
         margin: 0 20px 0 0;
-        -webkit-flex: 1px;
-        -ms-flex: 1px;
-        flex: 1px;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
         /*color: var(--primary);*/
         -webkit-box-sizing: border-box;
            -moz-box-sizing: border-box;
@@ -76,11 +70,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 box-shadow: var(--box-shadow-high);
       }
 
-      .cakes__card:last-child {
+      .pricing__card:last-child {
         margin: 0;
       }
 
-      .cakes__logo {
+      .pricing__logo {
         width: 42px;
         height: 42px;
         color: var(--primary);
@@ -88,41 +82,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </style>
 
-    <section class="ats__section--primary cakes">
+    <section class="ats__section--primary pricing">
 
-      <div class="cakes__content">
+      <div class="pricing__content">
 
-        <div class="cakes__card">
-          <iron-icon class="cakes__logo" icon="asterisk:star"></iron-icon>
+        <div class="pricing__card">
+          <iron-icon class="pricing__logo" icon="asterisk:star"></iron-icon>
           <h3>Two Layer Cake</h3>
           <p>STARTS @ $30</p>
           <p>1/4 Serves 25 - 30 Guests</p>
           <p>1/2 Serves 50 - 60 Guests</p>
           <p>Full Serves 80 - 90 Guests</p>
-          <!-- <paper-button raised>Find Out More</paper-button> -->
           <slot name="cta-two-layer"></slot>
         </div>
 
-        <div class="cakes__card">
-          <iron-icon class="cakes__logo" icon="asterisk:star"></iron-icon>
+        <div class="pricing__card">
+          <iron-icon class="pricing__logo" icon="asterisk:star"></iron-icon>
           <h3>Two Layer Cake</h3>
           <p>STARTS @ $30</p>
           <p>1/4 Serves 25 - 30 Guests</p>
           <p>1/2 Serves 50 - 60 Guests</p>
           <p>Full Serves 80 - 90 Guests</p>
           <slot name="cta-two-layer-round"></slot>
-          <!-- <paper-button raised>Find Out More</paper-button> -->
         </div>
 
-        <div class="cakes__card">
-          <iron-icon class="cakes__logo" icon="asterisk:star"></iron-icon>
+        <div class="pricing__card">
+          <iron-icon class="pricing__logo" icon="asterisk:star"></iron-icon>
           <h3>Two Layer Cake</h3>
           <p>STARTS @ $30</p>
           <p>1/4 Serves 25 - 30 Guests</p>
           <p>1/2 Serves 50 - 60 Guests</p>
           <p>Full Serves 80 - 90 Guests</p>
           <slot name="cta-three-layer"></slot>
-          <!-- <paper-button raised>Find Out More</paper-button> -->
         </div>
       </div>
 
@@ -130,10 +121,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    class AtsCakes extends Polymer.Element {
-      static get is() { return 'ats-cakes'; }
+    class AtsPricing extends Polymer.Element {
+      static get is() { return 'ats-pricing'; }
     }
 
-    window.customElements.define(AtsCakes.is, AtsCakes);
+    window.customElements.define(AtsPricing.is, AtsPricing);
   </script>
 </dom-module>

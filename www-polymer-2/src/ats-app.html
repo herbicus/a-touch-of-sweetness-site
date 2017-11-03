@@ -17,6 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
@@ -28,7 +29,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!-- sections -->
 <link rel="import" href="modules/ats-hero.html">
-<link rel="import" href="modules/ats-cakes.html">
+<link rel="import" href="modules/ats-pricing.html">
 <link rel="import" href="modules/ats-gallery.html">
 <link rel="import" href="modules/ats-services.html">
 <link rel="import" href="modules/ats-contact.html">
@@ -164,9 +165,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --paper-icon-button-ink-color: #fff;
       }
 
+      .ats__dialog-close {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        display: block;
+        color: var(--primary);
+        cursor: pointer;
+      }
+
       /* hamburger btn */
       .ats__header-nav-hamburger {
         display: none;
+      }
+
+      .cta-dialog {
+        background: var(--primary);
+        color: #fff;
+        --paper-icon-button-ink-color: #fff;
+      }
+
+      #dialog {
+        z-index: 110 !important;
       }
 
       @media screen and (max-width: 767px) {
@@ -202,7 +222,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- off canvas nav -->
         <iron-selector class="offcanvas-header__links" selected="[[page]]" attr-for-selected="name" role="navigation">
-          <paper-tab drawer-toggle on-click="_scrollToCakes">home</paper-tab>
+          <paper-tab drawer-toggle on-click="_scrollToPricing">pricing</paper-tab>
           <paper-tab drawer-toggle on-click="_scrollToGallery">gallery</paper-tab>
           <paper-tab drawer-toggle on-click="_scrollToServices">services</paper-tab>
           <paper-tab drawer-toggle on-click="_scrollToContact">contact</paper-tab>
@@ -293,7 +313,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <!-- end svg lockup -->
             </div>
             <paper-tabs selected="[[page]]" role="navigation" noink class="ats__header-nav">
-              <paper-tab on-click="_scrollToCakes"><span>home</span></paper-tab>
+              <paper-tab on-click="_scrollToPricing"><span>pricing</span></paper-tab>
               <paper-tab on-click="_scrollToGallery"><span>gallery</span></paper-tab>
               <paper-tab on-click="_scrollToServices"><span>services</span></paper-tab>
               <paper-tab on-click="_scrollToContact"><span>contact</span></paper-tab>
@@ -311,23 +331,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             role="main">
           <ats-main name="ats-main" id="main">
             <ats-hero id="hero"></ats-hero>
-            <ats-cakes id="cakes">
+            <ats-pricing id="pricing">
               <div slot="cta-two-layer">
-                <paper-button raised on-click="_onDialogTap">Find out more</paper-button>
+                <paper-button class="cta-dialog" raised on-click="_onDialogTap">Find out more</paper-button>
               </div>
               <div slot="cta-two-layer-round">
-                <paper-button raised on-click="_onDialogTap">Find out more</paper-button>
+                <paper-button class="cta-dialog" raised on-click="_onDialogTap">Find out more</paper-button>
               </div>
               <div slot="cta-three-layer">
-                <paper-button raised on-click="_onDialogTap">Find out more</paper-button>
+                <paper-button class="cta-dialog" raised on-click="_onDialogTap">Find out more</paper-button>
               </div>
-            </ats-cakes>
+            </ats-pricing>
             <ats-gallery id="gallery"></ats-gallery>
             <ats-services id="services"></ats-services>
             <ats-contact id="contact"></ats-contact>
-            <paper-dialog id="dialog">
+            <paper-dialog id="dialog" class="ats__dialog">
               <ats-dialog></ats-dialog>
-              <paper-button raised dialog-dismiss>close</paper-button>
+              <iron-icon class="ats__dialog-close" icon="ats-icons:close" dialog-dismiss></iron-icon>
+              <!-- <paper-icon-button icon="ats-icons:close" class="ats__dialog-close" dialog-dismiss></paper-icon-button> -->
             </paper-dialog>
           </ats-main>
           <ats-404 name="ats-404"></ats-404>
@@ -409,8 +430,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this._scrollTo(this.$.hero);
       }
 
-      _scrollToCakes() {
-        this._scrollTo(this.$.cakes);
+      _scrollToPricing() {
+        this._scrollTo(this.$.pricing);
       }
 
       _scrollToGallery() {
