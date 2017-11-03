@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../shared-styles.html">
 <link rel="import" href="../ats-icons.html">
 
@@ -98,7 +99,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <p>1/4 Serves 25 - 30 Guests</p>
           <p>1/2 Serves 50 - 60 Guests</p>
           <p>Full Serves 80 - 90 Guests</p>
-          <paper-button raised>Find Out More</paper-button>
+          <!-- <paper-button raised>Find Out More</paper-button> -->
+          <slot name="cta-two-layer"></slot>
         </div>
 
         <div class="cakes__card">
@@ -108,7 +110,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <p>1/4 Serves 25 - 30 Guests</p>
           <p>1/2 Serves 50 - 60 Guests</p>
           <p>Full Serves 80 - 90 Guests</p>
-          <paper-button raised>Find Out More</paper-button>
+          <slot name="cta-two-layer-round"></slot>
+          <!-- <paper-button raised>Find Out More</paper-button> -->
         </div>
 
         <div class="cakes__card">
@@ -118,7 +121,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <p>1/4 Serves 25 - 30 Guests</p>
           <p>1/2 Serves 50 - 60 Guests</p>
           <p>Full Serves 80 - 90 Guests</p>
-          <paper-button raised>Find Out More</paper-button>
+          <slot name="cta-three-layer"></slot>
+          <!-- <paper-button raised>Find Out More</paper-button> -->
         </div>
       </div>
 

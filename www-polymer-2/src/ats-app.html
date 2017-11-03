@@ -20,9 +20,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="ats-icons.html">
+<link rel="import" href="ats-dialog.html">
 
 <!-- sections -->
 <link rel="import" href="modules/ats-hero.html">
@@ -309,10 +311,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             role="main">
           <ats-main name="ats-main" id="main">
             <ats-hero id="hero"></ats-hero>
-            <ats-cakes id="cakes"></ats-cakes>
+            <ats-cakes id="cakes">
+              <div slot="cta-two-layer">
+                <paper-button raised on-click="_onDialogTap">Find out more</paper-button>
+              </div>
+              <div slot="cta-two-layer-round">
+                <paper-button raised on-click="_onDialogTap">Find out more</paper-button>
+              </div>
+              <div slot="cta-three-layer">
+                <paper-button raised on-click="_onDialogTap">Find out more</paper-button>
+              </div>
+            </ats-cakes>
             <ats-gallery id="gallery"></ats-gallery>
             <ats-services id="services"></ats-services>
             <ats-contact id="contact"></ats-contact>
+            <paper-dialog id="dialog">
+              <ats-dialog></ats-dialog>
+              <paper-button raised dialog-dismiss>close</paper-button>
+            </paper-dialog>
           </ats-main>
           <ats-404 name="ats-404"></ats-404>
         </iron-pages>
@@ -407,6 +423,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _scrollToContact() {
         this._scrollTo(this.$.contact);
+      }
+
+      _onDialogTap() {
+        this.$.dialog.open();
       }
     }
 
