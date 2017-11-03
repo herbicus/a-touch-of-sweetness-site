@@ -67,8 +67,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <template is="dom-repeat" items="{{imagesCakes}}">
             <!-- slides -->
             <div class="swiper-slide">
-                <img src="{{item}}" class="swiper-lazy slide-image">
-                <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
+              <img src="{{item}}" class="slide-image">
             </div>
           </template>
 
@@ -104,8 +103,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <template is="dom-repeat" items="{{imagesCupCakes}}">
             <!-- slides -->
             <div class="swiper-slide">
-                <img src="{{item}}" class="swiper-lazy slide-image">
-                <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
+              <img src="{{item}}" class="slide-image">
             </div>
           </template>
 
@@ -142,8 +140,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <template is="dom-repeat" items="{{imagesDesserts}}">
             <!-- slides -->
             <div class="swiper-slide">
-                <img src="{{item}}" class="swiper-lazy slide-image">
-                <div class="swiper-lazy-preloader swiper-lazy-preloader-black"></div>
+              <img src="{{item}}" class="slide-image">
             </div>
           </template>
 
@@ -294,21 +291,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }
         ];
 
-        setTimeout( () => this._init(swipers), 1);
+        setTimeout( () => this._init(swipers), 750);
+        
       }
 
       _init(array) {
         array.forEach( (item) => {
           var swiper = new Swiper(item.el, {
+            slidesPerView: 3,
+            spaceBetween: 10,
+            loop: true,
             navigation: {
               prevEl: item.prev,
               nextEl: item.next,
             },
-            slidesPerView: 3,
-            spaceBetween: 10,
-            preloadImages: false,
-            lazyLoading: true,
-            loop: true,
             breakpoints: {
               768: {
                   slidesPerView: 2
@@ -318,6 +314,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               }
             }
           });
+
         });
       }
 
