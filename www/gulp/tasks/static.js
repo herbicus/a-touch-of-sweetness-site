@@ -1,26 +1,28 @@
-/**
- * Copies a specified directory to another location.
- * @tasks/static
- */
-
 'use strict';
 
-/**
- * @param gulp - function
- * @param bs - Browser sync instance
- * @param options - object
- * options.src : Directory to copy.
- * options.dist : Destination to copy options.src to.
- * @returns {Function}
- */
-module.exports = function( gulp, bs, options ) {
+var config = require('../config.js');
 
-  return function() {
+var args = require('yargs').argv;
+var gulp = require('gulp');
+var connect = require('gulp-connect');
+var changed = require('gulp-changed');
 
-    return gulp.src(options.src)
-      .pipe(gulp.dest(options.dist))
-      .pipe(bs.stream());
+function copyStream () {
 
-  };
+	var task = gulp.src(config.static.src)
+		.pipe(changed(config.static.dist))
+		.pipe(gulp.dest(config.static.dist));
 
-};
+	return task;
+
+}
+
+gulp.task('copy', config.req, function() {
+
+	return copyStream();
+
+});
+
+gulp.task('static', ['copy'], function() {
+
+});

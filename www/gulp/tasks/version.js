@@ -1,88 +1,51 @@
-/**
- * Injects a timestamp into CSS, JS, and HTML files and renames the files.
- * @tasks/clean
- */
-
-'use strict';
-
+var gulp = require('gulp');
+var gutil = require('gulp-util');
 var args = require('yargs').argv;
 var config = require('../config.js');
-var merge = require('merge-stream');
-var del = require('del');
-var vinylPaths = require('vinyl-paths');
 var inject = require('gulp-inject-string');
 var rename = require('gulp-rename');
+var del = require('del');
 var replace = require('gulp-replace');
-var gutil = require('gulp-util');
 
-/**
- * @param gulp - function
- * @param options - object
- * options.src : Directory to delete.
- * @returns {Function}
- */
-module.exports = function( gulp, options ) {
+gulp.task('version', function() {
 
-  function cssStuff( date, version ) {
+  var date = new Date();
+  var version;
 
-    return gulp.src( options.css )
-      .pipe(vinylPaths(del))
-      .pipe(inject.prepend('/* Created: ' + date + ' */\n'))
-      .pipe(inject.prepend('/* Version: ' + version + ' */\n'))
-      .pipe(rename(function( path ) {
-        path.basename += '.' + version;
-      }))
-      .pipe(gulp.dest( options.cssDist ));
-
+  if( !args.version ){
+    version = date.getTime();
+  } else {
+    version = args.version.toString().replace( /[^\w.-]+/g ,"");
   }
 
-  function jsStuff( date, version ) {
+  //inject the date and version into a new CSS file
+  gulp.src(config.styles.dist + 'index.css')
+    .pipe(inject.prepend('/* Created: ' + date + '*/\n'))
+    .pipe(inject.prepend('/* Version: ' + version + '*/\n'))
+    .pipe(rename('index.' + version + '.css'))
+    .pipe(gulp.dest(config.styles.dist));
 
-    //inject the date and version into a new JS files
-    return gulp.src( options.js )
-      .pipe(vinylPaths(del))
-      .pipe(inject.prepend('/* Created: ' + date + ' */\n'))
-      .pipe(inject.prepend('/* Version: ' + version + ' */\n'))
-      .pipe(rename(function( path ) {
-        path.basename += '.' + version;
-      }))
-      .pipe( gulp.dest( options.jsDist ));
+  //delete the old CSS file
+  del(config.styles.dist + 'index.css', {force: true});
 
-  }
+  //inject the date and version into a new JS file
+  gulp.src(config.scripts.dist + config.scripts.output)
+    .pipe(inject.prepend('/* Created: ' + date + ' */\n'))
+    .pipe(inject.prepend('/* Version: ' + version + ' */\n'))
+    .pipe(rename('main.build.' + version + '.js'))
+    .pipe(gulp.dest(config.scripts.dist));
 
-  function htmlStuff( date, version ) {
+  //delete the old JS file
+  del(config.scripts.dist + config.scripts.output, {force: true});
 
-    //inject the date and version into the index.html file
-    //update references to the new CSS and JS files
-    return gulp.src( options.html )
-      .pipe(inject.append('<!-- Version: ' + version + ' -->\n'))
-      .pipe(inject.append('<!-- Created: ' + date + ' -->'))
-      .pipe(replace('index.css', 'index.' + version + '.css'))
-      .pipe(replace('<html', '<html data-version="' + version + '"'))
-      .pipe(replace('main.build.js', 'main.build.' + version + '.js'))
-      .pipe(replace('bower.js', 'bower.' + version + '.js'))
-      .pipe(replace('vendor.js', 'vendor.' + version + '.js'))
-      .pipe(gulp.dest( options.htmlDist ));
+  //inject the date and version into the index.html file
+  //update references to the new CSS and JS files
+  gulp.src(config.static.dist + '/index.html')
+    .pipe(inject.append('<!-- Version: ' + version + ' -->\n'))
+    .pipe(inject.append('<!-- Created: ' + date + ' -->'))
+    .pipe(replace('index.css', 'index.' + version + '.css'))
+    .pipe(replace('<html', '<html data-version="'+ version +'"'))
+    .pipe(replace(config.scripts.output, 'main.build.' + version + '.js'))
+    .pipe(gulp.dest(config.static.dist));
 
-  }
-
-  return function() {
-
-    var date = new Date();
-    var version;
-
-    if ( !args.version ) {
-      version = date.getTime();
-    } else {
-      version = args.version.toString().replace( /[^\w.-]+/g, '' );
-    }
-
-    return merge(
-      cssStuff(date, version),
-      jsStuff(date, version),
-      htmlStuff(date, version)
-    );
-
-  };
-
-};
+});
