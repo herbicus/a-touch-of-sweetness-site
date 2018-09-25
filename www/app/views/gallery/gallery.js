@@ -36,7 +36,7 @@ var Gallery = Backbone.View.extend({
       slidesToShow: 3,
       slidesToScroll: 1,
       infinite: true,
-      dots: false,
+      dots: true,
       responsive: [
         {
          breakpoint: 480,
@@ -60,7 +60,7 @@ var Gallery = Backbone.View.extend({
        slidesToShow: 3,
        slidesToScroll: 1,
        infinite: true,
-       dots: false,
+       dots: true,
        responsive: [
          {
            breakpoint: 480,
@@ -84,7 +84,7 @@ var Gallery = Backbone.View.extend({
       slidesToShow: 3,
       slidesToScroll: 1,
       infinite: true,
-      dots: false,
+      dots: true,
       responsive: [
         {
           breakpoint: 480,

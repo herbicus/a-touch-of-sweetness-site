@@ -35,19 +35,26 @@ var Hero = Backbone.View.extend({
   },
 
   _parallaxHero: function() {
-    var aboveFoldParallax = new TimelineMax({paused: true});
+    // var aboveFoldParallax = new TimelineMax({paused: false});
           
-    aboveFoldParallax.to('#hero', 1, {css:{'background-position-y': 100}});
+    // aboveFoldParallax.to('#hero', 1, {css:{'background-position-y': 100}});
 
     if ($('#hero').hasClass('parallax')) {
-      window.addEventListener('scroll', function() {
-        var parallaxTiming = document.body.scrollTop / 5000;
+      
+      // window.addEventListener('scroll', function() {
+      // $(window).on('scroll', _.debounce(function() {
+      $(window).on('scroll', function() {
+        var parallaxTiming =  $(window).scrollTop();
+
+        console.log(parallaxTiming)
 
         $('#hero').waypoint(function() {
+          //aboveFoldParallax.play();
 
-          aboveFoldParallax.seek(parallaxTiming);
+          // TweenMax.set('.hero-image', {css:{'background-position-y': - parallaxTiming * 0.25}});
+          TweenMax.set($('.hero-image'), {y: parallaxTiming * 0.25});
 
-        }, {offset: '90%'});
+        });
       });
     }
   }

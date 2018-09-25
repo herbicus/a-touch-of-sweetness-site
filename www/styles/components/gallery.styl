@@ -193,3 +193,30 @@
   
   @media screen and (min-width: 768px)
     display block
+
+.nav-arrows-container
+  // position relative
+
+.slick-dots
+  display flex
+  flex-wrap wrap
+  justify-content center
+  padding 0
+  width 100%
+  margin 24px 0 6px
+
+  button
+    border-radius 50%
+    background transparent
+    color transparent
+    border 1px solid $primary
+    box-shadow none
+    width 10px
+    height 10px
+    padding 0
+    margin-right 6px
+    position relative
+    overflow hidden
+
+  .slick-active button 
+    background $primary
